@@ -1,0 +1,79 @@
+.headerbar {
+  overflow: hidden;
+  background-color: #4595e0;
+}
+
+.headerbar a {
+  float: left;
+  color: #312f2f;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  position: relative;
+}
+
+.headerbar a:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+.headerbar a.active {
+  background-color: #fff;
+  color: #373fa7;
+}
+
+.homePage {
+  background-color: #6ddde6;
+  height: 100%;
+  display: flex;
+  padding: 14px;
+}
+
+.homeHeader {
+  background-color: #6ddde6;
+  height: 50px;
+  padding: 50px;
+  color: white;
+  text-align: center;
+}
+
+.homeMsg {
+  background-color: #6ddde6;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  padding: 45px;
+}
+
+.listItems {
+  margin: 30px;
+  padding: 50px;
+  font-size: 28px;
+  text-align: center;
+  display: inline-block;
+  list-style-position: inside;
+  text-indent: -1em;
+}
+
+.homePhoneWrapper {
+  display: inline-block;
+  margin: 50px;
+  margin-left: 140px;
+}
+
+.hometextWrapper {
+  display: inline-block;
+}
+
+.downloadSec {
+  font-size: 26px;
+}
+
+.iosLogo {
+  display: inline-block;
+}
+
+.androidLogo {
+  display: inline-block;
+}
