@@ -1,0 +1,26 @@
+.headerbar {
+    flex-direction: row;
+    overflow: hidden;
+    background-color: #6ddde6;
+    display: flex;
+  }
+  
+  .headerbar a {
+    float: left;
+    color: #9b9999;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+  }
+  
+  .headerbar a:hover {
+    background-color: #FFF;
+    color: #111;
+  }
+  
+  .headerbar a.active {
+    background-color: #FFF;
+    color: #373fa7;
+  }
