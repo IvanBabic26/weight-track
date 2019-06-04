@@ -54,10 +54,8 @@ class BMICalculator extends Component {
     e.preventDefault();
     this.calculateBMI();
     this.setState({
-      formComplete: true,
-      
+      formComplete: true
     });
-
   };
 
   change = e => {
@@ -113,7 +111,7 @@ class BMICalculator extends Component {
         </form>
         {this.state.formComplete && (
           <div className="outputbmi">
-            {this.state.checked} Hello {this.state.name}! Your BMI is currently{" "}
+            {`Hello ${this.state.name}! Your BMI is currently `}
             {this.state.bmi}!{this.state.message}
             {this.state.optimalweight}.
           </div>
