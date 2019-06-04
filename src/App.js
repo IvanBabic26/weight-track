@@ -1,18 +1,26 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header/Header';
-import BMICalculator from './components/BMICalculator/BMICalculator';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import Home from "./components/Home/Home";
+import BMICalculator from "./components/BMICalculator/BMICalculator";
+import MealPlan from "./components/MealPlan/MealPlan";
 
 function App() {
   return (
-    <div>
-      <div>
-        <Header />
+    <BrowserRouter>
+      <div className="headerbar">
+        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/bmicalculator">BMI Calculator</NavLink>
+        <NavLink to="/mealplan">Meal Plan</NavLink>
       </div>
       <div>
-        <BMICalculator />
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/bmicalculator" component={BMICalculator} />
+          <Route path="/mealplan" component={MealPlan} />
+        </Switch>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
