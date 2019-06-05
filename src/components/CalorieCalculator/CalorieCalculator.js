@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./MealPlan.css";
+import "./CalorieCalculator.css";
 
-class MealPlan extends Component {
+class CalorieCalculator extends Component {
   state = {
     name: "",
     age: "",
@@ -117,16 +117,10 @@ class MealPlan extends Component {
               }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
             </div>
           )}
-          <div className="spoon">
-            Head down to our friends at{" "}
-            <a href="https://spoonacular.com/meal-planner">Spoonacular</a> and
-            make your own meal plan for the week. Heck, make it a whole month,
-            you can do it! Sign up for free!
-          </div>
         </div>
       </div>
     );
   }
 }
 
-export default MealPlan;
+export default CalorieCalculator;
