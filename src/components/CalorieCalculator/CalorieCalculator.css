@@ -1,0 +1,80 @@
+.mealPlan {
+  display: flex;
+}
+
+#formCalorie {
+  display: inline-block;
+  margin: 40px;
+  color: #fff;
+}
+.mealIntro {
+  color: white;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 24px;
+}
+
+.mealPlanHeader {
+  margin: 50px;
+  padding: 10px;
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 58px;
+}
+
+.mealPlanWrapper {
+  display: inline-block;
+  margin: 50px;
+  margin-left: 140px;
+}
+
+.mealTextWrapper {
+  display: inline-block;
+  margin-right: 25px;
+  position: relative;
+}
+
+.calorieHeader {
+  background-color: #3b7ab6;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  font-size: 26px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.calorieCalc {
+  display: inline;
+  border: 2px solid;
+  margin-right: 20px;
+}
+
+.mealPlanWrapper {
+  display: flex;
+}
+
+.outputCalories {
+  color: white;
+  text-align: center;
+  display: block;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 30px;
+  font-size: 26px;
+  border: 1px solid;
+}
+
+.outputHeader {
+  margin: 50px;
+  color: white;
+  text-align: center;
+  display: block;
+  font-size: 30px;
+}
+
+a {
+  color: #fff;
+  font-size: 22px;
+}

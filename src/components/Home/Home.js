@@ -11,14 +11,14 @@ class Home extends Component {
         <div className="homePhoneWrapper">
           <img alt="mobilephone" src={phone} />
         </div>
-        <div className="hometextWrapper">
+        <div className="homeTextWrapper">
           <h1 className="homeHeader">
             Weight Track App: Free for Android and iPhone
           </h1>
           <div className="homeMsg">
             <h2>
               With the free weight tracker app from Bakuta, you can check your
-              BMI as well finding your meal plans and training plans. The app is
+              BMI and your Calorie Input as well finding your meal plans and training plans. The app is
               available for iPhone and Android, you can view both your meal and
               training schedule at any time!
             </h2>

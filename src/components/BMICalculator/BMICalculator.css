@@ -1,13 +1,9 @@
-.bmicalc {
-  text-align: left;
-  width: 100%;
-  background-color: #6ddde6;
-  height: 100%;
-  position: fixed;
+.bmiCalc {
+  display: flex;
 }
 
-.bmicalcHeader {
-  background-color: #066b72;
+.bmiCalcHeader {
+  background-color: #3b7ab6;
   padding: 20px;
   color: white;
   text-align: center;
@@ -48,19 +44,61 @@ input [type="submit"] {
   font-size: 25px;
 }
 
-.outputbmi {
+.outputBmi {
   text-align: center;
-  margin: 80px;
-  font-size: 50px;
+  color: white;
+  margin: 20px;
+  padding: 10px;
+  font-size: 30px;
+  border: 1px solid;
 }
 
 .btnSubmit {
-  background-color: #066b72;
+  background-color: #3b7ab6;
   color: white;
   width: 94%;
   font-size: 15px;
 }
 
-#wrapper {
-  border: 1px solid;
+.bmiTextWrapper {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.bmiTextHeader {
+  margin: 60px;
+  padding: 10px;
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 58px;
+}
+
+.secondHeaderText {
+  color: white;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 22px;
+}
+
+.thirdHeaderText {
+  color: white;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 22px;
+}
+
+#formBmi {
+  margin: 40px;
+  display: inline;
+  color: #fff;
+}
+
+.bmiPage {
+  display: inline-block;
+  margin: 50px;
+  margin-left: 140px;
+  border: 2px solid;
 }
