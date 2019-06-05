@@ -1,37 +1,40 @@
 .headerbar {
   overflow: hidden;
-  background-color: #4595e0;
+  background-color: #3b7ab6;
 }
 
 .headerbar a {
   float: left;
-  color: #312f2f;
+  color: #000000;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
+  height: 80px;
+  margin: 20px;
+  padding-left: 20px;
+  align-items: center;
   font-size: 20px;
-  position: relative;
+  display: flex;
 }
 
+
+
 .headerbar a:hover {
-  background-color: #fff;
   color: #111;
 }
 
 .headerbar a.active {
-  background-color: #fff;
-  color: #373fa7;
+  color: #111;
 }
 
 .homePage {
-  background-color: #6ddde6;
+  background-color: #0e0633;
   height: 100%;
   display: flex;
   padding: 14px;
 }
 
 .homeHeader {
-  background-color: #6ddde6;
+  background-color: #0e0633;
   height: 50px;
   padding: 50px;
   color: white;
@@ -39,7 +42,7 @@
 }
 
 .homeMsg {
-  background-color: #6ddde6;
+  background-color: #0e0633;
   color: white;
   text-align: center;
   display: inline-block;
@@ -62,7 +65,7 @@
   margin-left: 140px;
 }
 
-.hometextWrapper {
+.homeTextWrapper {
   display: inline-block;
 }
 
