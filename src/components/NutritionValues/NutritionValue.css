@@ -8,6 +8,7 @@
 
 .nutriValue {
   display: flex;
+  margin: 20px;
 }
 .nutriHeader {
   margin: 0px;
@@ -15,7 +16,7 @@
   display: block;
   color: white;
   text-align: center;
-  font-size: 48px;
+  font-size: 38px;
 }
 
 .nutriValueWrapper {
@@ -24,8 +25,9 @@
 
 .nutriSearch {
   display: inline-block;
-  margin: 50px;
-  padding: 20px;
+  margin: 30px;
+  margin-top: 30px;
+  padding-top: 20px;
   font-size: 22px;
   color: #fff;
   text-align: center;
@@ -38,7 +40,10 @@
   margin: 20px;
   padding: 10px;
 }
-
+.searchWrapper{
+  margin-top: 30px;
+  padding-top: 50px;
+}
 .headerSearch {
   margin: 0px;
   display: inline-block;
@@ -49,16 +54,15 @@
   display: inline-block;
   background-color: #3b7ab6;
   color: white;
-  width: 89%;
+  width: 65%;
   font-size: 15px;
 }
 
 .searchOutput {
   text-align: center;
   color: #fff;
-  margin-top: 10px;
-  padding-top: 20px;
+  margin: 10px;
+  padding-top: 10px;
   padding-bottom: 30px;
-  margin-bottom: 10px;
   font-size: 26px;
 }

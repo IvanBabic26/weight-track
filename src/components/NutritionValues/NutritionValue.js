@@ -15,7 +15,7 @@ class NutritionValue extends Component {
     });
   };
 
-  getItem = (item) => {
+  getItem = () => {
     request
       .get("https://trackapi.nutritionix.com/v2/search/instant")
       .query({ query: this.state.searchInput })
@@ -29,7 +29,7 @@ class NutritionValue extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someData: res.body });
+          this.setState({ someData: res.body.common });
         }
       });
   };
@@ -66,9 +66,9 @@ class NutritionValue extends Component {
           </div>
           <div className="searchOutput">
             <h2 className="headerOutput">Results:</h2>
-            {/* {this.state.getItem.map(item => (
-              <div>{item.food_name}</div>
-            ))} */}
+            {this.state.someData.map(item => (
+              <div key={item.food_name}>{item.food_name}</div>
+            ))}
           </div>
         </div>
       </div>
