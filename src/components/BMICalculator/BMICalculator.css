@@ -100,5 +100,5 @@ input [type="submit"] {
   display: inline-block;
   margin: 50px;
   margin-left: 140px;
-  border: 2px solid;
+  border: 2px solid #fff;
 }

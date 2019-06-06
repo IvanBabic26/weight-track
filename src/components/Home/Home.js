@@ -30,8 +30,8 @@ class Home extends Component {
             <h4 className="downloadSec">
               Download now for free from the Google Play or App Store:
             </h4>
-                <a href="https://www.apple.com/" target="_blank"> <img alt="appstore" className="iosLogo" src={ios} /></a>{" "}
-                <a href="https://play.google.com/store/apps" target="_blank"> <img alt="androidgoogleplay" className="androidLogo" src={android} /></a>
+                <a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer"> <img alt="appstore" className="iosLogo" src={ios} /></a>{" "}
+                <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"> <img alt="androidgoogleplay" className="androidLogo" src={android} /></a>
           </div>
         </div>
       </div>
