@@ -7,8 +7,7 @@ import { Link } from "react-router-dom";
 class NutritionValue extends Component {
   state = {
     someData: [],
-    searchInput: [],
-    someDisplay: []
+    searchInput: []
   };
 
   searchChange = e => {
@@ -73,7 +72,7 @@ class NutritionValue extends Component {
           {this.state.someData.map(item => {
         
             return <div key={item.food_name} className="outputList">
-              <Link to="/displaycase" onClick={() => this.displayItem(item.food_name)}>{item.food_name}></Link>
+              <Link to={`/displaycase/${item.food_name}`}>{item.food_name}></Link>
             </div>
           })}
         </div>
