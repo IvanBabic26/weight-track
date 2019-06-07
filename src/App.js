@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import BMICalculator from "./components/BMICalculator/BMICalculator";
 import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator";
 import NutritionValue from "./components/NutritionValues/NutritionValue";
+import DisplayCase from "./components/DisplayCase/DisplayCase";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/bmicalculator" component={BMICalculator} />
           <Route path="/caloriecalculator" component={CalorieCalculator} />
           <Route path="/nutritionvalue" component={NutritionValue} />
+          <Route path="/displaycase" component={DisplayCase} />
         </Switch>
     </BrowserRouter>
   );
