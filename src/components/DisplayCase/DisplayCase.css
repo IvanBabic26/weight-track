@@ -1,0 +1,19 @@
+.displayCase {
+    margin: 180px;
+    padding: 160px;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    border: 2px solid;
+    display: block;
+}
+
+.btnSubmitDisplay {
+    margin: 20px 30px 40px 30px;
+    text-align: center;
+    display: block;
+}
+
+.displayWrapper {
+    display: block;
+}
