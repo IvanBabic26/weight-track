@@ -30,6 +30,7 @@ class CalorieCalculator extends Component {
   };
 
   submitForm = e => {
+
     e.preventDefault();
     this.calculateCalories();
     this.setState({

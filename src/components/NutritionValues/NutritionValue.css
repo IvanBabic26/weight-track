@@ -1,0 +1,68 @@
+.nutriText {
+  color: white;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 24px;
+}
+
+.nutriValue {
+  display: flex;
+  margin: 20px;
+}
+.nutriHeader {
+  margin: 0px;
+  padding: 10px;
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 38px;
+}
+
+.nutriValueWrapper {
+  display: block;
+}
+
+.nutriSearch {
+  display: inline-block;
+  margin: 30px;
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  border: 1px solid;
+}
+
+.searchBox {
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+}
+.searchWrapper{
+  margin-top: 30px;
+  padding-top: 50px;
+}
+.headerSearch {
+  margin: 0px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btnSubmitNutri {
+  display: inline-block;
+  background-color: #3b7ab6;
+  color: white;
+  width: 65%;
+  font-size: 15px;
+}
+
+.searchOutput {
+  text-align: center;
+  color: #fff;
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  font-size: 26px;
+}
