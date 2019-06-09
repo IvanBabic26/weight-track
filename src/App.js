@@ -21,7 +21,7 @@ function App() {
           <Route path="/bmicalculator" component={BMICalculator} />
           <Route path="/caloriecalculator" component={CalorieCalculator} />
           <Route path="/nutritionvalue" component={NutritionValue} />
-          <Route path="/displaycase/:id" component={DisplayCase} />
+          <Route path="/nutritionvalue/:id" component={DisplayCase} />
         </Switch>
     </BrowserRouter>
   );

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./NutritionValue.css";
 import request from "superagent";
-// import DisplayCase from "../DisplayCase/DisplayCase";
 import { Link } from "react-router-dom";
 
 class NutritionValue extends Component {
