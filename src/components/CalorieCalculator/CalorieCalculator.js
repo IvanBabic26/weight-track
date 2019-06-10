@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./CalorieCalculator.css";
 
-class CalorieCalculator extends Component {
+export default class CalorieCalculator extends Component {
   state = {
     name: "",
     age: "",
@@ -123,5 +123,3 @@ class CalorieCalculator extends Component {
     );
   }
 }
-
-export default CalorieCalculator;

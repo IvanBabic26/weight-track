@@ -3,10 +3,12 @@ import "./NutritionValue.css";
 import request from "superagent";
 import { Link } from "react-router-dom";
 
-class NutritionValue extends Component {
+export default class NutritionValue extends Component {
   state = {
     someData: [],
-    searchInput: []
+    someOtherData: [],
+    searchInput: [],
+    press:[]
   };
 
   searchChange = e => {
@@ -14,7 +16,8 @@ class NutritionValue extends Component {
       searchInput: e.target.value
     });
   };
-
+  
+  
   getItem = () => {
     request
       .get("https://trackapi.nutritionix.com/v2/search/instant")
@@ -30,6 +33,7 @@ class NutritionValue extends Component {
           this.setState({ err });
         } else {
           this.setState({ someData: res.body.common });
+          this.setState({ someOtherData: res.body.branded });
         }
       });
   };
@@ -65,19 +69,34 @@ class NutritionValue extends Component {
             </div>
           </div>
         </div>
-
         <h2 className="headerOutput">Results are shown here:</h2>
-        <div className="output">
+        <div className="foodOutput">
+        <div className="commonOutput">
+        <h2>Common Foods:</h2>
           {this.state.someData.map(item => {
-        
-            return <div key={item.food_name} className="outputList">
-              <Link to={`/displaycase/${item.food_name}`}>{item.food_name}></Link>
-            </div>
+            return (
+              <div key={item.food_name} className="outputList">
+                <Link to={`/displaycase/${item.food_name}`}>
+                  {item.food_name}
+                </Link>
+              </div>
+            );
           })}
+        </div>
+        <div className="brandedOutput">
+        <h2>Branded Foods:</h2>
+          {this.state.someOtherData.map(item => {
+            return (
+              <div key={item.food_name} className="outputList">
+                <Link to={`/displaycase/${item.food_name}`}>
+                  {item.food_name}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
         </div>
       </div>
     );
   }
 }
-
-export default NutritionValue;

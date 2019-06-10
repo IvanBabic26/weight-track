@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./DisplayCase.css";
 import request from "superagent";
 
-class DisplayCase extends Component {
+export default class DisplayCase extends Component {
   state = {
     someDisplay: []
   };
@@ -72,5 +72,3 @@ class DisplayCase extends Component {
     );
   }
 }
-
-export default DisplayCase;
