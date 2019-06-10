@@ -1,19 +1,57 @@
 .displayCase {
-    margin: 180px;
-    padding: 160px;
-    font-size: 40px;
-    color: #fff;
-    text-align: center;
-    border: 2px solid;
-    display: block;
+  margin: 180px;
+  padding: 160px;
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  border: 2px solid;
+  display: block;
 }
 
 .btnSubmitDisplay {
-    margin: 20px 30px 40 p30px;
-    text-align: center;
-    display: block;
+  margin: 20px 30px 40 p30px;
+  text-align: center;
+  display: block;
 }
 
 .displayWrapper {
-    display: block;
+  display: block;
+}
+
+.outputDisplay {
+  text-align: left;
+}
+
+li {
+  text-align: center;
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0px;
+}
+.foodPicture {
+  text-align: center;
+  display: inline;
+}
+
+.foodName {
+  text-align: center;
+}
+
+.selectedFood {
+  display: flex;
+}
+
+.foodName {
+  display: block;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  font-size: 60px;
+}
+
+.foodPicture {
+  display: block;
 }
