@@ -9,6 +9,7 @@ class DisplayCase extends Component {
 
   componentDidMount() {
     this.displayItem(this.props.match.params.id);
+    console.log('test')
   }
 
   displayItem = foodName => {
