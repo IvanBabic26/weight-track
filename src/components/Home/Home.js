@@ -3,8 +3,9 @@ import "./Home.css";
 import phone from "../img/phone.png";
 import ios from "../img/ios.png";
 import android from "../img/android.png";
+import { Link } from "react-router-dom";
 
-class Home extends Component {
+export default class Home extends Component {
   render() {
     return (
       <div className="homePage">
@@ -17,8 +18,7 @@ class Home extends Component {
           </h1>
           <div className="homeMsg">
             <h2>
-              With the free weight tracker app from Bakuta, you can check your
-              BMI and your Calorie Input as well finding your meal plans and training plans. The app is
+              With the free weight tracker app from Bakuta, you can check your <Link to="/bmicalculator">BMI</Link> and your <Link to="/caloriecalculator">Calorie Input</Link> as well finding your meal plans and training plans. The app is
               available for iPhone and Android, you can view both your meal and
               training schedule at any time!
             </h2>
@@ -38,5 +38,3 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;

@@ -7,7 +7,7 @@ import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator"
 import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <div className="headerbar">
@@ -26,5 +26,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

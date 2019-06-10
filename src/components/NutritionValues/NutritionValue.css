@@ -62,15 +62,24 @@
   font-size: 36px;
 }
 
-.output {
+.foodOutput {
+  margin: 20px;
+  border: 2px solid #fff;
+  display: flex;
+  text-align: center;
+}
+
+.commonOutput {
   font-size: 20px;
-  margin: 10px;
-  text-align: justify;
-  display: inline-block;
+  margin: 40px;
+  text-align: center;
   color: #fff;
 }
 
-.outputList li {
-  font-size: 22px;
-  text-align: justify;
+.brandedOutput {
+  font-size: 20px;
+  margin: 40px;
+  float: right;
+  text-align: center;
+  color: #fff;
 }
