@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import "./CalorieCalculator.css";
 
+const activityLevel = {
+  sedentary: 1.2,
+  slightlyactive: 1.4,
+  moderatelyactive: 1.6,
+  veryactive: 1.75,
+  extraactive: 2,
+  professional: 2.3
+};
+
 export default class CalorieCalculator extends Component {
   state = {
     name: "",
@@ -8,6 +17,7 @@ export default class CalorieCalculator extends Component {
     weight: "",
     height: "",
     sex: "male",
+    activity: "sedentary",
     calories: "",
     message: "",
     formComplete: false
@@ -20,17 +30,41 @@ export default class CalorieCalculator extends Component {
 
   calculateCalories = () => {
     const sexIndex = this.state.sex === "male" ? 5 : -161;
+    let activity = activityLevel[this.state.activity];
+
+    // console.log(activityLevel[activity]);
+
+    // switch (activity) {
+    //   case "slightlyactive":
+    //     activity = 1.4;
+    //     break;
+    //   case "moderatelyactive":
+    //     activity = 1.6;
+    //     break;
+    //   case "veryactive":
+    //     activity = 1.75;
+    //     break;
+    //   case "extraactive":
+    //     activity = 2;
+    //     break;
+    //   case "professional":
+    //     activity = 2.3;
+    //     break;
+    //   default:
+    //     activity = 1.2;
+    //     break;
+    // }
 
     return (
-      10 * this.state.weight +
-      6.25 * this.state.height -
-      5 * this.state.age +
-      sexIndex
+      (10 * this.state.weight +
+        6.25 * this.state.height -
+        5 * this.state.age +
+        sexIndex) *
+      activity
     );
   };
 
   submitForm = e => {
-
     e.preventDefault();
     this.calculateCalories();
     this.setState({
@@ -85,6 +119,32 @@ export default class CalorieCalculator extends Component {
                 value={this.state.weight}
                 onChange={e => this.change(e, "weight")}
               />
+              <label>Activity level:</label>
+              <select
+                value={this.state.activity}
+                onChange={e => this.change(e, "activity")}
+                className="selectOptionActivity"
+              >
+                <option value="sedentary">
+                  Sedentary lifestyle (little or no exercise)
+                </option>
+                <option value="slightlyactive">
+                  Slightly active lifestyle (light exercise or sports 1-2
+                  days/week)
+                </option>
+                <option value="moderatelyactive">
+                  Moderately active lifestyle (moderate exercise or sports 2-3
+                  days/week)
+                </option>
+                <option value="veryactive">
+                  Very active lifestyle (hard exercise or sports 4-5 days/week)
+                </option>
+                <option value="extraactive">
+                  Extra active lifestyle (very hard exercise, physical job or
+                  sports 6-7 days/week)
+                </option>
+                <option value="professional">Professional athlete</option>
+              </select>
               <label>Calorie away!</label>
               <input type="submit" className="btnSubmit" value="Submit" />
             </form>
@@ -116,6 +176,27 @@ export default class CalorieCalculator extends Component {
               {`Hello ${
                 this.state.name
               }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
+            </div>
+          )}
+          {this.state.formComplete && (
+            <div className="weightChange">
+              <div>{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
+              <div>
+                <div>
+                  {`Mild weight loss: ${this.calculateCalories()  - 250} kcal/day`}
+                </div>
+                <div>~0.25 kg/week</div>
+              </div>
+              <div>
+                <div>{`Weight loss: ${this.calculateCalories() - 500} kcal/day`}</div>
+                <div>~0.5 kg/week</div>
+              </div>
+              <div>
+                <div>
+                  {`Extreme weight loss: ${this.calculateCalories() - 1000} kcal/day`}
+                </div>
+                <div>~1 kg/week</div>
+              </div>
             </div>
           )}
         </div>

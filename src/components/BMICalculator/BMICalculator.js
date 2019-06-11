@@ -33,7 +33,6 @@ export default class BMICalculator extends Component {
     const high = Math.round(24.99 * heightSquared);
     let message = "";
 
-    
     if (bmi >= 18.5 && bmi <= 24.99) {
       message = " You are in a healthy weight range!";
     } else if (bmi >= 25 && bmi <= 29.9) {
@@ -156,4 +155,3 @@ export default class BMICalculator extends Component {
     );
   }
 }
-
