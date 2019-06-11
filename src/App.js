@@ -6,6 +6,7 @@ import BMICalculator from "./components/BMICalculator/BMICalculator";
 import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator";
 import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
+import TrainingLog from "./components/TrainingLog/TrainingLog";
 
 export default function App() {
   return (
@@ -15,12 +16,14 @@ export default function App() {
         <NavLink to="/bmicalculator">BMI Calculator</NavLink>
         <NavLink to="/caloriecalculator">Calorie Calculator</NavLink>
         <NavLink to="/nutritionvalue">Nutrition Value</NavLink>
+        <NavLink to="/traininglog">Training Log</NavLink>
       </div>
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/bmicalculator" component={BMICalculator} />
           <Route path="/caloriecalculator" component={CalorieCalculator} />
           <Route path="/nutritionvalue" component={NutritionValue} />
+          <Route path="/traininglog" component={TrainingLog} />
           <Route path="/displaycase/:id" component={DisplayCase} />
         </Switch>
     </BrowserRouter>

@@ -35,7 +35,7 @@ export default class NutritionValue extends Component {
         }
       });
   };
-
+  
   render() {
     return (
       <div>
