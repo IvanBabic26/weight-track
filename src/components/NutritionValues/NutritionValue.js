@@ -7,8 +7,7 @@ export default class NutritionValue extends Component {
   state = {
     someData: [],
     someOtherData: [],
-    searchInput: [],
-    press:[]
+    searchInput: []
   };
 
   searchChange = e => {
@@ -16,8 +15,7 @@ export default class NutritionValue extends Component {
       searchInput: e.target.value
     });
   };
-  
-  
+
   getItem = () => {
     request
       .get("https://trackapi.nutritionix.com/v2/search/instant")
@@ -71,30 +69,30 @@ export default class NutritionValue extends Component {
         </div>
         <h2 className="headerOutput">Results are shown here:</h2>
         <div className="foodOutput">
-        <div className="commonOutput">
-        <h2>Common Foods:</h2>
-          {this.state.someData.map(item => {
-            return (
-              <div key={item.food_name} className="outputList">
-                <Link to={`/displaycase/${item.food_name}`}>
-                  {item.food_name}
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-        <div className="brandedOutput">
-        <h2>Branded Foods:</h2>
-          {this.state.someOtherData.map(item => {
-            return (
-              <div key={item.food_name} className="outputList">
-                <Link to={`/displaycase/${item.food_name}`}>
-                  {item.food_name}
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+          <div id="commonOutput" className="foodList">
+            <h2>Common Foods:</h2>
+            {this.state.someData.map(item => {
+              return (
+                <div key={item.food_name} className="outputList">
+                  <Link to={`/displaycase/${item.food_name}`}>
+                    {item.food_name}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+          <div id="brandedOutput" className="foodList">
+            <h2>Branded Foods:</h2>
+            {this.state.someOtherData.map(item => {
+              return (
+                <div key={item.food_name} className="outputList">
+                  <Link to={`/displaycase/${item.food_name}`}>
+                    {item.food_name}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );

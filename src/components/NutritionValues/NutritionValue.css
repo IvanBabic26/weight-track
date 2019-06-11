@@ -63,23 +63,41 @@
 }
 
 .foodOutput {
+  text-align: center;
+}
+
+.foodOutput h2 {
+  width: 300px;
+  margin: 0 auto;
+  border: 2px #fff solid;
+}
+
+h2 {
+  padding: 20px;
+}
+
+#commonOutput {
+  font-size: 20px;
   margin: 20px;
-  border: 2px solid #fff;
-  display: flex;
-  text-align: center;
-}
-
-.commonOutput {
-  font-size: 20px;
-  margin: 40px;
   text-align: center;
   color: #fff;
+  float: left;
 }
 
-.brandedOutput {
+#brandedOutput {
   font-size: 20px;
-  margin: 40px;
+  margin: 20px;
+  text-align: center;
+  color: #fff;
   float: right;
-  text-align: center;
-  color: #fff;
+}
+
+.foodList {
+  width: 850px;
+  height: 250px;
+  display: inline-block;
+}
+
+.outputList {
+  margin: 10px;
 }
