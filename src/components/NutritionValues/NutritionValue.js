@@ -72,9 +72,10 @@ export default class NutritionValue extends Component {
           <div id="commonOutput" className="foodList">
             <h2>Common Foods:</h2>
             {this.state.someData.map(item => {
+              const foodNameURI = encodeURI(item.food_name);
               return (
                 <div key={item.food_name} className="outputList">
-                  <Link to={`/displaycase/${item.food_name}`}>
+                  <Link to={`/displaycase/${foodNameURI}`}>
                     {item.food_name}
                   </Link>
                 </div>
@@ -84,9 +85,10 @@ export default class NutritionValue extends Component {
           <div id="brandedOutput" className="foodList">
             <h2>Branded Foods:</h2>
             {this.state.someOtherData.map(item => {
+              const foodNameURI = encodeURI(item.food_name);
               return (
                 <div key={item.food_name} className="outputList">
-                  <Link to={`/displaycase/${item.food_name}`}>
+                  <Link to={`/displaycase/${foodNameURI}`}>
                     {item.food_name}
                   </Link>
                 </div>

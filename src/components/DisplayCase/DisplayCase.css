@@ -90,7 +90,7 @@ h1 {
   font-weight: bold;
 }
 
-img {
+.foodImg {
   margin-right: 20px;
   max-width: 110px;
   max-height: 110px;

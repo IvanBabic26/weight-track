@@ -40,7 +40,6 @@ export default class DisplayCase extends Component {
     });
   };
 
-
   getExercise = () => {
     request
       .post("https://trackapi.nutritionix.com/v2/natural/exercise")
@@ -68,7 +67,7 @@ export default class DisplayCase extends Component {
           <div key={foodItem.food_name} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodPicture">
-                <img src={foodItem.photo.thumb} alt="food" />
+                <img src={foodItem.photo.thumb} alt="food" class="foodImg" />
               </div>
               <div className="foodName">{` ${foodItem.food_name} `}</div>
             </div>
@@ -115,35 +114,6 @@ export default class DisplayCase extends Component {
             <div className="line" />
           </div>
         ))}
-        <div className="divOnTheRight" />
-        <div className="searchWrapper">
-              <h2 className="headerSearch">Find your exercise:</h2>
-              <input
-                className="searchBox"
-                type="search"
-                placeholder="Search"
-                onChange={e => this.searchChange(e)}
-              />
-              <input
-                type="submit"
-                className="btnSubmitExercise"
-                value="Submit"
-                onClick={this.getExercise}
-              />
-            </div>
-            {this.state.someTraining.map(training => {
-              return (
-                <div key={training.tag_id} className="outputList">
-                  <div className="exerciseOutput">
-                    <div>{training.tag_id}</div>
-                    <div>{training.nf_calories}</div>
-                    <div>{training.duration_min}</div>
-                    <div>{training.met}</div>
-                  </div>
-                </div>
-              );
-            })}
-            
       </div>
     );
   }

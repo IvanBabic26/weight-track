@@ -1,37 +1,82 @@
 import React, { Component } from "react";
 import "./Home.css";
-import phone from "../img/phone.png";
-import ios from "../img/ios.png";
-import android from "../img/android.png";
+// import phone from "../img/phone.png";
 import { Link } from "react-router-dom";
+import calculator from "../img/calculator.png";
+import scale from "../img/scale.png";
+import nutrition from "../img/nutrition.png";
+import training from "../img/training.png";
 
 export default class Home extends Component {
+
+
   render() {
     return (
       <div className="homePage">
-        <div className="homePhoneWrapper">
+        {/* <div className="homePhoneWrapper">
           <img alt="mobilephone" src={phone} />
-        </div>
+        </div> */}
         <div className="homeTextWrapper">
-          <h1 className="homeHeader">
-            Weight Track App: Free for Android and iPhone
-          </h1>
+          <h1 className="homeHeader">Weight Track App: A Work In Progress</h1>
           <div className="homeMsg">
             <h2>
-              With the free weight tracker app from Bakuta, you can check your <Link to="/bmicalculator">BMI</Link> and your <Link to="/caloriecalculator">Calorie Input</Link> as well finding your meal plans and training plans. The app is
-              available for iPhone and Android, you can view both your meal and
-              training schedule at any time!
+              {`With the free weight tracker app from Bakuta, you can check your BMI and your
+            Calorie Input
+               as well as
+              finding the nutrition values for the food you eat. Also check out our training log, enter you activity and see how many calories you've expended. The app is a small
+              helper to achieving your weight goals and get in shape!`}
             </h2>
-            <ul className="listItems">
-              <li>Get in shape quick and easy</li>
-              <li>Find your diet</li>
-              <li>Fast and easy to use</li>
-            </ul>
-            <h4 className="downloadSec">
-              Download now for free from the Google Play or App Store:
-            </h4>
-                <a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer"> <img alt="appstore" className="iosLogo" src={ios} /></a>{" "}
-                <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer"> <img alt="androidgoogleplay" className="androidLogo" src={android} /></a>
+            <div className="tabPage">
+              <div className="tabs">
+                  <Link to="/bmicalculator">
+                <div className="imageTab">
+                    <img alt="scale" src={scale} />
+                </div>
+                <h3 className="headerTab">Get your BMI easy</h3>
+                <h4 className="secondHeaderTab">
+                  Go and see where you need to start, make the first step, you can do it.
+                </h4>
+                  </Link>
+              </div>
+              <div className="tabs">
+                  <Link to="/caloriecalculator">
+                <div className="imageTab">
+                    <img alt="calculator" src={calculator} />
+                </div>
+                <h3 className="headerTab">Calorie Calculator</h3>
+                <h4 className="secondHeaderTab">
+                  Get that calorie count and jump on to burn them or better yet,
+                  gain some more!
+                </h4>
+                  </Link>
+              </div>
+              <div className="tabs">
+                  <Link to="/nutritionvalue">
+                <div className="imageTab">
+                    <img alt="nutrition" src={nutrition} />
+                </div>
+                <h3 className="headerTab">Nutrition is key</h3>
+                <h4 className="secondHeaderTab">
+                  Track every food you consume and know what each of those
+                  things hold.
+                </h4>
+                  </Link>
+              </div>
+              <div className="tabs">
+                  <Link to="/traininglog">
+                <div className="imageTab">
+                    <img alt="training" src={training} />
+                </div>
+                <h3 className="headerTab">Exercise your body</h3>
+                <h4 className="secondHeaderTab">
+                  Enter every activity you've done and see how much calories you
+                  burned!
+                </h4>
+                  </Link>
+              </div>
+            </div>
+            <h5 className="bottomText">
+            </h5>
           </div>
         </div>
       </div>

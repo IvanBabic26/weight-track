@@ -1,11 +1,12 @@
 .headerbar {
   overflow: hidden;
-  background-color: #3b7ab6;
+  box-sizing: border-box;
+  background: linear-gradient(to left, #6759b4, #3a1cbd);
 }
 
 .headerbar a {
   float: left;
-  color: #000000;
+  color: #fff;
   text-align: center;
   text-decoration: none;
   height: 80px;
@@ -16,67 +17,83 @@
   display: flex;
 }
 
-
-
 .headerbar a:hover {
-  color: #111;
+  color: rgb(255, 0, 0);
 }
 
 .headerbar a.active {
-  color: #111;
+  color: rgb(236, 46, 46);
 }
 
 .homePage {
-  background-color: #0e0633;
-  height: 100%;
+  background-color: rgb(218, 204, 204);
   display: flex;
   padding: 14px;
 }
 
 .homeHeader {
-  background-color: #0e0633;
+  margin-top: 30px;
   height: 50px;
   padding: 50px;
-  color: white;
+  color: #111;
   text-align: center;
+  font-size: 60px;
 }
 
 .homeMsg {
-  background-color: #0e0633;
-  color: white;
+  color: #111;
   text-align: center;
   display: inline-block;
-  padding: 45px;
+  font-size: 18px;
 }
 
-.listItems {
-  margin: 30px;
-  padding: 50px;
-  font-size: 28px;
+h2 a {
+  color: #111;
+}
+
+.tabPage {
+  /* margin: 140px;
+  font-size: 28px; */
   text-align: center;
-  display: inline-block;
-  list-style-position: inside;
-  text-indent: -1em;
+  display: flex;
+  /* color: #111; */
 }
 
-.homePhoneWrapper {
-  display: inline-block;
-  margin: 50px;
-  margin-left: 140px;
+.tabs {
+  margin: 16px;
+  padding: 2px;
+  border: 5px rgb(223, 218, 218) solid;
+  width: 30%;
+  height: 500px;
+  border-radius: 45px;
+  box-shadow: 2px 4px rgb(212, 210, 210);
 }
 
-.homeTextWrapper {
-  display: inline-block;
+.tabs :hover {
+  background-color: #3a1cbd;
+  color: #fff;
 }
 
-.downloadSec {
-  font-size: 26px;
+.imageTab img {
+  display: inline-block;
+  margin: 20px;
+  margin-bottom: 5px;
+  height: 190px;
 }
 
-.iosLogo {
+/* .homePhoneWrapper {
   display: inline-block;
+  margin: 120px;
+} */
+
+.headerTab {
+  display: inline-block;
+  color: #111;
 }
 
-.androidLogo {
+.secondHeaderTab {
   display: inline-block;
+  margin: 3px;
+  color: #111;
 }
+
