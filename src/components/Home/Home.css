@@ -52,11 +52,11 @@ h2 a {
 }
 
 .tabPage {
-  /* margin: 140px;
-  font-size: 28px; */
+  margin: 140px;
+  font-size: 28px;
   text-align: center;
   display: flex;
-  /* color: #111; */
+  color: #111;
 }
 
 .tabs {
@@ -67,11 +67,23 @@ h2 a {
   height: 500px;
   border-radius: 45px;
   box-shadow: 2px 4px rgb(212, 210, 210);
+  position: relative;
 }
 
-.tabs :hover {
-  background-color: #3a1cbd;
+div.tabs:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  background: linear-gradient(to right, #30256b, #3116aa);
   color: #fff;
+  position: relative;
+  top: -20px;
+}
+
+a.divLink {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 
 .imageTab img {
@@ -80,6 +92,7 @@ h2 a {
   margin-bottom: 5px;
   height: 190px;
 }
+
 
 /* .homePhoneWrapper {
   display: inline-block;
@@ -96,4 +109,3 @@ h2 a {
   margin: 3px;
   color: #111;
 }
-
