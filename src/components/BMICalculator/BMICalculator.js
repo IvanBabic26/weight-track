@@ -70,8 +70,8 @@ export default class BMICalculator extends Component {
     return (
       <div className="bmiCalc">
         <div className="bmiPage">
-          <div className="bmiCalcWrapper">
-            <div className="bmiCalcHeader">
+        <div className="bmiFormCalc">
+            <div className="bmiHeader">
               <h2>BMI Calculator</h2>
             </div>
             <form id="formBmi" onSubmit={this.submitForm}>
@@ -80,41 +80,43 @@ export default class BMICalculator extends Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                onBlur={this.blur}
                 onChange={e => this.change(e, "name")}
                 required
               />
               <label>Enter your age:</label>
-              <input
+              <input className="inputNumber"
                 type="number"
                 min="0"
                 max="99"
                 name="age"
                 value={this.state.age}
-                onBlur={this.blur}
                 onChange={e => this.change(e, "age")}
                 required
               />
               <label>Sex:</label>
-              <select className="selectOption">
+              <select
+                value={this.state.sex}
+                onChange={e => this.change(e, "sex")}
+                className="selectOption"
+                required
+              >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
-              <input
+              <input className="inputNumber"
                 type="number"
-                min="0"
+                min="20"
                 max="250"
                 name="height"
                 value={this.state.height}
-                onBlur={this.blur}
                 onChange={e => this.change(e, "height")}
                 required
               />
               <label>Enter your weight in kg:</label>
-              <input
+              <input className="inputNumber"
                 type="number"
-                min="5"
+                min="0"
                 max="300"
                 name="weight"
                 value={this.state.weight}
