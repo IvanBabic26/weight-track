@@ -8,7 +8,7 @@ export default class TrainingLog extends Component {
     searchValue: []
   };
   componentDidMount() {
-    this.getExercise(this.props.match.params.id);
+    this.getExercise(this.props.match.params.name);
     console.log("test");
   }
 
@@ -40,9 +40,15 @@ export default class TrainingLog extends Component {
 
   render() {
     return (
-      <div>
+      <div className="trainLog">
+        <h1>
+          Hi there! Are you ready? Let's begin. Everytime you do some exercise,
+          ever wonder how much calories you burned? Well, this is the place for
+          you. Here you can make your own log with your training routines and
+          exercises. Just select the activites you did and voila, see your
+          progress on that fat burning regime!
+        </h1>
         <div className="searchWrapper">
-          <h2 className="headerSearch">Exercise log:</h2>
           <input
             className="searchBox"
             type="search"
@@ -66,44 +72,44 @@ export default class TrainingLog extends Component {
                 <div>MET: {training.met}</div> */}
 
                 <table>
-          <tr>
-            <th>Exercise Name</th>
-            <th>Met</th>
-            <th>Duration</th>
-            <th>Calories Expended</th>
-          </tr>
-          <tr>
-            <td>{training.name}</td>
-            <td>{training.met}</td>
-            <td>{training.duration_min}</td>
-            <td>{training.nf_calories}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </table>
+                  <tr>
+                    <th>Exercise Name</th>
+                    <th>Met</th>
+                    <th>Duration</th>
+                    <th>Calories Expended</th>
+                  </tr>
+                  <tr>
+                    <td>{training.name}</td>
+                    <td>{training.met}</td>
+                    <td>{training.duration_min}</td>
+                    <td>{training.nf_calories}</td>
+                  </tr>
+                  <tr>
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                  <tr>
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                  <tr>
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                  <tr>
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                  <tr>
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                </table>
               </div>
             </div>
           );

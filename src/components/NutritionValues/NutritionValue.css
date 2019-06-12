@@ -1,9 +1,15 @@
+.nutritionValue {
+  display: flex;
+  background-color: #fff;
+  color: #111;
+}
+
 .nutriText {
-  color: white;
   text-align: center;
   display: inline-block;
   padding: 5px;
   font-size: 28px;
+  font-weight: bold;
 }
 
 .nutriValue {
@@ -13,9 +19,8 @@
 .nutriHeader {
   margin-top: 30px;
   display: block;
-  color: white;
   text-align: center;
-  font-size: 78px;
+  font-size: 58px;
 }
 
 .nutriValueWrapper {
@@ -26,7 +31,6 @@
   margin-bottom: 20px;
   display: flex;
   font-size: 22px;
-  color: #fff;
   text-align: center;
 }
 
@@ -36,10 +40,11 @@
   margin: 20px;
   padding: 10px;
 }
-.searchWrapper{
+.searchWrapper {
   margin: 30px 30px 30px 50px;
   padding: 30px;
-  border: 2px solid;
+  border: 2px solid #5915cc;
+  border-radius: 55px;
 }
 .headerSearch {
   margin: 0px;
@@ -48,28 +53,25 @@
 }
 
 .btnSubmitNutri {
-  display: inline-block;
-  background-color: #3b7ab6;
-  color: white;
-  width: 77%;
-  font-size: 15px;
+  background-color: #4227bb;
+  color: #fff;
+  width: 340px;
+  font-size: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .headerOutput {
   text-align: center;
-  color: #fff;
   margin: 10px;
   font-size: 36px;
 }
 
 .foodOutput {
+  display: flex;
   text-align: center;
-}
-
-.foodOutput h2 {
-  width: 300px;
-  margin: 0 auto;
-  border: 2px #fff solid;
+  margin: 50px;
 }
 
 h2 {
@@ -80,16 +82,23 @@ h2 {
   font-size: 20px;
   margin: 20px;
   text-align: center;
-  color: #fff;
   float: left;
 }
-
+#commonOutput h2 {
+  background-color: #5915cc;
+  color: #fff;
+  border-radius: 55px;
+}
 #brandedOutput {
   font-size: 20px;
   margin: 20px;
   text-align: center;
-  color: #fff;
   float: right;
+}
+#brandedOutput h2 {
+  background-color: #5915cc;
+  color: #fff;
+  border-radius: 55px;
 }
 
 .foodList {
@@ -100,4 +109,20 @@ h2 {
 
 .outputList {
   margin: 10px;
+}
+
+.outputList a {
+  font-size: 26px;
+  color: #111;
+  text-decoration: none;
+}
+
+.outputList a:hover {
+  padding: 10px;
+  background-color: #5915cc;
+  font-size: 26px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #5915cc;
+  border-radius: 55px;
 }
