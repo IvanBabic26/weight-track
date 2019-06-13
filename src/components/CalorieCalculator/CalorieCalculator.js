@@ -74,6 +74,12 @@ export default class CalorieCalculator extends Component {
 
   render() {
     console.log(this.state);
+    const { name, age, weight, height } = this.state;
+    const isEnabled =
+      name.length > 0 &&
+      age.length > 0 &&
+      height.length > 0 &&
+      weight.length > 0;
     return (
       <div className="mealPlan">
         <div className="mealPlanWrapper">
@@ -88,36 +94,47 @@ export default class CalorieCalculator extends Component {
                 name="name"
                 value={this.state.name}
                 onChange={e => this.change(e, "name")}
+                required
               />
               <label>Enter your age:</label>
-              <input
-                type="text"
+              <input className="inputNumber"
+                type="number"
+                min="0"
+                max="99"
                 name="age"
                 value={this.state.age}
                 onChange={e => this.change(e, "age")}
+                required
               />
               <label>Sex:</label>
               <select
                 value={this.state.sex}
                 onChange={e => this.change(e, "sex")}
                 className="selectOption"
+                required
               >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
-              <input
-                type="text"
+              <input className="inputNumber"
+                type="number"
+                min="20"
+                max="250"
                 name="height"
                 value={this.state.height}
                 onChange={e => this.change(e, "height")}
+                required
               />
               <label>Enter your weight in kg:</label>
-              <input
-                type="text"
+              <input className="inputNumber"
+                type="number"
+                min="0"
+                max="300"
                 name="weight"
                 value={this.state.weight}
                 onChange={e => this.change(e, "weight")}
+                required
               />
               <label>Activity level:</label>
               <select
@@ -146,7 +163,12 @@ export default class CalorieCalculator extends Component {
                 <option value="professional">Professional athlete</option>
               </select>
               <label>Calorie away!</label>
-              <input type="submit" className="btnSubmit" value="Submit" />
+              <input
+                type="submit"
+                className="btnSubmit"
+                value="Submit"
+                disabled={!isEnabled}
+              />
             </form>
           </div>
         </div>
@@ -180,22 +202,22 @@ export default class CalorieCalculator extends Component {
           )}
           {this.state.formComplete && (
             <div className="weightChange">
-              <div>{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
+              <div className="calorieResult">{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
               <div>
-                <div>
-                  {`Mild weight loss: ${this.calculateCalories()  - 250} kcal/day`}
+                <div className="calorieResult">
+                  {`Mild weight loss (~0.25 kg/week): ${this.calculateCalories() -
+                    250} kcal/day`}
                 </div>
-                <div>~0.25 kg/week</div>
               </div>
               <div>
-                <div>{`Weight loss: ${this.calculateCalories() - 500} kcal/day`}</div>
-                <div>~0.5 kg/week</div>
+                <div className="calorieResult">{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
+                  500} kcal/day`}</div>
               </div>
               <div>
-                <div>
-                  {`Extreme weight loss: ${this.calculateCalories() - 1000} kcal/day`}
+                <div className="calorieResult">
+                  {`Extreme weight loss (~1 kg/week): ${this.calculateCalories() -
+                    1000} kcal/day`}
                 </div>
-                <div>~1 kg/week</div>
               </div>
             </div>
           )}

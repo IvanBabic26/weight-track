@@ -1,25 +1,25 @@
 .mealPlan {
   display: flex;
+  background-color:#fff;
+  color: #111;
 }
 
 #formCalorie {
   display: inline-block;
   margin: 40px;
-  color: #fff;
 }
 .mealIntro {
-  color: white;
   text-align: center;
   display: inline-block;
   padding: 5px;
   font-size: 24px;
+  font-weight: bold;
 }
 
 .mealPlanHeader {
   margin: 50px;
   padding: 10px;
   display: block;
-  color: white;
   text-align: center;
   font-size: 58px;
 }
@@ -37,72 +37,104 @@
 }
 
 .calorieHeader {
-  background-color: #3b7ab6;
-  padding: 20px;
-  color: white;
+  background-color: #5915CC;
+  color: #fff;
+  border-top-right-radius: 52px;
+  border-top-left-radius: 52px;
+  padding: 5px;
   text-align: center;
   font-size: 26px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .calorieCalc {
-  display: inline;
-  border: 2px solid #fff;
-  margin-right: 20px;
+  display: inline-block;
+  background-color: #fff;
+  margin: 50px;
+  border: 2px solid #5915CC;
+  border-radius: 55px;
 }
 
 .mealPlanWrapper {
-  display: flex;
+  display: inline-block;
 }
 
 .outputCalories {
-  color: white;
   text-align: center;
-  display: block;
   margin-left: 150px;
   margin-right: 150px;
   padding: 30px;
-  font-size: 26px;
-  border: 1px solid;
+  font-size: 22px;
+  border: 1px #5915CC solid;
+  border-bottom: 0px;
+  font-weight: bold;
+  border-top-right-radius: 52px;
+  border-top-left-radius: 52px;
 }
 
 .outputHeader {
   margin: 50px;
-  color: white;
   text-align: center;
   display: block;
   font-size: 30px;
 }
 
-a {
-  color: #fff;
-  font-size: 22px;
-}
-
 .weightChange {
-  color: white;
   text-align: center;
   display: block;
   margin-left: 150px;
   margin-right: 150px;
   padding: 30px;
-  font-size: 26px;
-  border: 1px solid;
+  font-size: 22px;
+  border: 1px #5915CC solid;
+  font-weight: bold;
+  border-bottom-right-radius: 52px;
+  border-bottom-left-radius: 52px;
 }
 
 .selectOptionActivity {
   display: block;
-  margin: 10px;
-  padding: 10px 3px;
+  padding: 10px;
   font-size: 25px;
-  width: 322px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgb(228, 222, 222);
 }
 
-.arrowBox {
-  position: relative;
-  background: #eee;
-  border: 1px solid #aaa;
-  padding: 16px 26px;
+label {
+  display: block;
   text-align: center;
-  display: table-cell;
+  font-size: 25px;
+  padding: 10px;
+}
+
+input {
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.inputNumber {
+  width: 93%;
+}
+
+.selectOption {
+  display: block;
+  padding: 10px;
+  font-size: 25px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.btnSubmit {
+  background-color: #4227BB;
+  color: #fff;
+  width: 100%;
+  font-size: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.calorieResult {
+  margin: 10px;
 }

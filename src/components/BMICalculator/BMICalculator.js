@@ -4,6 +4,7 @@ import "./BMICalculator.css";
 export default class BMICalculator extends Component {
   state = {
     name: "",
+    age: "",
     weight: "",
     height: "",
     bmi: "",
@@ -12,18 +13,13 @@ export default class BMICalculator extends Component {
     formComplete: false
   };
 
-  heightChange = e => {
-    this.setState({ height: e.target.value });
+  change = (e, name) => {
     e.preventDefault();
+    this.setState({ [name]: e.target.value });
   };
 
   blur = () => {
     this.calculateBMI();
-  };
-
-  weightChange = e => {
-    this.setState({ weight: e.target.value });
-    e.preventDefault();
   };
 
   calculateBMI = () => {
@@ -58,18 +54,24 @@ export default class BMICalculator extends Component {
     });
   };
 
-  change = e => {
+  change = (e, name) => {
     e.preventDefault();
     console.log(e.target);
-    this.setState({ name: e.target.value });
+    this.setState({ [name]: e.target.value });
   };
 
   render() {
+    const { name, age, weight, height } = this.state;
+    const isEnabled =
+      name.length > 0 &&
+      age.length > 0 &&
+      height.length > 0 &&
+      weight.length > 0;
     return (
       <div className="bmiCalc">
         <div className="bmiPage">
-          <div className="bmiCalcWrapper">
-            <div className="bmiCalcHeader">
+        <div className="bmiFormCalc">
+            <div className="bmiHeader">
               <h2>BMI Calculator</h2>
             </div>
             <form id="formBmi" onSubmit={this.submitForm}>
@@ -78,38 +80,56 @@ export default class BMICalculator extends Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                onBlur={this.blur}
-                onChange={this.change}
+                onChange={e => this.change(e, "name")}
+                required
               />
               <label>Enter your age:</label>
-              <input
-                type="text"
+              <input className="inputNumber"
+                type="number"
+                min="0"
+                max="99"
                 name="age"
                 value={this.state.age}
-                onBlur={this.blur}
+                onChange={e => this.change(e, "age")}
+                required
               />
               <label>Sex:</label>
-              <select className="selectOption">
+              <select
+                value={this.state.sex}
+                onChange={e => this.change(e, "sex")}
+                className="selectOption"
+                required
+              >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
-              <input
-                type="text"
+              <input className="inputNumber"
+                type="number"
+                min="20"
+                max="250"
                 name="height"
                 value={this.state.height}
-                onBlur={this.blur}
-                onChange={this.heightChange}
+                onChange={e => this.change(e, "height")}
+                required
               />
               <label>Enter your weight in kg:</label>
-              <input
-                type="text"
+              <input className="inputNumber"
+                type="number"
+                min="0"
+                max="300"
                 name="weight"
                 value={this.state.weight}
-                onChange={this.weightChange}
+                onChange={e => this.change(e, "weight")}
+                required
               />
               <label>Don't be scared!</label>
-              <input type="submit" className="btnSubmit" value="Submit" />
+              <input
+                type="submit"
+                className="btnSubmit"
+                value="Submit"
+                disabled={!isEnabled}
+              />
             </form>
           </div>
         </div>

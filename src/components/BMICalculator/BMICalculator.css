@@ -1,105 +1,107 @@
 .bmiCalc {
   display: flex;
+  background-color:#fff;
+  color: #111;
 }
-
-.bmiCalcHeader {
-  background-color: #3b7ab6;
-  padding: 20px;
-  color: white;
-  text-align: center;
-  font-size: 26px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-form {
-  margin: 50px;
-  margin-left: 150px;
-  float: left;
-}
-
-label,
-input {
-  display: block;
-  margin: 10px;
-  font-size: 25px;
-}
-
-input {
-  padding: 10px 3px;
-}
-
-input [type="submit"] {
-  padding: 10px 20px;
-  border-radius: 5px;
-  background: #dddddd;
-  color: #000000;
-  border: none;
-  cursor: pointer;
-}
-
-.selectOption {
-  display: block;
-  margin: 10px;
-  padding: 10px 3px;
-  font-size: 25px;
-  width: 322px;
-}
-
-.outputBmi {
-  text-align: center;
-  color: white;
-  margin: 20px;
-  padding: 10px;
-  font-size: 30px;
-  border: 1px solid;
-}
-
-.btnSubmit {
-  background-color: #3b7ab6;
-  color: white;
-  width: 94%;
-  font-size: 15px;
-}
-
-.bmiTextWrapper {
-  display: inline-block;
-  margin-right: 25px;
-}
-
-.bmiTextHeader {
-  margin: 60px;
-  padding: 10px;
-  display: block;
-  color: white;
-  text-align: center;
-  font-size: 58px;
-}
-
-.secondHeaderText {
-  color: white;
-  text-align: center;
-  display: inline-block;
-  padding: 5px;
-  font-size: 22px;
-}
-
-.thirdHeaderText {
-  color: white;
-  text-align: center;
-  display: inline-block;
-  padding: 5px;
-  font-size: 22px;
-}
-
-#formBmi {
-  margin: 40px;
-  display: inline;
-  color: #fff;
-}
-
 .bmiPage {
   display: inline-block;
   margin: 50px;
   margin-left: 140px;
-  border: 2px solid #fff;
+}
+.bmiFormCalc {
+  display: inline-block;
+  background-color: #fff;
+  margin: 50px;
+  border: 2px solid #5915cc;
+  border-radius: 55px;
+}
+.bmiHeader {
+  background-color: #5915cc;
+  color: #fff;
+  border-top-right-radius: 52px;
+  border-top-left-radius: 52px;
+  padding: 5px;
+  text-align: center;
+  font-size: 26px;
+}
+
+#formBmi {
+  display: inline-block;
+  margin: 40px;
+}
+
+label {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+}
+
+input {
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(228, 222, 222);
+}
+
+.inputNumber {
+  width: 93%;
+}
+
+.selectOption {
+  display: block;
+  padding: 10px;
+  font-size: 25px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgb(228, 222, 222);
+}
+
+.btnSubmit {
+  background-color: #4227bb;
+  color: #fff;
+  width: 100%;
+  font-size: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bmiTextHeader {
+  margin: 50px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 58px;
+}
+.secondHeaderText {
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.thirdHeaderText {
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.outputBmi {
+  text-align: center;
+  display: block;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 30px;
+  font-size: 22px;
+  border: 1px #5915cc solid;
+  font-weight: bold;
+  border-radius: 52px;
+  
+}
+.bmiTextWrapper {
+  display: inline-block;
+  margin-right: 25px;
 }

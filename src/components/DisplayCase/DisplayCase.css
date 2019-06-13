@@ -1,15 +1,15 @@
 .displayCase {
-  margin: 180px;
-  padding: 160px;
-  font-size: 40px;
-  color: #fff;
-  text-align: center;
-  border: 2px solid;
-  display: block;
+  font-size: 90%;
+  margin-bottom: 1.1em;
+  padding: 0.68em;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: normal;
+  display: flex;
 }
 
 .btnSubmitDisplay {
-  margin: 20px 30px 40 p30px;
+  margin: 20px 30px 40px 30px;
   text-align: center;
   display: block;
 }
@@ -19,7 +19,13 @@
 }
 
 .outputDisplay {
+  display: block;
   text-align: left;
+  margin: 40px;
+  padding: 60px;
+  background: #fff;
+  border: 20px #111 solid;
+  width: 20%;
 }
 
 li {
@@ -42,6 +48,7 @@ h1 {
 
 .selectedFood {
   display: flex;
+  margin-bottom: 20px; 
 }
 
 .foodName {
@@ -49,9 +56,54 @@ h1 {
   text-align: center;
   margin: 20px;
   padding: 20px;
-  font-size: 60px;
+  font-size: 34px;
 }
 
 .foodPicture {
   display: block;
+}
+
+.bar1 {
+  height: 10px;
+  line-height: 0;
+  font-size: 1px;
+  background: #333;
+  margin-top: 3px;
+}
+
+.bar2 {
+  height: 5px;
+  line-height: 0;
+  font-size: 1px;
+  background: #333;
+}
+
+.indent {
+  margin-left: 15px;
+}
+
+.line {
+  border-top: 1px solid #333;
+  padding: 1px 0;
+}
+.bold {
+  font-weight: bold;
+}
+
+.foodImg {
+  margin-right: 20px;
+  max-width: 110px;
+  max-height: 110px;
+}
+
+.exerciseOutput {
+  margin-top: 30px;
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.exerciseOutput {
+  font-size: 40px;
+  text-align: center;
 }
