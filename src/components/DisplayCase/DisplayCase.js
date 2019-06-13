@@ -9,7 +9,6 @@ export default class DisplayCase extends Component {
   };
   componentDidMount() {
     this.displayItem(this.props.match.params.id);
-    this.displayRecipe(this.props.match.params.id);
     console.log("test");
   }
 
@@ -39,19 +38,19 @@ export default class DisplayCase extends Component {
       .query({
         q: "chicken",
         app_id: "5bd6c0cc",
-        app_key: "049930f90e344a9ad1d48ea175bc5c15",
+        app_key: "049930f90e344a9ad1d48ea175bc5c15"
       })
       .set({
         Accept: "application/json"
       })
       .end((err, res) => {
-        console.log("response here:", res.hits)
-          // if (err) {
-          //   this.setState({ err });
-          // } else {
-          //   this.setState({ someRecipes: res.body});
-          //   console.log(res);
-          // }
+        console.log("response here:", res.hits);
+        if (err) {
+          this.setState({ err });
+        } else {
+          this.setState({ someRecipes: res.body.hits});
+          console.log(res);
+        }
       });
   };
 
@@ -62,7 +61,11 @@ export default class DisplayCase extends Component {
           <div key={foodItem.food_name} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodPicture">
-                <img src={foodItem.photo.thumb} alt="food" class="foodImg" />
+                <img
+                  src={foodItem.photo.thumb}
+                  alt="food"
+                  className="foodImg"
+                />
               </div>
               <div className="foodName">{` ${foodItem.food_name} `}</div>
             </div>
@@ -118,13 +121,14 @@ export default class DisplayCase extends Component {
             onClick={this.displayRecipe}
           />
           <div>
-            {/* {this.state.someRecipes.map(food => {
+            {this.state.someRecipes.map(recipe => {
+              console.log(recipe);
               return (
-                <div key={food.recipe} className="outputRecipe">
-                  {food.recipe}
+                <div className="outputRecipe" key={recipe.recipe.label}>
+                  Recipe {recipe.recipe.label}: {recipe.recipe.calories}
                 </div>
               );
-            })} */}
+            })}
           </div>
         </div>
       </div>
