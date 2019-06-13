@@ -36,9 +36,9 @@ export default class DisplayCase extends Component {
     request
       .get("https://api.edamam.com/search")
       .query({
-        q: "chicken",
-        app_id: "5bd6c0cc",
-        app_key: "049930f90e344a9ad1d48ea175bc5c15"
+        q: "orange",
+        app_id: "733d11da",
+        app_key: "a1bce3ac5fb496203057355abc225646"
       })
       .set({
         Accept: "application/json"
