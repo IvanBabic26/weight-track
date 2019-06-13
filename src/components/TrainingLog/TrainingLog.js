@@ -84,31 +84,6 @@ export default class TrainingLog extends Component {
                     <td>{training.duration_min}</td>
                     <td>{training.nf_calories}</td>
                   </tr>
-                  <tr>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                  <tr>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                  <tr>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                  <tr>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                  <tr>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
                 </table>
               </div>
             </div>
