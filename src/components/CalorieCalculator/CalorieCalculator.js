@@ -202,22 +202,24 @@ export default class CalorieCalculator extends Component {
           )}
           {this.state.formComplete && (
             <div className="weightChange">
-              <div className="calorieResult">{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
+            <h4>CALORIE TABLE</h4>
+              <div id="lineTop" className="calorieResult">{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
               <div>
-                <div className="calorieResult">
+                <div id="lineTop" className="calorieResult">
                   {`Mild weight loss (~0.25 kg/week): ${this.calculateCalories() -
                     250} kcal/day`}
                 </div>
               </div>
               <div>
-                <div className="calorieResult">{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
+                <div id="lineTop" className="calorieResult">{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
                   500} kcal/day`}</div>
               </div>
               <div>
-                <div className="calorieResult">
+                <div id="lineTop" className="calorieResult">
                   {`Extreme weight loss (~1 kg/week): ${this.calculateCalories() -
                     1000} kcal/day`}
                 </div>
+                <div  id="lineTop" className="calorieResult"></div>
               </div>
             </div>
           )}

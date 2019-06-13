@@ -5,12 +5,11 @@ import request from "superagent";
 export default class DisplayCase extends Component {
   state = {
     someDisplay: [],
-    someTraining: [],
-    searchValue: []
+    someRecipes: []
   };
   componentDidMount() {
     this.displayItem(this.props.match.params.id);
-    this.getExercise(this.props.match.params.id);
+    this.displayRecipe(this.props.match.params.id);
     console.log("test");
   }
 
@@ -34,29 +33,25 @@ export default class DisplayCase extends Component {
       });
   };
 
-  searchChange = e => {
-    this.setState({
-      searchValue: e.target.value
-    });
-  };
-
-  getExercise = () => {
+  displayRecipe = () => {
     request
-      .post("https://trackapi.nutritionix.com/v2/natural/exercise")
-      .send({ query: this.state.searchValue })
+      .get("https://api.edamam.com/search")
+      .query({
+        q: "chicken",
+        app_id: "5bd6c0cc",
+        app_key: "049930f90e344a9ad1d48ea175bc5c15",
+      })
       .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
         Accept: "application/json"
       })
       .end((err, res) => {
-        console.log("response here:", res.body.exercises);
-        if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ someTraining: res.body.exercises });
-          console.log(res);
-        }
+        console.log("response here:", res.hits)
+          // if (err) {
+          //   this.setState({ err });
+          // } else {
+          //   this.setState({ someRecipes: res.body});
+          //   console.log(res);
+          // }
       });
   };
 
@@ -87,7 +82,7 @@ export default class DisplayCase extends Component {
             <div className="bar2" />
             {`Total Fat: ${foodItem.nf_total_fat}g`}
 
-            <div className=" line indent">{`Saturted Fat: ${
+            <div className="line indent">{`Saturated Fat: ${
               foodItem.nf_saturated_fat
             }g`}</div>
 
@@ -114,6 +109,24 @@ export default class DisplayCase extends Component {
             <div className="line" />
           </div>
         ))}
+
+        <div className="recepieOutput">
+          <input
+            type="submit"
+            className="btnSubmitNutri"
+            value="Submit"
+            onClick={this.displayRecipe}
+          />
+          <div>
+            {/* {this.state.someRecipes.map(food => {
+              return (
+                <div key={food.recipe} className="outputRecipe">
+                  {food.recipe}
+                </div>
+              );
+            })} */}
+          </div>
+        </div>
       </div>
     );
   }
