@@ -26,7 +26,7 @@
 }
 
 .homePage {
-  background-color:#fff;
+  background-color: #fff;
   display: flex;
   padding: 14px;
 }
@@ -92,7 +92,6 @@ a.divLink {
   margin-bottom: 5px;
   height: 190px;
 }
-
 
 /* .homePhoneWrapper {
   display: inline-block;

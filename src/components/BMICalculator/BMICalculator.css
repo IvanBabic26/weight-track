@@ -99,8 +99,13 @@ input {
   border: 1px #5915cc solid;
   font-weight: bold;
   border-radius: 52px;
-  
 }
+div.outputBmi:hover {
+  background: linear-gradient(to right, #30256b, #3116aa);
+  color: #fff;
+  position: relative;
+}
+
 .bmiTextWrapper {
   display: inline-block;
   margin-right: 25px;

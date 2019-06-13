@@ -1,6 +1,6 @@
 .mealPlan {
   display: flex;
-  background-color:#fff;
+  background-color: #fff;
   color: #111;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .calorieHeader {
-  background-color: #5915CC;
+  background-color: #5915cc;
   color: #fff;
   border-top-right-radius: 52px;
   border-top-left-radius: 52px;
@@ -50,7 +50,7 @@
   display: inline-block;
   background-color: #fff;
   margin: 50px;
-  border: 2px solid #5915CC;
+  border: 2px solid #5915cc;
   border-radius: 55px;
 }
 
@@ -64,11 +64,17 @@
   margin-right: 150px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #5915CC solid;
+  border: 1px #5915cc solid;
   border-bottom: 0px;
   font-weight: bold;
   border-top-right-radius: 52px;
   border-top-left-radius: 52px;
+}
+
+div.outputCalories:hover {
+  background: linear-gradient(to right, #30256b, #3116aa);
+  color: #fff;
+  position: relative;
 }
 
 .outputHeader {
@@ -85,7 +91,7 @@
   margin-right: 150px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #5915CC solid;
+  border: 1px #5915cc solid;
   font-weight: bold;
   border-bottom-right-radius: 52px;
   border-bottom-left-radius: 52px;
@@ -126,7 +132,7 @@ input {
 }
 
 .btnSubmit {
-  background-color: #4227BB;
+  background-color: #4227bb;
   color: #fff;
   width: 100%;
   font-size: 25px;
@@ -136,5 +142,19 @@ input {
 }
 
 .calorieResult {
-  margin: 10px;
+  margin: 10px 2px 10px 2px;
+  padding: 3px;
+}
+.weightChange h4 {
+  margin-top: 2px;
+}
+
+div.weightChange:hover {
+  background: linear-gradient(to right, #30256b, #3116aa);
+  color: #fff;
+  position: relative;
+}
+
+#lineTop {
+  border-top: 1px solid #fff;
 }
