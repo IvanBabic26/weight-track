@@ -4,14 +4,38 @@ import request from "superagent";
 
 export default class DisplayCase extends Component {
   state = {
-    someRecipes: []
+    someRecipes: [],
+    someFoods: []
   };
+  
   componentDidMount() {
+    this.displayRecipe(this.props.match.params.id);
+    this.displayFood(this.props.match.params.id);
     console.log("test");
   }
+  
+  displayFood = foodName => {
+    request
+      .post("https://trackapi.nutritionix.com/v2/natural/nutrients")
+      .send({ query: foodName })
+      .set({
+        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
+        "x-app-id": "3b0fdaa1",
+        Accept: "application/json"
+      })
+      .end((err, res) => {
+        console.log("response here:", res.body.foods);
+        if (err) {
+          this.setState({ err });
+        } else {
+          this.setState({ someFoods: res.body.foods });
+          console.log(res);
+        }
+      });
+  };
 
-
-  displayRecipe = (recipeName) => {
+  displayRecipe = () => {
+    const recipeName = this.props.match.params.id;
     request
       .get("https://api.edamam.com/search")
       .query({
@@ -36,14 +60,63 @@ export default class DisplayCase extends Component {
   render() {
     return (
       <div className="displayCase">
-        <input
-          type="submit"
-          className="btnSubmitNutri"
-          value="Submit"
-          onClick={this.displayRecipe}
-        />
+      {this.state.someFoods.map(foodItem => (
+          <div key={foodItem.food_name} className="outputDisplay">
+            <div className="selectedFood">
+              <div className="foodPicture">
+                <img
+                  src={foodItem.photo.thumb}
+                  alt="food"
+                  className="foodImg"
+                />
+              </div>
+              <div className="foodName">{` ${foodItem.food_name} `}</div>
+            </div>
+            <h1>Nutrition Facts</h1>
+
+            <div className="bar1" />
+            {`Serving Quantity: ${foodItem.serving_qty}`}
+
+            <div className="line">
+              {`Serving Size: ${foodItem.serving_unit}`}{" "}
+            </div>
+            <div className="line">
+              {`Serving Weight: ${foodItem.serving_weight_grams}g`}{" "}
+            </div>
+            <div className="bar1" />
+            {`Calories: ${foodItem.nf_calories}`}
+            <div className="bar2" />
+            {`Total Fat: ${foodItem.nf_total_fat}g`}
+
+            <div className="line indent">{`Saturated Fat: ${
+              foodItem.nf_saturated_fat
+            }g`}</div>
+
+            <div className="line">{`Cholesterol: ${
+              foodItem.nf_cholesterol
+            }g`}</div>
+            <div className="line">{`Sodium: ${foodItem.nf_sodium}mg`}</div>
+            <div className="line">{`Phosphorus ${foodItem.nf_p}mg`} </div>
+            <div className="line">
+              {`Potassium: ${foodItem.nf_potassium}mg`}{" "}
+            </div>
+            <div className="bar1" />
+            {`Total Carbohydrates: ${foodItem.nf_total_carbohydrate}g`}
+
+            <div className="line indent">{`Dietary Fibers: ${
+              foodItem.nf_dietary_fiber
+            }g`}</div>
+            <div className="line indent">{`Sugars: ${
+              foodItem.nf_sugars
+            }g`}</div>
+
+            <div className="bar2" />
+            <div className="line">{`Protiens: ${foodItem.nf_protein}g`} </div>
+            <div className="line" />
+          </div>
+        ))}
         {this.state.someRecipes.map(foodRecipes => (
-          <div key={foodRecipes.food_name} className="outputDisplay">
+          <div key={foodRecipes.recipe.label} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodImg">
                 <img

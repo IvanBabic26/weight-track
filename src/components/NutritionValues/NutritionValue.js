@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default class NutritionValue extends Component {
   state = {
     someFood: [],
+    someOtherFood: [],
     someRecipes: [],
     searchInput: [],
     formComplete: false
@@ -17,10 +18,17 @@ export default class NutritionValue extends Component {
     });
   };
 
-  submitForm = b => {
+  submitFormFood = b => {
     b.preventDefault();
     this.setState({
-      formComplete: true
+      formFoodComplete: true
+    });
+  };
+
+  submitFormRecipe = b => {
+    b.preventDefault();
+    this.setState({
+      formRecipeComplete: true
     });
   };
 
@@ -46,47 +54,63 @@ export default class NutritionValue extends Component {
       });
   };
 
+  getFood = () => {
+    request
+      .get("https://trackapi.nutritionix.com/v2/search/instant")
+      .query({ query: this.state.searchInput })
+      .set({
+        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
+        "x-app-id": "3b0fdaa1",
+        Accept: "application/json"
+      })
+      .end((err, res) => {
+        console.log(err, res.body);
+        if (err) {
+          this.setState({ err });
+        } else {
+          this.setState({ someFood: res.body.common });
+          this.setState({ someOtherFood: res.body.branded });
+        }
+      });
+  };
+
   render() {
     return (
       <div className="nutritionValue">
         <div className="nutriValue">
           <div className="nutriSearch">
             <div className="searchWrapper">
-
-            {/* <h2 className="headerSearch">Find your food right here:</h2>
-              <form onSubmit={this.submitForm}>
-
-              <input
-                className="searchBox"
-                type="search"
-                placeholder="Search Food"
-                onChange={e => this.searchChange(e)}
-              />
-              <input
-                type="submit"
-                className="btnSubmitNutri"
-                value="Submit"
-                onClick={this.displayFood}
-                
-              />
-              </form> */}
-
-              <h2 className="headerSearch">Find your recipe right here:</h2>
-              <form onSubmit={this.submitForm}>
-
-              <input
-                className="searchBox"
-                type="search"
-                placeholder="Search Recipes"
-                onChange={e => this.searchChange(e)}
-              />
-              <input
-                type="submit"
-                className="btnSubmitNutri"
-                value="Submit"
-                onClick={this.displayRecipe}
-                
-              />
+              <h2 className="headerSearch">Find your desired food:</h2>
+              <form onSubmit={this.submitFormFood}>
+                <input
+                  className="searchBox"
+                  type="search"
+                  placeholder="Search Food"
+                  onChange={e => this.searchChange(e)}
+                />
+                <input
+                  type="submit"
+                  className="btnSubmitNutri"
+                  value="Submit"
+                  onClick={this.getFood}
+                />
+              </form>
+            </div>
+            <div className="searchWrapper">
+              <h2 className="headerSearch">Find an interesting recipe:</h2>
+              <form onSubmit={this.submitFormRecipe}>
+                <input
+                  className="searchBox"
+                  type="search"
+                  placeholder="Search Recipes"
+                  onChange={e => this.searchChange(e)}
+                />
+                <input
+                  type="submit"
+                  className="btnSubmitNutri"
+                  value="Submit"
+                  onClick={this.displayRecipe}
+                />
               </form>
             </div>
             <div className="nutriValueWrapper">
@@ -99,27 +123,62 @@ export default class NutritionValue extends Component {
               </div>
             </div>
           </div>
-          {this.state.formComplete && (
+          {this.state.formFoodComplete && (
             <div>
           <h2 className="headerOutput">Results are shown below:</h2>
             <div className="foodOutput">
             <div id="commonOutput" className="foodList">
-              <h2>Recipes:</h2>
-              </div><br />
-              <div className="recipesSearchOutput">
-             {this.state.someRecipes.map(recipe => {
-                const recipeNameURI = encodeURI(recipe.recipe.label);
+              <h2>Common Foods:</h2>
+              {this.state.someFood.map(item => {
+                const foodNameURI = encodeURI(item.food_name);
                 return (
-                  <div key={recipe.recipe.label} className="outputList">
-                    <Link to={`/displaycase/${recipeNameURI}`}>
-                      {recipe.recipe.label}
+                  <div key={item.food_name} className="outputList">
+                    <Link to={`/displaycase/${foodNameURI}`}>
+                      {item.food_name}
                     </Link>
                   </div>
                 );
               })}
-        </div><br />
+            </div>
+              <div id="brandedOutput" className="foodList">
+                <h2>Branded Foods:</h2>
+                {this.state.someOtherFood.map(item => {
+                  const foodNameURI = encodeURI(item.food_name);
+                  return (
+                    <div key={item.food_name} className="outputList">
+                      <Link to={`/displaycase/${foodNameURI}`}>
+                        {item.food_name}
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
+          </div>
+          </div>
+          )}
+          {this.state.formRecipeComplete && (
+            <div>
+              <h2 className="headerOutput">Results are shown below:</h2>
+              <div className="foodOutput">
+                <div id="commonOutput" className="foodList">
+                  <h2>Recipes:</h2>
+                </div>
+                <br />
+                <div className="recipesSearchOutput">
+                  {this.state.someRecipes.map(recipe => {
+                    const recipeNameURI = encodeURI(recipe.recipe.label);
+                    return (
+                      <div key={recipe.recipe.label} className="outputList">
+                        <Link to={`/displaycase/${recipeNameURI}`}>
+                          {recipe.recipe.label}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+                <br />
               </div>
+            </div>
           )}
         </div>
       </div>
