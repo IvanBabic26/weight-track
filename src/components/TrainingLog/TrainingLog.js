@@ -8,7 +8,7 @@ export default class TrainingLog extends Component {
     searchValue: []
   };
   componentDidMount() {
-    this.getExercise(this.props.match.params.name);
+    this.getExercise(this.props.match.params.exercises);
     console.log("test");
   }
 
@@ -22,11 +22,12 @@ export default class TrainingLog extends Component {
         Accept: "application/json"
       })
       .end((err, res) => {
-        console.log("response here:", res.body.exercises);
+        console.log("response here:", res.exercises);
         if (err) {
           this.setState({ err });
         } else {
           this.setState({ someTraining: res.body.exercises });
+          this.setState({ someTraining: res.body.name });
           console.log(res);
         }
       });
@@ -71,20 +72,12 @@ export default class TrainingLog extends Component {
                 <div>Duration: {training.duration_min}</div>
                 <div>MET: {training.met}</div> */}
 
-                <table>
-                  <tr>
-                    <th>Exercise Name</th>
-                    <th>Met</th>
-                    <th>Duration</th>
-                    <th>Calories Expended</th>
-                  </tr>
-                  <tr>
-                    <td>{training.name}</td>
-                    <td>{training.met}</td>
-                    <td>{training.duration_min}</td>
-                    <td>{training.nf_calories}</td>
-                  </tr>
-                </table>
+                
+                    <div>{training.name}</div>
+                    <div>{training.met}</div>
+                    <div>{training.duration_min}</div>
+                    <div>{training.nf_calories}</div>
+                 
               </div>
             </div>
           );

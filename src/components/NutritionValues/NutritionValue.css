@@ -69,7 +69,7 @@
 }
 
 .foodOutput {
-  display: flex;
+  display: inline-block;
   text-align: center;
   margin: 50px;
 }
@@ -82,7 +82,7 @@ h2 {
   font-size: 20px;
   margin: 20px;
   text-align: center;
-  float: left;
+  display: inline;
 }
 #commonOutput h2 {
   background-color: #5915cc;

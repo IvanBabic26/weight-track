@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default class NutritionValue extends Component {
   state = {
-    someData: [],
-    someOtherData: [],
+    someFood: [],
+    someRecipes: [],
     searchInput: [],
     formComplete: false
   };
@@ -24,22 +24,24 @@ export default class NutritionValue extends Component {
     });
   };
 
-  getItem = () => {
+  displayRecipe = () => {
     request
-      .get("https://trackapi.nutritionix.com/v2/search/instant")
-      .query({ query: this.state.searchInput })
+      .get("https://api.edamam.com/search")
+      .query({
+        q: this.state.searchInput,
+        app_id: "733d11da",
+        app_key: "a1bce3ac5fb496203057355abc225646"
+      })
       .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
         Accept: "application/json"
       })
       .end((err, res) => {
-        console.log(err, res.body);
+        console.log("response here:", res.hits);
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someData: res.body.common });
-          this.setState({ someOtherData: res.body.branded });
+          this.setState({ someRecipes: res.body.hits });
+          console.log(res);
         }
       });
   };
@@ -50,7 +52,8 @@ export default class NutritionValue extends Component {
         <div className="nutriValue">
           <div className="nutriSearch">
             <div className="searchWrapper">
-              <h2 className="headerSearch">Find your food right here:</h2>
+
+            {/* <h2 className="headerSearch">Find your food right here:</h2>
               <form onSubmit={this.submitForm}>
 
               <input
@@ -63,7 +66,25 @@ export default class NutritionValue extends Component {
                 type="submit"
                 className="btnSubmitNutri"
                 value="Submit"
-                onClick={this.getItem}
+                onClick={this.displayFood}
+                
+              />
+              </form> */}
+
+              <h2 className="headerSearch">Find your recipe right here:</h2>
+              <form onSubmit={this.submitForm}>
+
+              <input
+                className="searchBox"
+                type="search"
+                placeholder="Search Recipes"
+                onChange={e => this.searchChange(e)}
+              />
+              <input
+                type="submit"
+                className="btnSubmitNutri"
+                value="Submit"
+                onClick={this.displayRecipe}
                 
               />
               </form>
@@ -83,33 +104,22 @@ export default class NutritionValue extends Component {
           <h2 className="headerOutput">Results are shown below:</h2>
             <div className="foodOutput">
             <div id="commonOutput" className="foodList">
-              <h2>Common Foods:</h2>
-              {this.state.someData.map(item => {
-                const foodNameURI = encodeURI(item.food_name);
+              <h2>Recipes:</h2>
+              </div><br />
+              <div className="recipesSearchOutput">
+             {this.state.someRecipes.map(recipe => {
+                const recipeNameURI = encodeURI(recipe.recipe.label);
                 return (
-                  <div key={item.food_name} className="outputList">
-                    <Link to={`/displaycase/${foodNameURI}`}>
-                      {item.food_name}
+                  <div key={recipe.recipe.label} className="outputList">
+                    <Link to={`/displaycase/${recipeNameURI}`}>
+                      {recipe.recipe.label}
                     </Link>
                   </div>
                 );
               })}
-            </div>
-              <div id="brandedOutput" className="foodList">
-                <h2>Branded Foods:</h2>
-                {this.state.someOtherData.map(item => {
-                  const foodNameURI = encodeURI(item.food_name);
-                  return (
-                    <div key={item.food_name} className="outputList">
-                      <Link to={`/displaycase/${foodNameURI}`}>
-                        {item.food_name}
-                      </Link>
-                    </div>
-                  );
-                })}
+        </div><br />
               </div>
-          </div>
-          </div>
+              </div>
           )}
         </div>
       </div>
