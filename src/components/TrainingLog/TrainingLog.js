@@ -27,7 +27,6 @@ export default class TrainingLog extends Component {
           this.setState({ err });
         } else {
           this.setState({ someTraining: res.body.exercises });
-          this.setState({ someTraining: res.body.name });
           console.log(res);
         }
       });

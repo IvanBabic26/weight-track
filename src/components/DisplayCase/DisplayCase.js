@@ -7,13 +7,13 @@ export default class DisplayCase extends Component {
     someRecipes: [],
     someFoods: []
   };
-  
+
   componentDidMount() {
     this.displayRecipe(this.props.match.params.id);
     this.displayFood(this.props.match.params.id);
     console.log("test");
   }
-  
+
   displayFood = foodName => {
     request
       .post("https://trackapi.nutritionix.com/v2/natural/nutrients")
@@ -60,7 +60,7 @@ export default class DisplayCase extends Component {
   render() {
     return (
       <div className="displayCase">
-      {this.state.someFoods.map(foodItem => (
+        {this.state.someFoods.map(foodItem => (
           <div key={foodItem.food_name} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodPicture">
@@ -73,46 +73,54 @@ export default class DisplayCase extends Component {
               <div className="foodName">{` ${foodItem.food_name} `}</div>
             </div>
             <h1>Nutrition Facts</h1>
-
-            <div className="bar1" />
-            {`Serving Quantity: ${foodItem.serving_qty}`}
-
-            <div className="line">
-              {`Serving Size: ${foodItem.serving_unit}`}{" "}
-            </div>
-            <div className="line">
-              {`Serving Weight: ${foodItem.serving_weight_grams}g`}{" "}
-            </div>
-            <div className="bar1" />
-            {`Calories: ${foodItem.nf_calories}`}
+            <div className="headerIngredients">Basic Info:</div>
             <div className="bar2" />
-            {`Total Fat: ${foodItem.nf_total_fat}g`}
+            <br />
+            <div className="recipeText">
+              {`Serving Quantity: ${foodItem.serving_qty}`}
+              <br />
 
-            <div className="line indent">{`Saturated Fat: ${
-              foodItem.nf_saturated_fat
-            }g`}</div>
+              {`Serving Size: ${foodItem.serving_unit}`}
+              <br />
 
-            <div className="line">{`Cholesterol: ${
-              foodItem.nf_cholesterol
-            }g`}</div>
-            <div className="line">{`Sodium: ${foodItem.nf_sodium}mg`}</div>
-            <div className="line">{`Phosphorus ${foodItem.nf_p}mg`} </div>
-            <div className="line">
-              {`Potassium: ${foodItem.nf_potassium}mg`}{" "}
+              {`Serving Weight: ${foodItem.serving_weight_grams}g`}
+              <br />
             </div>
-            <div className="bar1" />
-            {`Total Carbohydrates: ${foodItem.nf_total_carbohydrate}g`}
-
-            <div className="line indent">{`Dietary Fibers: ${
-              foodItem.nf_dietary_fiber
-            }g`}</div>
-            <div className="line indent">{`Sugars: ${
-              foodItem.nf_sugars
-            }g`}</div>
-
+            <br />
+            <div className="headerIngredients">Total Nutrients:</div>
             <div className="bar2" />
-            <div className="line">{`Protiens: ${foodItem.nf_protein}g`} </div>
-            <div className="line" />
+            <br />
+            <div className="recipeText">
+              {`Calories: ${foodItem.nf_calories}`}
+              <br />
+              <div className="line" />
+              {`Total Fat: ${foodItem.nf_total_fat}g`}
+              <br />
+
+              <div className="line indent">{`Saturated Fat: ${
+                foodItem.nf_saturated_fat
+              }g`}</div>
+
+              <div className="line">{`Cholesterol: ${
+                foodItem.nf_cholesterol
+              }g`}</div>
+              <div className="line">{`Sodium: ${foodItem.nf_sodium}mg`}</div>
+              <div className="line">{`Phosphorus ${foodItem.nf_p}mg`} </div>
+              <div className="line">
+                {`Potassium: ${foodItem.nf_potassium}mg`}{" "}
+              </div>
+
+              {`Total Carbohydrates: ${foodItem.nf_total_carbohydrate}g`}
+
+              <div className="line indent">{`Dietary Fibers: ${
+                foodItem.nf_dietary_fiber
+              }g`}</div>
+              <div className="line indent">{`Sugars: ${
+                foodItem.nf_sugars
+              }g`}</div>
+              <div className="line">{`Protiens: ${foodItem.nf_protein}g`} </div>
+              <div className="line" />
+            </div>
           </div>
         ))}
         {this.state.someRecipes.map(foodRecipes => (
@@ -128,194 +136,185 @@ export default class DisplayCase extends Component {
               <div className="foodName">{` ${foodRecipes.recipe.label} `}</div>
             </div>
             <h1>Recipe</h1>
-
-            <div className="bar1" />
-            {`Serving Quantity: ${foodRecipes.recipe.yield}`}
-
-            <div className="line">
-              {`Total Weight: ${foodRecipes.recipe.totalWeight} g`}{" "}
-            </div>
-            <div className="line">
-              {`Total Time: ${foodRecipes.recipe.totalTime} min`}{" "}
-            </div>
-            <div className="bar1" />
-            <div>{`Diet Label: ${foodRecipes.recipe.dietLabels}`}</div>
-            <div className="line">{`Health Label: ${
-              foodRecipes.recipe.healthLabels
-            }`}</div>
-            <div className="line">
-              {`Cautions: ${foodRecipes.recipe.cautions}`}{" "}
-            </div>
-
+            <div className="headerIngredients">Basic Info:</div>
             <div className="bar2" />
-
-            {`Ingredients: ${foodRecipes.recipe.ingredientLines}`}
-            <div className="bar2" />
-
-            {`Total Nutrients:`}
             <br />
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.ENERC_KCAL.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.ENERC_KCAL.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.ENERC_KCAL.unit}
+            <div className="recipeText">
+              {`Serving Quantity: ${foodRecipes.recipe.yield}`}
+              <br /> <div className="line" />
+              {`Total Weight: ${foodRecipes.recipe.totalWeight} g`}
+              <br /> <div className="line" />
+              {`Total Time: ${foodRecipes.recipe.totalTime} min`}
+              <br /> <div className="line" />
             </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.FAT.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.FAT.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.FAT.unit}
+            <br />
+            <div className="headerIngredients">Labels:</div>
+            <div className="bar2" />
+            <br />
+            <div className="recipeText">
+              {`Diet Label: ${foodRecipes.recipe.dietLabels}`}
+              <br /> <div className="line" />
+              {`Health Label: ${foodRecipes.recipe.healthLabels}`}
+              <br /> <div className="line" />
+              {`Cautions: ${foodRecipes.recipe.cautions}`}
+              <br /> <div className="line" />
             </div>
-            <div className="line indent">
-              {foodRecipes.recipe.totalNutrients.FASAT.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.FASAT.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.FASAT.unit}
+            <br />
+            <div className="headerIngredients">Ingredients:</div>
+            <div className="bar2" />
+            <br />
+            <div className="ingredientsRecipe">
+              {foodRecipes.recipe.ingredientLines}
             </div>
-            {/* <div className="line indent">
+            <br />
+            <div className="headerIngredients">Total Nutrients:</div>
+            <div className="bar2" />
+            <br />
+            <div className="valuesRecipe">
+              <div className="nutrientsRecipe">
+                {foodRecipes.recipe.totalNutrients.ENERC_KCAL.label}
+                <br />
+                {foodRecipes.recipe.totalNutrients.ENERC_KCAL.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.ENERC_KCAL.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FAT.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FAT.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.FAT.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FASAT.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FASAT.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.FASAT.unit}
+                <br /> <div className="line" />
+                {/* 
               {foodRecipes.recipe.totalNutrients.FATRN.label}
-              <br />
+              
               {foodRecipes.recipe.totalNutrients.FATRN.quantity}{" "}
               {foodRecipes.recipe.totalNutrients.FATRN.unit}
-            </div> */}
-            <div className="line indent">
-              {foodRecipes.recipe.totalNutrients.FAPU.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.FAPU.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.FAPU.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.CHOCDF.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.CHOCDF.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.CHOCDF.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.FIBTG.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.FIBTG.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.FIBTG.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.SUGAR.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.SUGAR.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.SUGAR.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.PROCNT.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.PROCNT.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.PROCNT.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.NA.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.NA.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.NA.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.CA.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.CA.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.CA.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.MG.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.MG.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.MG.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.K.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.K.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.K.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.FE.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.FE.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.FE.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.ZN.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.ZN.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.ZN.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.P.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.P.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.P.unit}
-            </div>
-            {/* <div className="line">
+             */}
+                {foodRecipes.recipe.totalNutrients.FAPU.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FAPU.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.FAPU.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.CHOCDF.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.CHOCDF.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.CHOCDF.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FIBTG.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FIBTG.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.FIBTG.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.SUGAR.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.SUGAR.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.SUGAR.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.PROCNT.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.PROCNT.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.PROCNT.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.NA.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.NA.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.NA.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.CA.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.CA.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.CA.unit}
+                <br /> <div className="line" />
+              </div>
+              <div className="nutrientsRecipe">
+                {foodRecipes.recipe.totalNutrients.MG.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.MG.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.MG.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.K.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.K.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.K.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FE.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.FE.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.FE.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.ZN.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.ZN.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.ZN.unit}
+                <br /> <div className="line" />
+                {/* {foodRecipes.recipe.totalNutrients.P.label}<br />
+            {foodRecipes.recipe.totalNutrients.P.quantity}{" "}
+            {foodRecipes.recipe.totalNutrients.P.unit}<br /> */}
+                {/* 
               {foodRecipes.recipe.totalNutrients.VITA_RAE.label}
               <br />
-              {foodRecipes.recipe.totalNutrients.VITA_RAE.quantity}{" "}
+              {foodRecipes.recipe.totalNutrients.VITA_RAE.quantity}<br />
               {foodRecipes.recipe.totalNutrients.VITA_RAE.unit}
-            </div> */}
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.VITC.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.VITC.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.VITC.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.THIA.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.THIA.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.THIA.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.RIBF.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.RIBF.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.RIBF.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.NIA.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.NIA.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.NIA.unit}
-            </div>
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.VITB6A.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.VITB6A.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.VITB6A.unit}
-            </div>
-            {/* <div className="line">
+             */}
+                {foodRecipes.recipe.totalNutrients.VITC.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.VITC.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.VITC.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.THIA.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.THIA.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.THIA.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.RIBF.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.RIBF.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.RIBF.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.NIA.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.NIA.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.NIA.unit}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.VITB6A.label}
+                <br /> <div className="line" />
+                {foodRecipes.recipe.totalNutrients.VITB6A.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.VITB6A.unit}
+                <br /> <div className="line" />
+                {/* 
               {foodRecipes.recipe.totalNutrients.FOLDFE.label}
               <br />
-              {foodRecipes.recipe.totalNutrients.FOLDFE.quantity}{" "}
+              {foodRecipes.recipe.totalNutrients.FOLDFE.quantity}<br />
               {foodRecipes.recipe.totalNutrients.FOLDFE.unit}
             </div> */}
-            {/* <div className="line">
+                {/* 
               {foodRecipes.recipe.totalNutrients.VITB12.label}
               <br />
-              {foodRecipes.recipe.totalNutrients.VITB12.quantity}{" "}
+              {foodRecipes.recipe.totalNutrients.VITB12.quantity}<br />
               {foodRecipes.recipe.totalNutrients.VITB12.unit}
             </div> */}
-            {/* <div className="line">
+                {/* 
               {foodRecipes.recipe.totalNutrients.VITD.label}
               <br />
-              {foodRecipes.recipe.totalNutrients.VITD.quantity}{" "}
+              {foodRecipes.recipe.totalNutrients.VITD.quantity}<br />
               {foodRecipes.recipe.totalNutrients.VITD.unit}
-            </div> */}
-            <div className="line">
-              {foodRecipes.recipe.totalNutrients.TOCPHA.label}
-              <br />
-              {foodRecipes.recipe.totalNutrients.TOCPHA.quantity}{" "}
-              {foodRecipes.recipe.totalNutrients.TOCPHA.unit}
-            </div>
-            {/* <div className="line">
+             */}
+                {foodRecipes.recipe.totalNutrients.TOCPHA.label}
+                <br />
+                {foodRecipes.recipe.totalNutrients.TOCPHA.quantity}{" "}
+                {foodRecipes.recipe.totalNutrients.TOCPHA.unit}
+                <br />
+                {/* 
               {foodRecipes.recipe.totalNutrients.VITK1.label}
               <br />
-              {foodRecipes.recipe.totalNutrients.VITK1.quantity}{" "}
+              {foodRecipes.recipe.totalNutrients.VITK1.quantity}<br />
               {foodRecipes.recipe.totalNutrients.VITK1.unit}
             </div> */}
+              </div>
+            </div>
           </div>
         ))}
       </div>

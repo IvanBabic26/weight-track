@@ -4,13 +4,17 @@ import request from "superagent";
 import { Link } from "react-router-dom";
 
 export default class NutritionValue extends Component {
+  
   state = {
     someFood: [],
     someOtherFood: [],
     someRecipes: [],
     searchInput: [],
-    formComplete: false
+    formComplete: false,
   };
+
+
+
 
   searchChange = e => {
     this.setState({
@@ -123,9 +127,34 @@ export default class NutritionValue extends Component {
               </div>
             </div>
           </div>
+            <div className="outputWrapper">
+          {this.state.formRecipeComplete && (
+            <div>
+              <h2 className="headerOutput">Recipe are shown below:</h2>
+              <div className="recipeOutput">
+                <div id="commonOutput" className="foodList">
+                  <h2>Recipes:</h2>
+                </div>
+                <br />
+                <div className="recipesSearchOutput">
+                  {this.state.someRecipes.map(recipe => {
+                    const recipeNameURI = encodeURI(recipe.recipe.label);
+                    return (
+                      <div key={recipe.recipe.label} className="outputList">
+                        <Link to={`/displaycase/${recipeNameURI}`}>
+                          {recipe.recipe.label}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+                <br />
+              </div>
+            </div>
+          )}
           {this.state.formFoodComplete && (
             <div>
-          <h2 className="headerOutput">Results are shown below:</h2>
+          <h2 className="headerOutput">Food results are shown below:</h2>
             <div className="foodOutput">
             <div id="commonOutput" className="foodList">
               <h2>Common Foods:</h2>
@@ -156,30 +185,7 @@ export default class NutritionValue extends Component {
           </div>
           </div>
           )}
-          {this.state.formRecipeComplete && (
-            <div>
-              <h2 className="headerOutput">Results are shown below:</h2>
-              <div className="foodOutput">
-                <div id="commonOutput" className="foodList">
-                  <h2>Recipes:</h2>
-                </div>
-                <br />
-                <div className="recipesSearchOutput">
-                  {this.state.someRecipes.map(recipe => {
-                    const recipeNameURI = encodeURI(recipe.recipe.label);
-                    return (
-                      <div key={recipe.recipe.label} className="outputList">
-                        <Link to={`/displaycase/${recipeNameURI}`}>
-                          {recipe.recipe.label}
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-                <br />
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     );
