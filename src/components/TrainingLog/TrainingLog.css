@@ -4,6 +4,7 @@
 
 .trainLogWrapper {
   display: inline-block;
+  margin: 50px 50px 50px 140px;
 }
 
 .inputLog {
@@ -35,7 +36,9 @@
 }
 
 .trainingTextWrapper {
-  display: block;
+  display: inline-block;
+  margin-right: 25px;
+  position: relative;
 }
 
 .trainText {

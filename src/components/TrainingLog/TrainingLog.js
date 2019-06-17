@@ -11,9 +11,119 @@ export default class TrainingLog extends Component {
     height: "",
     weight: "",
     sports: "",
-    sportsactivity: "walking",
-    distance: ""
+    sportsactivity: "",
+    distance: "",
+    activities: [
+      {
+        name: "Adventure Sports",
+        lists: [
+          "Kayaking",
+          "Canoeing",
+          "Cross-Country Skiing",
+          "Whiteater Rafting",
+          "Surfing"
+        ]
+      },
+      {
+       name: "Aquatic Sports",
+       lists: [
+        "Snorkeling",
+        "Swimming",
+        "Diving",
+        "Paddle Boarding",
+        "Rowing",
+        "Scuba Diving"
+       ]
+      },
+      {
+        name: "Strength and Agility Sports",
+        lists: [
+         "Aerobics",
+         "Aikido",
+         "Archery",
+         "Gymnastics",
+         "Bodybuilding",
+         "Boxing",
+         "Running",
+         "Road Cycling",
+         "Fencing",
+         "Figure Skating",
+         "Judo",
+         "Karate",
+         "Kickboxing",
+         "Mixed Martial Arts",
+         "Muay Thai",
+         "Trampolining",
+         "Walking",
+         "Weight Lifting",
+         "Wrestling"
+        ]
+       },
+       {
+        name: "Ball Sports",
+        lists: [
+         "Baseball",
+         "Basketball",
+         "Tennis",
+         "Bowling",
+         "Football",
+         "Golf",
+         "Handball",
+         "Hockey",
+         "Rugby",
+         "Soccer",
+         "Volleyball",
+         "Water Polo"
+        ]
+       },
+       {
+        name: "Extreme Sports",
+        lists: [
+         "Skateboarding",
+         "Skydiving",
+         "Snowboarding",
+         "Wakeboarding"
+        ]
+       },
+       {
+        name: "Mountain Sports",
+        lists: [
+         "Rock Climbing",
+         "Road cycling",
+         "Hiking",
+         "Mountain Climbing"
+        ]
+       },
+       {
+        name: "Motorised Sports",
+        lists: [
+         "Car Driving",
+         "Moped Ride"
+        ]
+       },
+       {
+        name: "Sports Activities",
+        lists: [
+         "Capoeira",
+         "Cheerleading",
+         "CrossFit",
+         "Dancing",
+         "Darts",
+         "Foosball",
+         "Jogging",
+         "Laser Tag",
+         "Paintball",
+         "Parkour",
+         "Triathlon"
+        ]
+       }
+    ]
   };
+
+
+
+
+
   componentDidMount() {
     this.getExercise(this.props.match.params.exercises);
     console.log("test");
@@ -39,7 +149,7 @@ export default class TrainingLog extends Component {
         Accept: "application/json"
       })
       .end((err, res) => {
-        console.log("response here:", res.exercises);
+        console.log("response here:", res.body.exercises);
         if (err) {
           this.setState({ err });
         } else {
@@ -140,20 +250,21 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-              {/* adventure sports */}
+              </select>
+              {/* adventure sports
               <option value="kayaking">Kayaking</option>
               <option value="canoeing">Canoeing</option>
               <option value="cross-country skiing">Cross-Country Skiing</option>
               <option value="rafting">Whiteater Rafting</option>
               <option value="surfing">Surfing</option>
-              {/* aquatic sports */}
+              aquatic sports
               <option value="snorkeling">Snorkeling</option>
               <option value="swimming">Swimming</option>
               <option value="diving">Diving</option>
               <option value="paddleboarding">Paddle Boarding</option>
               <option value="rowing">Rowing</option>
               <option value="scuba diving">Scuba Diving</option>
-              {/* strength and agility sports */}
+              strength and agility sports
               <option value="aerobics">Aerobics</option>
               <option value="aikido">Aikido</option>
               <option value="archery">Archery</option>
@@ -173,7 +284,7 @@ export default class TrainingLog extends Component {
               <option value="walking">Walking</option>
               <option value="weightlifting">Weight Lifting</option>
               <option value="wrestling">Wrestling</option>
-              {/* ball sprots */}
+              ball sprots
               <option value="baseball">Baseball</option>
               <option value="basketball">Basketball</option>
               <option value="tennis">Tennis</option>
@@ -186,20 +297,20 @@ export default class TrainingLog extends Component {
               <option value="soccer">Soccer</option>
               <option value="volleyball">Volleyball</option>
               <option value="water polo">Water Polo</option>
-              {/* extreme sports */}
+              extreme sports
               <option value="skateboarding">Skateboarding</option>
               <option value="skydiving">Skydiving</option>
               <option value="snowboarding">Snowboarding</option>
               <option value="wakeboarding">Wakeboarding</option>
-              {/* mountain sports */}
+              mountain sports
               <option value="climbing">Rock Climbing</option>
               <option value="roadcycling">Road cycling</option>
               <option value="hiking">Hiking</option>
               <option value="mountaineering">Mountain Climbing</option>
-              {/* motorised sports */}
+              motorised sports
               <option value="cardriving">Car Driving</option>
               <option value="mopedride">Moped Ride</option>
-              {/* sports activites */}
+              sports activites
               <option value="capoeira">Capoeira</option>
               <option value="cheerleading">Cheerleading</option>
               <option value="crossfit">CrossFit</option>
@@ -211,8 +322,8 @@ export default class TrainingLog extends Component {
               <option value="paintball">Paintball</option>
               <option value="parkour">Parkour</option>
               <option value="triathlon">Triathlon</option>
-            </select>
-            <label>Enter the distance(eg 5km, 200m, 18miles):</label>
+            </select> */}
+            <label>Enter the distance in km/miles:</label>
             <input
               type="text"
               name="distance"
@@ -220,6 +331,7 @@ export default class TrainingLog extends Component {
               onChange={e => this.change(e, "distance")}
               required
             />
+            <label>I like trains!</label>
             <input
               type="submit"
               className="btnSubmitExercise"
@@ -243,6 +355,10 @@ export default class TrainingLog extends Component {
           return (
             <div key={training.tag_id} className="outputList">
               <div className="exerciseOutput">
+{/* <div>
+  Name
+</div>Age<div>Sex</div>Height<div>Weight</div>Met<div>Activity</div>Duration<div>Calories Burned</div> */}
+
                 {`Hi ${this.state.name}, your metabolic equivalent is ${
                   training.met
                 }! In order to burn ${
