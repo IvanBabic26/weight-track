@@ -10,8 +10,8 @@ export default class TrainingLog extends Component {
     sex: "Male",
     height: "",
     weight: "",
-    sports: "",
-    sportsactivity: "",
+    sports: "Adventure Sports",
+    sportsActivites: "",
     distance: "",
     activities: [
       {
@@ -109,21 +109,15 @@ export default class TrainingLog extends Component {
 
   componentDidMount() {
     this.getExercise(this.props.match.params.exercises);
-    console.log("test");
   }
 
   getExercise = () => {
     request
       .post("https://trackapi.nutritionix.com/v2/natural/exercise")
       .send({
-        query:
-          // this.state.name &&
-          // this.state.age &&
-          // this.state.sex &&
-          // this.state.height &&
-          // this.state.weight &&
-          // this.state.sports &&
-          this.state.sportsactivity && this.state.distance
+        query: `${this.state.sportsActivites} ${this.state.distance}`,
+        height_cm: this.state.height,
+        weight_kg: this.state.weight
       })
       .set({
         "x-app-key": "c10265e8605472441e5a77ef78969dc9",
@@ -147,6 +141,9 @@ export default class TrainingLog extends Component {
   };
 
   render() {
+    const chosenActivities = this.state.activities.filter(
+      activeList => activeList.name === this.state.sports
+    );
     return (
       <div className="trainLog">
         <div className="trainLogWrapper">
@@ -214,111 +211,24 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-             {this.state.activities.map(activeList => {
-                return (
-                  <option key={activeList.name}>{activeList.name}</option>
-                );
+              {this.state.activities.map(activeList => {
+                return <option key={activeList.name}>{activeList.name}</option>;
               })}
             </select>
-              {/* <option value="Adventure Sports">Adventure Sports</option>
-              <option value="Aquatic Sports">Aquatic Sports</option>
-              <option value="Strength and Agility Sports">
-                Strength and Agility Sports
-              </option>
-              <option value="Ball Sports">Ball Sports</option>
-              <option value="Extreme Sports">Extreme Sports</option>
-              <option value="Mountain Sports">Mountain Sports</option>
-              <option value="Motorised Sports">Motorised Sports</option>
-              <option value="Sport Activities">Sport Activities</option>
-            </select> */}
             <label>Sports Activity:</label>
             <select
-              value={this.state.sportsactivity}
-              onChange={e => this.change(e, "sportsactivity")}
+              value={this.state.sportsActivites}
+              onChange={e => this.change(e, "sportsActivites")}
               className="selectOption"
               required
             >
-              {this.state.activities.map(activeList => {
-                return (
-                  <option key={activeList.lists}>{activeList.lists}</option>
-                );
+              {chosenActivities[0].lists.map(activity => {
+                return <option key={activity}>{activity}</option>;
               })}
             </select>
-            {/* adventure sports
-              <option value="kayaking">Kayaking</option>
-              <option value="canoeing">Canoeing</option>
-              <option value="cross-country skiing">Cross-Country Skiing</option>
-              <option value="rafting">Whiteater Rafting</option>
-              <option value="surfing">Surfing</option>
-              aquatic sports
-              <option value="snorkeling">Snorkeling</option>
-              <option value="swimming">Swimming</option>
-              <option value="diving">Diving</option>
-              <option value="paddleboarding">Paddle Boarding</option>
-              <option value="rowing">Rowing</option>
-              <option value="scuba diving">Scuba Diving</option>
-              strength and agility sports
-              <option value="aerobics">Aerobics</option>
-              <option value="aikido">Aikido</option>
-              <option value="archery">Archery</option>
-              <option value="gymnastics">Gymnastics</option>
-              <option value="bodybuilding">Bodybuilding</option>
-              <option value="boxing">Boxing</option>
-              <option value="running">Running</option>
-              <option value="cycling">Road Cycling</option>
-              <option value="fencing">Fencing</option>
-              <option value="figure skating">Figure Skating</option>
-              <option value="judo">Judo</option>
-              <option value="karate">Karate</option>
-              <option value="kickboxing">Kickboxing</option>
-              <option value="mixedmartialarts">Mixed Martial Arts</option>
-              <option value="muaythai">Muay Thai</option>
-              <option value="trampolining">Trampolining</option>
-              <option value="walking">Walking</option>
-              <option value="weightlifting">Weight Lifting</option>
-              <option value="wrestling">Wrestling</option>
-              ball sprots
-              <option value="baseball">Baseball</option>
-              <option value="basketball">Basketball</option>
-              <option value="tennis">Tennis</option>
-              <option value="bowling">Bowling</option>
-              <option value="football">Football</option>
-              <option value="golf">Golf</option>
-              <option value="handball">Handball</option>
-              <option value="hockey">Hockey</option>
-              <option value="rugby">Rugby</option>
-              <option value="soccer">Soccer</option>
-              <option value="volleyball">Volleyball</option>
-              <option value="water polo">Water Polo</option>
-              extreme sports
-              <option value="skateboarding">Skateboarding</option>
-              <option value="skydiving">Skydiving</option>
-              <option value="snowboarding">Snowboarding</option>
-              <option value="wakeboarding">Wakeboarding</option>
-              mountain sports
-              <option value="climbing">Rock Climbing</option>
-              <option value="roadcycling">Road cycling</option>
-              <option value="hiking">Hiking</option>
-              <option value="mountaineering">Mountain Climbing</option>
-              motorised sports
-              <option value="cardriving">Car Driving</option>
-              <option value="mopedride">Moped Ride</option>
-              sports activites
-              <option value="capoeira">Capoeira</option>
-              <option value="cheerleading">Cheerleading</option>
-              <option value="crossfit">CrossFit</option>
-              <option value="dancing">Dancing</option>
-              <option value="darts">Darts</option>
-              <option value="foosball">Foosball</option>
-              <option value="jogging">Jogging</option>
-              <option value="lasertag">Laser Tag</option>
-              <option value="paintball">Paintball</option>
-              <option value="parkour">Parkour</option>
-              <option value="triathlon">Triathlon</option>
-            </select> */}
-            <label>Enter the distance in km/miles:</label>
+            <label>Enter the duration/distance:</label>
             <input
-              type="text"
+              type="number"
               name="distance"
               value={this.state.distance}
               onChange={e => this.change(e, "distance")}
@@ -346,42 +256,46 @@ export default class TrainingLog extends Component {
             return (
               <div key={training.tag_id} className="outputList">
                 <div className="exerciseOutput">
-                  
-                <div className="divTable">
-<div className="divTableBody">
-<div className="divTableRow">
-<div className="divTableCell">Name</div>
-<div className="divTableCell">Age</div>
-<div className="divTableCell">Sex</div>
-<div className="divTableCell">Height</div>
-<div className="divTableCell">Weight</div>
-<div className="divTableCell">Sport Type</div>
-<div className="divTableCell">Sports Activity</div>
-<div className="divTableCell">MET</div>
-<div className="divTableCell">Duration</div>
-<div className="divTableCell">Calories Burned</div>
-</div>
-<div className="divTableRow">
-<div className="divTableCell">{this.state.name}</div>
-<div className="divTableCell">{this.state.age}</div>
-<div className="divTableCell">{this.state.sex}</div>
-<div className="divTableCell">{this.state.height}cm</div>
-<div className="divTableCell">{this.state.weight}kg</div>
-<div className="divTableCell">{this.state.sports}</div>
-<div className="divTableCell">{this.state.sportsactivity}</div>
-<div className="divTableCell">{training.met}</div>
-<div className="divTableCell">{training.duration_min}</div>
-<div className="divTableCell">{training.nf_calories}</div>
-</div>
-</div>
-</div> 
-
-</div>
-
-
-</div>
-              
-               
+                  <div className="divTable">
+                    <div className="divTableBody">
+                      <div className="divTableRow">
+                        <div className="divTableCell">Name</div>
+                        <div className="divTableCell">Age</div>
+                        <div className="divTableCell">Sex</div>
+                        <div className="divTableCell">Height</div>
+                        <div className="divTableCell">Weight</div>
+                        <div className="divTableCell">Sport Type</div>
+                        <div className="divTableCell">Sports Activity</div>
+                        <div className="divTableCell">MET</div>
+                        <div className="divTableCell">Duration</div>
+                        <div className="divTableCell">Calories Burned</div>
+                      </div>
+                      <div className="divTableRow">
+                        <div className="divTableCell">{this.state.name}</div>
+                        <div className="divTableCell">{this.state.age}</div>
+                        <div className="divTableCell">{this.state.sex}</div>
+                        <div className="divTableCell">
+                          {this.state.height}cm
+                        </div>
+                        <div className="divTableCell">
+                          {this.state.weight}kg
+                        </div>
+                        <div className="divTableCell">{this.state.sports}</div>
+                        <div className="divTableCell">
+                          {this.state.sportsActivites}
+                        </div>
+                        <div className="divTableCell">{training.met}</div>
+                        <div className="divTableCell">
+                          {training.duration_min}
+                        </div>
+                        <div className="divTableCell">
+                          {training.nf_calories}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
