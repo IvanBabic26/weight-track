@@ -7,7 +7,7 @@ export default class TrainingLog extends Component {
     someTraining: [],
     name: "",
     age: "",
-    sex: "male",
+    sex: "Male",
     height: "",
     weight: "",
     sports: "",
@@ -25,104 +25,87 @@ export default class TrainingLog extends Component {
         ]
       },
       {
-       name: "Aquatic Sports",
-       lists: [
-        "Snorkeling",
-        "Swimming",
-        "Diving",
-        "Paddle Boarding",
-        "Rowing",
-        "Scuba Diving"
-       ]
+        name: "Aquatic Sports",
+        lists: [
+          "Snorkeling",
+          "Swimming",
+          "Diving",
+          "Paddle Boarding",
+          "Rowing",
+          "Scuba Diving"
+        ]
       },
       {
         name: "Strength and Agility Sports",
         lists: [
-         "Aerobics",
-         "Aikido",
-         "Archery",
-         "Gymnastics",
-         "Bodybuilding",
-         "Boxing",
-         "Running",
-         "Road Cycling",
-         "Fencing",
-         "Figure Skating",
-         "Judo",
-         "Karate",
-         "Kickboxing",
-         "Mixed Martial Arts",
-         "Muay Thai",
-         "Trampolining",
-         "Walking",
-         "Weight Lifting",
-         "Wrestling"
+          "Aerobics",
+          "Aikido",
+          "Archery",
+          "Gymnastics",
+          "Bodybuilding",
+          "Boxing",
+          "Running",
+          "Road Cycling",
+          "Fencing",
+          "Figure Skating",
+          "Judo",
+          "Karate",
+          "Kickboxing",
+          "Mixed Martial Arts",
+          "Muay Thai",
+          "Trampolining",
+          "Walking",
+          "Weight Lifting",
+          "Wrestling"
         ]
-       },
-       {
+      },
+      {
         name: "Ball Sports",
         lists: [
-         "Baseball",
-         "Basketball",
-         "Tennis",
-         "Bowling",
-         "Football",
-         "Golf",
-         "Handball",
-         "Hockey",
-         "Rugby",
-         "Soccer",
-         "Volleyball",
-         "Water Polo"
+          "Baseball",
+          "Basketball",
+          "Tennis",
+          "Bowling",
+          "Football",
+          "Golf",
+          "Handball",
+          "Hockey",
+          "Rugby",
+          "Soccer",
+          "Volleyball",
+          "Water Polo"
         ]
-       },
-       {
+      },
+      {
         name: "Extreme Sports",
-        lists: [
-         "Skateboarding",
-         "Skydiving",
-         "Snowboarding",
-         "Wakeboarding"
-        ]
-       },
-       {
+        lists: ["Skateboarding", "Skydiving", "Snowboarding", "Wakeboarding"]
+      },
+      {
         name: "Mountain Sports",
-        lists: [
-         "Rock Climbing",
-         "Road cycling",
-         "Hiking",
-         "Mountain Climbing"
-        ]
-       },
-       {
+        lists: ["Rock Climbing", "Road cycling", "Hiking", "Mountain Climbing"]
+      },
+      {
         name: "Motorised Sports",
-        lists: [
-         "Car Driving",
-         "Moped Ride"
-        ]
-       },
-       {
+        lists: ["Car Driving", "Moped Ride"]
+      },
+      {
         name: "Sports Activities",
         lists: [
-         "Capoeira",
-         "Cheerleading",
-         "CrossFit",
-         "Dancing",
-         "Darts",
-         "Foosball",
-         "Jogging",
-         "Laser Tag",
-         "Paintball",
-         "Parkour",
-         "Triathlon"
+          "Capoeira",
+          "Cheerleading",
+          "CrossFit",
+          "Dancing",
+          "Darts",
+          "Foosball",
+          "Jogging",
+          "Laser Tag",
+          "Paintball",
+          "Parkour",
+          "Triathlon"
         ]
-       }
+      }
     ]
   };
-
-
-
-
 
   componentDidMount() {
     this.getExercise(this.props.match.params.exercises);
@@ -140,8 +123,7 @@ export default class TrainingLog extends Component {
           // this.state.height &&
           // this.state.weight &&
           // this.state.sports &&
-          this.state.sportsactivity &&
-          this.state.distance
+          this.state.sportsactivity && this.state.distance
       })
       .set({
         "x-app-key": "c10265e8605472441e5a77ef78969dc9",
@@ -198,8 +180,8 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
 
             <label>Enter your height in cm:</label>
@@ -232,17 +214,23 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-              <option value="adventuresports">Adventure Sports</option>
-              <option value="aquaticsports">Aquatic Sports</option>
-              <option value="strengthandagilitysports">
+             {this.state.activities.map(activeList => {
+                return (
+                  <option key={activeList.name}>{activeList.name}</option>
+                );
+              })}
+            </select>
+              {/* <option value="Adventure Sports">Adventure Sports</option>
+              <option value="Aquatic Sports">Aquatic Sports</option>
+              <option value="Strength and Agility Sports">
                 Strength and Agility Sports
               </option>
-              <option value="ballsports">Ball Sports</option>
-              <option value="extremesports">Extreme Sports</option>
-              <option value="mountainsports">Mountain Sports</option>
-              <option value="motorisedsports">Motorised Sports</option>
-              <option value="sportactivities">Sport Activities</option>
-            </select>
+              <option value="Ball Sports">Ball Sports</option>
+              <option value="Extreme Sports">Extreme Sports</option>
+              <option value="Mountain Sports">Mountain Sports</option>
+              <option value="Motorised Sports">Motorised Sports</option>
+              <option value="Sport Activities">Sport Activities</option>
+            </select> */}
             <label>Sports Activity:</label>
             <select
               value={this.state.sportsactivity}
@@ -250,8 +238,13 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-              </select>
-              {/* adventure sports
+              {this.state.activities.map(activeList => {
+                return (
+                  <option key={activeList.lists}>{activeList.lists}</option>
+                );
+              })}
+            </select>
+            {/* adventure sports
               <option value="kayaking">Kayaking</option>
               <option value="canoeing">Canoeing</option>
               <option value="cross-country skiing">Cross-Country Skiing</option>
@@ -349,27 +342,49 @@ export default class TrainingLog extends Component {
             routines and exercises. Just select the activites you did and voila,
             see your progress on that fat burning regime!
           </div>
+          {this.state.someTraining.map(training => {
+            return (
+              <div key={training.tag_id} className="outputList">
+                <div className="exerciseOutput">
+                  
+                <div className="divTable">
+<div className="divTableBody">
+<div className="divTableRow">
+<div className="divTableCell">Name</div>
+<div className="divTableCell">Age</div>
+<div className="divTableCell">Sex</div>
+<div className="divTableCell">Height</div>
+<div className="divTableCell">Weight</div>
+<div className="divTableCell">Sport Type</div>
+<div className="divTableCell">Sports Activity</div>
+<div className="divTableCell">MET</div>
+<div className="divTableCell">Duration</div>
+<div className="divTableCell">Calories Burned</div>
+</div>
+<div className="divTableRow">
+<div className="divTableCell">{this.state.name}</div>
+<div className="divTableCell">{this.state.age}</div>
+<div className="divTableCell">{this.state.sex}</div>
+<div className="divTableCell">{this.state.height}cm</div>
+<div className="divTableCell">{this.state.weight}kg</div>
+<div className="divTableCell">{this.state.sports}</div>
+<div className="divTableCell">{this.state.sportsactivity}</div>
+<div className="divTableCell">{training.met}</div>
+<div className="divTableCell">{training.duration_min}</div>
+<div className="divTableCell">{training.nf_calories}</div>
+</div>
+</div>
+</div> 
+
+</div>
+
+
+</div>
+              
+               
+            );
+          })}
         </div>
-
-        {this.state.someTraining.map(training => {
-          return (
-            <div key={training.tag_id} className="outputList">
-              <div className="exerciseOutput">
-{/* <div>
-  Name
-</div>Age<div>Sex</div>Height<div>Weight</div>Met<div>Activity</div>Duration<div>Calories Burned</div> */}
-
-                {`Hi ${this.state.name}, your metabolic equivalent is ${
-                  training.met
-                }! In order to burn ${
-                  training.nf_calories
-                } calories you need to go ${this.state.sportsactivity} for ${
-                  training.duration_min
-                } min.`}
-              </div>
-            </div>
-          );
-        })}
       </div>
     );
   }
