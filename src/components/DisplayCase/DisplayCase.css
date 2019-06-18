@@ -5,7 +5,9 @@
   color: #333;
   font-family: Arial, Helvetica, sans-serif;
   line-height: normal;
-  display: flex;
+  display: grid;
+  grid-template-columns: 630px 630px 630px;
+  grid-template-rows: 600px 00px 600px;
 }
 
 .btnSubmitDisplay {
@@ -26,7 +28,7 @@
   background: #fff;
   border: 20px #5915cc solid;
   border-radius: 55px;
-  width: 20%;
+  overflow-y: scroll;
   font-weight: bold;
 }
 
@@ -120,3 +122,23 @@ h1 {
   font-size: 24px;
 }
 
+.valuesRecipe {
+  display: flex;
+}
+
+.nutrientsRecipe {
+  margin: 2px;
+  padding: 2px;
+}
+
+.headerIngredients {
+  text-align: center;
+}
+
+.ingredientsRecipe {
+  text-align: justify;
+}
+
+.recipeText {
+  text-align: center;
+}

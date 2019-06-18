@@ -7,8 +7,10 @@ import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator"
 import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
 import TrainingLog from "./components/TrainingLog/TrainingLog";
+import house from "./components/img/house.png";
 
 export default function App() {
+  
   return (
     <BrowserRouter>
       <div className="headerbar">
@@ -18,14 +20,21 @@ export default function App() {
         <NavLink to="/nutritionvalue">Nutrition Value</NavLink>
         <NavLink to="/traininglog">Training Log</NavLink>
       </div>
-        <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/bmicalculator" component={BMICalculator} />
-          <Route path="/caloriecalculator" component={CalorieCalculator} />
-          <Route path="/nutritionvalue" component={NutritionValue} />
-          <Route path="/traininglog" component={TrainingLog} />
-          <Route path="/displaycase/:id" component={DisplayCase} />
-        </Switch>
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/bmicalculator" component={BMICalculator} />
+        <Route path="/caloriecalculator" component={CalorieCalculator} />
+        <Route path="/nutritionvalue" component={NutritionValue} />
+        <Route path="/traininglog" component={TrainingLog} />
+        <Route path="/displaycase/:id" component={DisplayCase} />
+      </Switch>
+      <div className="footerBar">
+        <NavLink to="/bmicalculator">BMI Calculator</NavLink>
+        <NavLink to="/caloriecalculator">Calorie Calculator</NavLink>
+        <NavLink to="/home">
+          <img alt="house" src={house} />
+        </NavLink>
+      </div>
     </BrowserRouter>
   );
 }

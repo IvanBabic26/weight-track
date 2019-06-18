@@ -4,12 +4,17 @@ import request from "superagent";
 import { Link } from "react-router-dom";
 
 export default class NutritionValue extends Component {
+  
   state = {
-    someData: [],
-    someOtherData: [],
+    someFood: [],
+    someOtherFood: [],
+    someRecipes: [],
     searchInput: [],
-    formComplete: false
+    formComplete: false,
   };
+
+
+
 
   searchChange = e => {
     this.setState({
@@ -17,14 +22,43 @@ export default class NutritionValue extends Component {
     });
   };
 
-  submitForm = b => {
+  submitFormFood = b => {
     b.preventDefault();
     this.setState({
-      formComplete: true
+      formFoodComplete: true
     });
   };
 
-  getItem = () => {
+  submitFormRecipe = b => {
+    b.preventDefault();
+    this.setState({
+      formRecipeComplete: true
+    });
+  };
+
+  displayRecipe = () => {
+    request
+      .get("https://api.edamam.com/search")
+      .query({
+        q: this.state.searchInput,
+        app_id: "733d11da",
+        app_key: "a1bce3ac5fb496203057355abc225646"
+      })
+      .set({
+        Accept: "application/json"
+      })
+      .end((err, res) => {
+        console.log("response here:", res.hits);
+        if (err) {
+          this.setState({ err });
+        } else {
+          this.setState({ someRecipes: res.body.hits });
+          console.log(res);
+        }
+      });
+  };
+
+  getFood = () => {
     request
       .get("https://trackapi.nutritionix.com/v2/search/instant")
       .query({ query: this.state.searchInput })
@@ -38,8 +72,8 @@ export default class NutritionValue extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someData: res.body.common });
-          this.setState({ someOtherData: res.body.branded });
+          this.setState({ someFood: res.body.common });
+          this.setState({ someOtherFood: res.body.branded });
         }
       });
   };
@@ -50,22 +84,37 @@ export default class NutritionValue extends Component {
         <div className="nutriValue">
           <div className="nutriSearch">
             <div className="searchWrapper">
-              <h2 className="headerSearch">Find your food right here:</h2>
-              <form onSubmit={this.submitForm}>
-
-              <input
-                className="searchBox"
-                type="search"
-                placeholder="Search Food"
-                onChange={e => this.searchChange(e)}
-              />
-              <input
-                type="submit"
-                className="btnSubmitNutri"
-                value="Submit"
-                onClick={this.getItem}
-                
-              />
+              <h2 className="headerSearch">Find your desired food:</h2>
+              <form onSubmit={this.submitFormFood}>
+                <input
+                  className="searchBox"
+                  type="search"
+                  placeholder="Search Food"
+                  onChange={e => this.searchChange(e)}
+                />
+                <input
+                  type="submit"
+                  className="btnSubmitNutri"
+                  value="Submit"
+                  onClick={this.getFood}
+                />
+              </form>
+            </div>
+            <div className="searchWrapper">
+              <h2 className="headerSearch">Find an interesting recipe:</h2>
+              <form onSubmit={this.submitFormRecipe}>
+                <input
+                  className="searchBox"
+                  type="search"
+                  placeholder="Search Recipes"
+                  onChange={e => this.searchChange(e)}
+                />
+                <input
+                  type="submit"
+                  className="btnSubmitNutri"
+                  value="Submit"
+                  onClick={this.displayRecipe}
+                />
               </form>
             </div>
             <div className="nutriValueWrapper">
@@ -78,13 +127,38 @@ export default class NutritionValue extends Component {
               </div>
             </div>
           </div>
-          {this.state.formComplete && (
+            <div className="outputWrapper">
+          {this.state.formRecipeComplete && (
             <div>
-          <h2 className="headerOutput">Results are shown below:</h2>
+              <h2 className="headerOutput">Recipe are shown below:</h2>
+              <div className="recipeOutput">
+                <div id="commonOutput" className="foodList">
+                  <h2>Recipes:</h2>
+                </div>
+                <br />
+                <div className="recipesSearchOutput">
+                  {this.state.someRecipes.map(recipe => {
+                    const recipeNameURI = encodeURI(recipe.recipe.label);
+                    return (
+                      <div key={recipe.recipe.label} className="outputList">
+                        <Link to={`/displaycase/${recipeNameURI}`}>
+                          {recipe.recipe.label}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+                <br />
+              </div>
+            </div>
+          )}
+          {this.state.formFoodComplete && (
+            <div>
+          <h2 className="headerOutput">Food results are shown below:</h2>
             <div className="foodOutput">
             <div id="commonOutput" className="foodList">
               <h2>Common Foods:</h2>
-              {this.state.someData.map(item => {
+              {this.state.someFood.map(item => {
                 const foodNameURI = encodeURI(item.food_name);
                 return (
                   <div key={item.food_name} className="outputList">
@@ -97,7 +171,7 @@ export default class NutritionValue extends Component {
             </div>
               <div id="brandedOutput" className="foodList">
                 <h2>Branded Foods:</h2>
-                {this.state.someOtherData.map(item => {
+                {this.state.someOtherFood.map(item => {
                   const foodNameURI = encodeURI(item.food_name);
                   return (
                     <div key={item.food_name} className="outputList">
@@ -111,6 +185,7 @@ export default class NutritionValue extends Component {
           </div>
           </div>
           )}
+          </div>
         </div>
       </div>
     );

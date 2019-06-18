@@ -1,3 +1,88 @@
+.trainLog {
+  display: flex;
+}
+
+.trainLogWrapper {
+  display: inline-block;
+  margin: 50px;
+  margin-left: 140px;
+}
+
+.inputLog {
+  display: inline-block;
+  background-color: #fff;
+  margin: 50px;
+  border: 2px solid #5915cc;
+  border-radius: 55px;
+}
+
+.btnSubmitExercise {
+  background-color: #4227bb;
+  color: #fff;
+  width: 100%;
+  font-size: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.inputLogHeader {
+  background-color: #5915cc;
+  color: #fff;
+  border-top-right-radius: 52px;
+  border-top-left-radius: 52px;
+  padding: 5px;
+  text-align: center;
+  font-size: 26px;
+}
+
+.trainingTextWrapper {
+  display: inline-block;
+  margin-right: 25px;
+  position: relative;
+}
+
+.trainText {
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: bold;
+}
 .exerciseOutput {
-    color: #111;
+  color: #111;
+  width: 100%;
+  display: table;
+}
+
+.trainingLogHeader {
+  margin: 50px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 58px;
+}
+
+.exerciseData {
+  text-align: center;
+  display: block;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 30px;
+  font-size: 22px;
+  border: 1px #5915cc solid;
+  font-weight: bold;
+  border-radius: 52px;
+}
+
+div.exerciseData:hover {
+  background: linear-gradient(to right, #30256b, #3116aa);
+  color: #fff;
+  position: relative;
+}
+
+
+.exerciseResult {
+  margin: 10px 2px 10px 2px;
+  padding: 3px;
 }
