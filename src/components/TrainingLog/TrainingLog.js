@@ -4,7 +4,7 @@ import request from "superagent";
 
 export default class TrainingLog extends Component {
   state = {
-    someTraining: [],
+    trainingLogData: [],
     name: "",
     age: "",
     sex: "Male",
@@ -14,69 +14,69 @@ export default class TrainingLog extends Component {
     sportsActivity: "Kayaking",
     distance: "",
     activityUnit: {
-  "Kayaking": "km",
-  "Canoeing": "min",
-  "Cross-Country Skiing": "km",
-  "Whitewater Rafting": "min",
-  "Surfing": "min",
-  "Snorkeling": "min",
-  "Swimming": "km",
-  "Diving": "min",
-  "Paddle Boarding": "min",
-  "Rowing": "km",
-  "Scuba Diving": "min",
-  "Aerobics": "min",
-  "Aikido": "min",
-  "Archery": "min",
-  "Gymnastics": "min",
-  "Bodybuilding": "min",
-  "Boxing": "min",
-  "Running": "km",
-  "Fencing": "min",
-  "Figure Skating": "min",
-  "Judo": "min",
-  "Karate": "min",
-  "Kickboxing": "min",
-  "Mixed Martial Arts": "min",
-  "Muay Thai": "min",
-  "Trampolining": "min",
-  "Walking": "km",
-  "Weight Lifting": "min",
-  "Wrestling": "min",
-  "Baseball": "min",
-  "Basketball": "min",
-  "Tennis": "min",
-  "Bowling": "min",
-  "Football": "min",
-  "Golf": "min",
-  "Handball": "min",
-  "Hockey": "min",
-  "Rugby": "min",
-  "Soccer": "min",
-  "Volleyball": "min",
-  "Water Polo": "min",
-  "Skateboarding": "min",
-  "Skydiving": "min",
-  "Snowboarding": "min",
-  "Wakeboarding": "min",
-  "Rock Climbing": "min",
-  "Road Cycling": "min",
-  "Hiking": "km",
-  "Mountain Climbing": "min",
-  "Car Driving": "km",
-  "Moped Ride": "km",
-  "Capoeira": "min",
-  "Cheerleading": "min",
-  "CrossFit": "min",
-  "Dancing": "min",
-  "Darts": "min",
-  "Foosball": "min",
-  "Jogging": "km",
-  "Laser Tag": "min",
-  "Paintball": "min",
-  "Parkour": "min",
-  "Triathlon": "km"
-},
+      Kayaking: "km",
+      Canoeing: "min",
+      "Cross-Country Skiing": "km",
+      "Whitewater Rafting": "min",
+      Surfing: "min",
+      Snorkeling: "min",
+      Swimming: "km",
+      Diving: "min",
+      "Paddle Boarding": "min",
+      Rowing: "km",
+      "Scuba Diving": "min",
+      Aerobics: "min",
+      Aikido: "min",
+      Archery: "min",
+      Gymnastics: "min",
+      Bodybuilding: "min",
+      Boxing: "min",
+      Running: "km",
+      Fencing: "min",
+      "Figure Skating": "min",
+      Judo: "min",
+      Karate: "min",
+      Kickboxing: "min",
+      "Mixed Martial Arts": "min",
+      "Muay Thai": "min",
+      Trampolining: "min",
+      Walking: "km",
+      "Weight Lifting": "min",
+      Wrestling: "min",
+      Baseball: "min",
+      Basketball: "min",
+      Tennis: "min",
+      Bowling: "min",
+      Football: "min",
+      Golf: "min",
+      Handball: "min",
+      Hockey: "min",
+      Rugby: "min",
+      Soccer: "min",
+      Volleyball: "min",
+      "Water Polo": "min",
+      Skateboarding: "min",
+      Skydiving: "min",
+      Snowboarding: "min",
+      Wakeboarding: "min",
+      "Rock Climbing": "min",
+      "Road Cycling": "min",
+      Hiking: "km",
+      "Mountain Climbing": "min",
+      "Car Driving": "km",
+      "Moped Ride": "km",
+      Capoeira: "min",
+      Cheerleading: "min",
+      CrossFit: "min",
+      Dancing: "min",
+      Darts: "min",
+      Foosball: "min",
+      Jogging: "km",
+      "Laser Tag": "min",
+      Paintball: "min",
+      Parkour: "min",
+      Triathlon: "km"
+    },
     activities: [
       {
         name: "Adventure Sports",
@@ -197,7 +197,7 @@ export default class TrainingLog extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someTraining: res.body.exercises });
+          this.setState({ trainingLogData: res.body.exercises });
           console.log(res);
         }
       });
@@ -320,97 +320,62 @@ export default class TrainingLog extends Component {
             routines and exercises. Just select the activites you did and voila,
             see your progress on that fat burning regime!
           </div>
-          {this.state.someTraining.map(training => {
+          {this.state.trainingLogData.map(training => {
             return (
               <div key={training.tag_id} className="outputList">
                 <div className="exerciseOutput">
-                  {/* <div className="divTable">
-                    <div className="divTableBody">
-                      <div className="divTableRow">
-                        <div className="divTableCell">Name</div>
-                        <div className="divTableCell">Age</div>
-                        <div className="divTableCell">Sex</div>
-                        <div className="divTableCell">Height</div>
-                        <div className="divTableCell">Weight</div>
-                        <div className="divTableCell">Sport Type</div>
-                        <div className="divTableCell">Sports Activity</div>
-                        <div className="divTableCell">MET</div>
-                        <div className="divTableCell">Duration</div>
-                        <div className="divTableCell">Calories Burned</div>
-                      </div>
-                      <div className="divTableRow">
-                        <div className="divTableCell">{this.state.name}</div>
-                        <div className="divTableCell">{this.state.age}</div>
-                        <div className="divTableCell">{this.state.sex}</div>
-                        <div className="divTableCell">
-                          {this.state.height}cm
-                        </div>
-                        <div className="divTableCell">
-                          {this.state.weight}kg
-                        </div>
-                        <div className="divTableCell">{this.state.sports}</div>
-                        <div className="divTableCell">
-                          {this.state.sportsActivity}
-                        </div>
-                        <div className="divTableCell">{training.met}</div>
-                        <div className="divTableCell">
-                          {training.duration_min}min
-                        </div>
-                        <div className="divTableCell">
-                          {training.nf_calories}kcal
-                        </div>
+                  <div className="exerciseData">
+                    <h4>EXERCISE DATA</h4>
+                    <div id="lineTop" className="exerciseResult">{`Name: ${
+                      this.state.name
+                    }`}</div>
+                    <div>
+                      <div id="lineTop" className="exerciseResult">
+                        {`Age: ${this.state.age}`}
                       </div>
                     </div>
-                  </div> */}
-
-                  <div className="exerciseData">
-            <h4>EXERCISE DATA</h4>
-              <div id="lineTop" className="exerciseResult">{`Name: ${this.state.name}`}</div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Age: ${this.state.age}`}
-                </div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">{`Sex: ${this.state.sex}`}</div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Height: ${this.state.height} cm`}
-                </div>
-                <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Weight: ${this.state.weight} kg`}
-                </div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Type of Sports: ${this.state.sports}`}
-                </div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Sports Activity: ${this.state.sportsActivity}`}
-                </div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`MET: ${training.met}`}
-                </div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Duration: ${training.duration_min} min`}
-                </div>
-              </div>
-              <div>
-                <div id="lineTop" className="exerciseResult">
-                  {`Calories burned: ${training.nf_calories} kcal`}
-                </div>
-              </div>
-                <div  id="lineTop" className="exerciseResult"></div>
-              </div>
-            </div>
+                    <div>
+                      <div id="lineTop" className="exerciseResult">{`Sex: ${
+                        this.state.sex
+                      }`}</div>
+                    </div>
+                    <div>
+                      <div id="lineTop" className="exerciseResult">
+                        {`Height: ${this.state.height} cm`}
+                      </div>
+                      <div>
+                        <div id="lineTop" className="exerciseResult">
+                          {`Weight: ${this.state.weight} kg`}
+                        </div>
+                      </div>
+                      <div>
+                        <div id="lineTop" className="exerciseResult">
+                          {`Type of Sports: ${this.state.sports}`}
+                        </div>
+                      </div>
+                      <div>
+                        <div id="lineTop" className="exerciseResult">
+                          {`Sports Activity: ${this.state.sportsActivity}`}
+                        </div>
+                      </div>
+                      <div>
+                        <div id="lineTop" className="exerciseResult">
+                          {`MET: ${training.met}`}
+                        </div>
+                      </div>
+                      <div>
+                        <div id="lineTop" className="exerciseResult">
+                          {`Duration: ${training.duration_min} min`}
+                        </div>
+                      </div>
+                      <div>
+                        <div id="lineTop" className="exerciseResult">
+                          {`Calories burned: ${training.nf_calories} kcal`}
+                        </div>
+                      </div>
+                      <div id="lineTop" className="exerciseResult" />
+                    </div>
+                  </div>
                 </div>
               </div>
             );

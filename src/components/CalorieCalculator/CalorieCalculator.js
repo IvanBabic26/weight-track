@@ -3,10 +3,10 @@ import "./CalorieCalculator.css";
 
 const activityLevel = {
   sedentary: 1.2,
-  slightlyactive: 1.4,
-  moderatelyactive: 1.6,
-  veryactive: 1.75,
-  extraactive: 2,
+  slightlyActive: 1.4,
+  moderatelyActive: 1.6,
+  veryActive: 1.75,
+  extraActive: 2,
   professional: 2.3
 };
 
@@ -97,7 +97,8 @@ export default class CalorieCalculator extends Component {
                 required
               />
               <label>Enter your age:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="0"
                 max="99"
@@ -117,7 +118,8 @@ export default class CalorieCalculator extends Component {
                 <option value="female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="20"
                 max="250"
@@ -127,7 +129,8 @@ export default class CalorieCalculator extends Component {
                 required
               />
               <label>Enter your weight in kg:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="0"
                 max="300"
@@ -145,18 +148,18 @@ export default class CalorieCalculator extends Component {
                 <option value="sedentary">
                   Sedentary lifestyle (little or no exercise)
                 </option>
-                <option value="slightlyactive">
+                <option value="slightlyActive">
                   Slightly active lifestyle (light exercise or sports 1-2
                   days/week)
                 </option>
-                <option value="moderatelyactive">
+                <option value="moderatelyActive">
                   Moderately active lifestyle (moderate exercise or sports 2-3
                   days/week)
                 </option>
-                <option value="veryactive">
+                <option value="veryActive">
                   Very active lifestyle (hard exercise or sports 4-5 days/week)
                 </option>
-                <option value="extraactive">
+                <option value="extraActive">
                   Extra active lifestyle (very hard exercise, physical job or
                   sports 6-7 days/week)
                 </option>
@@ -202,8 +205,11 @@ export default class CalorieCalculator extends Component {
           )}
           {this.state.formComplete && (
             <div className="weightChange">
-            <h4>CALORIE TABLE</h4>
-              <div id="lineTop" className="calorieResult">{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
+              <h4>CALORIE TABLE</h4>
+              <div
+                id="lineTop"
+                className="calorieResult"
+              >{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
               <div>
                 <div id="lineTop" className="calorieResult">
                   {`Mild weight loss (~0.25 kg/week): ${this.calculateCalories() -
@@ -211,7 +217,10 @@ export default class CalorieCalculator extends Component {
                 </div>
               </div>
               <div>
-                <div id="lineTop" className="calorieResult">{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
+                <div
+                  id="lineTop"
+                  className="calorieResult"
+                >{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
                   500} kcal/day`}</div>
               </div>
               <div>
@@ -219,7 +228,26 @@ export default class CalorieCalculator extends Component {
                   {`Extreme weight loss (~1 kg/week): ${this.calculateCalories() -
                     1000} kcal/day`}
                 </div>
-                <div  id="lineTop" className="calorieResult"></div>
+              </div>
+              <div>
+                <div id="lineTop" className="calorieResult">
+                  {`Mild weight gain (~0.25 kg/week): ${this.calculateCalories() +
+                    250} kcal/day`}
+                </div>
+              </div>
+              <div>
+                <div id="lineTop" className="calorieResult">
+                  {`Weight loss (~1 kg/week): ${this.calculateCalories() +
+                    500} kcal/day`}
+                </div>
+                {/* <div  id="lineTop" className="calorieResult"></div> */}
+              </div>
+              <div>
+                <div id="lineTop" className="calorieResult">
+                  {`Extreme weight gain (~1 kg/week): ${this.calculateCalories() +
+                    1000} kcal/day`}
+                </div>
+                <div id="lineTop" className="calorieResult" />
               </div>
             </div>
           )}

@@ -15,22 +15,22 @@ export default function App() {
     <BrowserRouter>
       <div className="headerbar">
         <NavLink to="/home">Home</NavLink>
-        <NavLink to="/bmicalculator">BMI Calculator</NavLink>
-        <NavLink to="/caloriecalculator">Calorie Calculator</NavLink>
-        <NavLink to="/nutritionvalue">Nutrition Value</NavLink>
-        <NavLink to="/traininglog">Training Log</NavLink>
+        <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
+        <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
+        <NavLink to="/nutritionValue">Nutrition Value</NavLink>
+        <NavLink to="/trainingLog">Training Log</NavLink>
       </div>
       <Switch>
         <Route path="/home" component={Home} />
-        <Route path="/bmicalculator" component={BMICalculator} />
-        <Route path="/caloriecalculator" component={CalorieCalculator} />
-        <Route path="/nutritionvalue" component={NutritionValue} />
-        <Route path="/traininglog" component={TrainingLog} />
-        <Route path="/displaycase/:id" component={DisplayCase} />
+        <Route path="/bmiCalculator" component={BMICalculator} />
+        <Route path="/calorieCalculator" component={CalorieCalculator} />
+        <Route path="/nutritionValue" component={NutritionValue} />
+        <Route path="/trainingLog" component={TrainingLog} />
+        <Route path="/displayCase/:id" component={DisplayCase} />
       </Switch>
       <div className="footerBar">
-        <NavLink to="/bmicalculator">BMI Calculator</NavLink>
-        <NavLink to="/caloriecalculator">Calorie Calculator</NavLink>
+        <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
+        <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
         <NavLink to="/home">
           <img alt="house" src={house} />
         </NavLink>

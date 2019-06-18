@@ -4,8 +4,8 @@ import request from "superagent";
 
 export default class DisplayCase extends Component {
   state = {
-    someRecipes: [],
-    someFoods: []
+    recipesData: [],
+    foodData: []
   };
 
   componentDidMount() {
@@ -28,7 +28,7 @@ export default class DisplayCase extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someFoods: res.body.foods });
+          this.setState({ foodData: res.body.foods });
           console.log(res);
         }
       });
@@ -51,7 +51,7 @@ export default class DisplayCase extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someRecipes: res.body.hits });
+          this.setState({ recipesData: res.body.hits });
           console.log(res);
         }
       });
@@ -60,7 +60,7 @@ export default class DisplayCase extends Component {
   render() {
     return (
       <div className="displayCase">
-        {this.state.someFoods.map(foodItem => (
+        {this.state.foodData.map(foodItem => (
           <div key={foodItem.food_name} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodPicture">
@@ -123,7 +123,7 @@ export default class DisplayCase extends Component {
             </div>
           </div>
         ))}
-        {this.state.someRecipes.map(foodRecipes => (
+        {this.state.recipesData.map(foodRecipes => (
           <div key={foodRecipes.recipe.label} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodImg">

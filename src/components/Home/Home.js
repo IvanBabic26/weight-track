@@ -29,7 +29,7 @@ export default class Home extends Component {
             <div className="browseTabs">{`BROWSE WHAT YOUR HEART DESIRES`}</div>
             <div className="tabPage">
               <div className="tabs">
-                  <Link to="/bmicalculator">
+                  <Link to="/bmiCalculator">
                 <div className="imageTab">
                     <img alt="scale" src={scale} />
                 </div>
@@ -40,7 +40,7 @@ export default class Home extends Component {
                   </Link>
               </div>
               <div className="tabs">
-                  <Link to="/caloriecalculator">
+                  <Link to="/calorieCalculator">
                 <div className="imageTab">
                     <img alt="calculator" src={calculator} />
                 </div>
@@ -52,7 +52,7 @@ export default class Home extends Component {
                   </Link>
               </div>
               <div className="tabs">
-                  <Link to="/nutritionvalue">
+                  <Link to="/nutritionValue">
                 <div className="imageTab">
                     <img alt="nutrition" src={nutrition} />
                 </div>
@@ -64,7 +64,7 @@ export default class Home extends Component {
                   </Link>
               </div>
               <div className="tabs">
-                  <Link to="/traininglog">
+                  <Link to="/trainingLog">
                 <div className="imageTab">
                     <img alt="training" src={training} />
                 </div>

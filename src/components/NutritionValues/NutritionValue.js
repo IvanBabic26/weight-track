@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 export default class NutritionValue extends Component {
   
   state = {
-    someFood: [],
-    someOtherFood: [],
-    someRecipes: [],
+    commonFoodData: [],
+    brandedFoodData: [],
+    recipeData: [],
     searchInput: [],
     formComplete: false,
   };
@@ -52,7 +52,7 @@ export default class NutritionValue extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someRecipes: res.body.hits });
+          this.setState({ recipeData: res.body.hits });
           console.log(res);
         }
       });
@@ -72,8 +72,8 @@ export default class NutritionValue extends Component {
         if (err) {
           this.setState({ err });
         } else {
-          this.setState({ someFood: res.body.common });
-          this.setState({ someOtherFood: res.body.branded });
+          this.setState({ commonFoodData: res.body.common });
+          this.setState({ brandedFoodData: res.body.branded });
         }
       });
   };
@@ -137,7 +137,7 @@ export default class NutritionValue extends Component {
                 </div>
                 <br />
                 <div className="recipesSearchOutput">
-                  {this.state.someRecipes.map(recipe => {
+                  {this.state.recipeData.map(recipe => {
                     const recipeNameURI = encodeURI(recipe.recipe.label);
                     return (
                       <div key={recipe.recipe.label} className="outputList">
@@ -158,7 +158,7 @@ export default class NutritionValue extends Component {
             <div className="foodOutput">
             <div id="commonOutput" className="foodList">
               <h2>Common Foods:</h2>
-              {this.state.someFood.map(item => {
+              {this.state.commonFoodData.map(item => {
                 const foodNameURI = encodeURI(item.food_name);
                 return (
                   <div key={item.food_name} className="outputList">
@@ -171,7 +171,7 @@ export default class NutritionValue extends Component {
             </div>
               <div id="brandedOutput" className="foodList">
                 <h2>Branded Foods:</h2>
-                {this.state.someOtherFood.map(item => {
+                {this.state.brandedFoodData.map(item => {
                   const foodNameURI = encodeURI(item.food_name);
                   return (
                     <div key={item.food_name} className="outputList">
