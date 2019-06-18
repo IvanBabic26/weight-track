@@ -244,7 +244,7 @@ export default class TrainingLog extends Component {
           </div>
         </div>
         <div className="trainingTextWrapper">
-          <h1 className="nutriHeader">Train, Burn, Log</h1>
+          <h1 className="trainingLogHeader">Train, Burn, Log</h1>
           <div className="trainText">
             Hi there! Are you ready? Let's begin. Everytime you do some
             exercise, ever wonder how much calories you burned? Well, this is
@@ -286,10 +286,10 @@ export default class TrainingLog extends Component {
                         </div>
                         <div className="divTableCell">{training.met}</div>
                         <div className="divTableCell">
-                          {training.duration_min}
+                          {training.duration_min}min
                         </div>
                         <div className="divTableCell">
-                          {training.nf_calories}
+                          {training.nf_calories}kcal
                         </div>
                       </div>
                     </div>

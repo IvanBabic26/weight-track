@@ -4,7 +4,8 @@
 
 .trainLogWrapper {
   display: inline-block;
-  margin: 50px 50px 50px 140px;
+  margin: 50px;
+  margin-left: 140px;
 }
 
 .inputLog {
@@ -53,6 +54,15 @@
   width: 100%;
   display: table;
 }
+
+.trainingLogHeader {
+  margin: 50px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 58px;
+}
+
 
 .divTable{
 	display: table;
