@@ -7,7 +7,7 @@
   line-height: normal;
   display: grid;
   grid-template-columns: 630px 630px 630px;
-  grid-template-rows: 600px 00px 600px;
+  grid-template-rows: 600px 600px 600px 600px;
 }
 
 .btnSubmitDisplay {
@@ -51,7 +51,6 @@ h1 {
 }
 .foodPicture {
   text-align: center;
-  display: inline;
 }
 
 .foodName {
@@ -59,20 +58,19 @@ h1 {
 }
 
 .selectedFood {
-  display: flex;
+  justify-content: center;
   margin-bottom: 20px; 
 }
-
+.selectedRecipe {
+  justify-content: center;
+  margin-bottom: 20px; 
+}
 .foodName {
   display: block;
   text-align: center;
   margin: 20px;
   padding: 20px;
   font-size: 34px;
-}
-
-.foodPicture {
-  display: block;
 }
 
 .bar1 {
@@ -97,12 +95,6 @@ h1 {
 .line {
   border-top: 1px #5915cc solid;
   padding: 1px 0;
-}
-
-.foodImg {
-  margin-right: 20px;
-  max-width: 110px;
-  max-height: 110px;
 }
 
 .exerciseOutput {
@@ -140,5 +132,15 @@ h1 {
 }
 
 .recipeText {
+  text-align: center;
+}
+
+.selectedRecipe img {
+  display: inline;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.foodImage {
   text-align: center;
 }

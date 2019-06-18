@@ -7,7 +7,6 @@ import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator"
 import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
 import TrainingLog from "./components/TrainingLog/TrainingLog";
-import house from "./components/img/house.png";
 
 export default function App() {
   
@@ -31,9 +30,7 @@ export default function App() {
       <div className="footerBar">
         <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
         <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
-        <NavLink to="/home">
-          <img alt="house" src={house} />
-        </NavLink>
+        <NavLink to="/home">Home</NavLink>
       </div>
     </BrowserRouter>
   );

@@ -80,10 +80,10 @@ export default class Home extends Component {
                 Not sure about what to choose and where to start? Take a little sneak peak and see our preview for each thing you can use in our app!
             </div>
           <div className="preview">
-            <div>BMI</div>
+            {/* <div>BMI</div>
             <div>CALORIE</div>
             <div>NUTRITION</div>
-            <div>TRAINING</div>
+            <div>TRAINING</div> */}
         </div>
           </div>
         </div>

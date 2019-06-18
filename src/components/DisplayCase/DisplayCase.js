@@ -67,7 +67,6 @@ export default class DisplayCase extends Component {
                 <img
                   src={foodItem.photo.thumb}
                   alt="food"
-                  className="foodImg"
                 />
               </div>
               <div className="foodName">{` ${foodItem.food_name} `}</div>
@@ -125,12 +124,11 @@ export default class DisplayCase extends Component {
         ))}
         {this.state.recipesData.map(foodRecipes => (
           <div key={foodRecipes.recipe.label} className="outputDisplay">
-            <div className="selectedFood">
-              <div className="foodImg">
+            <div className="selectedRecipe">
+              <div className="foodImage">
                 <img
                   src={foodRecipes.recipe.image}
                   alt="recipePic"
-                  className="foodImg"
                 />
               </div>
               <div className="foodName">{` ${foodRecipes.recipe.label} `}</div>
