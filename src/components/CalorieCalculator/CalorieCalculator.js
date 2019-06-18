@@ -178,7 +178,7 @@ export default class CalorieCalculator extends Component {
         <div className="mealTextWrapper">
           <h1 className="mealPlanHeader">Calories in Foods</h1>
 
-          <div className="mealIntro">
+          <p className="mealIntro">
             The food you purchase may come with a nutrition label, but labels
             aren’t always easy to understand. This nutritional information,
             however, is essential in maintaining a balanced diet and healthy
@@ -192,7 +192,7 @@ export default class CalorieCalculator extends Component {
             fitness, showing approximately how long it takes to walk, run, or
             bike off the number of calories you’ve eaten. A nutrition label
             certainly can’t do that!
-          </div>
+          </p>
           <h2 className="outputHeader">
             Try our calorie calculator and see the results below:
           </h2>

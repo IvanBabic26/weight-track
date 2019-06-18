@@ -76,9 +76,9 @@ export default class Home extends Component {
                   </Link>
               </div>
             </div>
-            <div className="bottomText">
+            <h4 className="bottomText">
                 Not sure about what to choose and where to start? Take a little sneak peak and see our preview for each thing you can use in our app!
-            </div>
+            </h4>
           <div className="preview">
             {/* <div>BMI</div>
             <div>CALORIE</div>

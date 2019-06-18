@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./DisplayCase.css";
 import request from "superagent";
+import { apiCall } from "../EnvFiles/Env";
 
 export default class DisplayCase extends Component {
   state = {
@@ -8,10 +9,9 @@ export default class DisplayCase extends Component {
     foodData: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.displayRecipe(this.props.match.params.id);
     this.displayFood(this.props.match.params.id);
-    console.log("test");
   }
 
   displayFood = foodName => {
@@ -19,9 +19,7 @@ export default class DisplayCase extends Component {
       .post("https://trackapi.nutritionix.com/v2/natural/nutrients")
       .send({ query: foodName })
       .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
+        apiCall
       })
       .end((err, res) => {
         console.log("response here:", res.body.foods);
@@ -64,10 +62,7 @@ export default class DisplayCase extends Component {
           <div key={foodItem.food_name} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodPicture">
-                <img
-                  src={foodItem.photo.thumb}
-                  alt="food"
-                />
+                <img src={foodItem.photo.thumb} alt="food" />
               </div>
               <div className="foodName">{` ${foodItem.food_name} `}</div>
             </div>
@@ -126,10 +121,7 @@ export default class DisplayCase extends Component {
           <div key={foodRecipes.recipe.label} className="outputDisplay">
             <div className="selectedRecipe">
               <div className="foodImage">
-                <img
-                  src={foodRecipes.recipe.image}
-                  alt="recipePic"
-                />
+                <img src={foodRecipes.recipe.image} alt="recipePic" />
               </div>
               <div className="foodName">{` ${foodRecipes.recipe.label} `}</div>
             </div>

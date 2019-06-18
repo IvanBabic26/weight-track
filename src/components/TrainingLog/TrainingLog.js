@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./TrainingLog.css";
 import request from "superagent";
+import { activities, activityUnit } from "../EnvFiles/Const";
+import { apiCall } from "../EnvFiles/Env";
 
 export default class TrainingLog extends Component {
   state = {
@@ -13,162 +15,8 @@ export default class TrainingLog extends Component {
     sports: "Adventure Sports",
     sportsActivity: "Kayaking",
     distance: "",
-    activityUnit: {
-      Kayaking: "km",
-      Canoeing: "min",
-      "Cross-Country Skiing": "km",
-      "Whitewater Rafting": "min",
-      Surfing: "min",
-      Snorkeling: "min",
-      Swimming: "km",
-      Diving: "min",
-      "Paddle Boarding": "min",
-      Rowing: "km",
-      "Scuba Diving": "min",
-      Aerobics: "min",
-      Aikido: "min",
-      Archery: "min",
-      Gymnastics: "min",
-      Bodybuilding: "min",
-      Boxing: "min",
-      Running: "km",
-      Fencing: "min",
-      "Figure Skating": "min",
-      Judo: "min",
-      Karate: "min",
-      Kickboxing: "min",
-      "Mixed Martial Arts": "min",
-      "Muay Thai": "min",
-      Trampolining: "min",
-      Walking: "km",
-      "Weight Lifting": "min",
-      Wrestling: "min",
-      Baseball: "min",
-      Basketball: "min",
-      Tennis: "min",
-      Bowling: "min",
-      Football: "min",
-      Golf: "min",
-      Handball: "min",
-      Hockey: "min",
-      Rugby: "min",
-      Soccer: "min",
-      Volleyball: "min",
-      "Water Polo": "min",
-      Skateboarding: "min",
-      Skydiving: "min",
-      Snowboarding: "min",
-      Wakeboarding: "min",
-      "Rock Climbing": "min",
-      "Road Cycling": "min",
-      Hiking: "km",
-      "Mountain Climbing": "min",
-      "Car Driving": "km",
-      "Moped Ride": "km",
-      Capoeira: "min",
-      Cheerleading: "min",
-      CrossFit: "min",
-      Dancing: "min",
-      Darts: "min",
-      Foosball: "min",
-      Jogging: "km",
-      "Laser Tag": "min",
-      Paintball: "min",
-      Parkour: "min",
-      Triathlon: "km"
-    },
-    activities: [
-      {
-        name: "Adventure Sports",
-        lists: [
-          "Kayaking",
-          "Canoeing",
-          "Cross-Country Skiing",
-          "Whiteater Rafting",
-          "Surfing"
-        ]
-      },
-      {
-        name: "Aquatic Sports",
-        lists: [
-          "Snorkeling",
-          "Swimming",
-          "Diving",
-          "Paddle Boarding",
-          "Rowing",
-          "Scuba Diving"
-        ]
-      },
-      {
-        name: "Strength and Agility Sports",
-        lists: [
-          "Aerobics",
-          "Aikido",
-          "Archery",
-          "Gymnastics",
-          "Bodybuilding",
-          "Boxing",
-          "Running",
-          "Road Cycling",
-          "Fencing",
-          "Figure Skating",
-          "Judo",
-          "Karate",
-          "Kickboxing",
-          "Mixed Martial Arts",
-          "Muay Thai",
-          "Trampolining",
-          "Walking",
-          "Weight Lifting",
-          "Wrestling"
-        ]
-      },
-      {
-        name: "Ball Sports",
-        lists: [
-          "Baseball",
-          "Basketball",
-          "Tennis",
-          "Bowling",
-          "Football",
-          "Golf",
-          "Handball",
-          "Hockey",
-          "Rugby",
-          "Soccer",
-          "Volleyball",
-          "Water Polo"
-        ]
-      },
-      {
-        name: "Extreme Sports",
-        lists: ["Skateboarding", "Skydiving", "Snowboarding", "Wakeboarding"]
-      },
-      {
-        name: "Mountain Sports",
-        lists: ["Rock Climbing", "Road cycling", "Hiking", "Mountain Climbing"]
-      },
-      {
-        name: "Motorised Sports",
-        lists: ["Car Driving", "Moped Ride"]
-      },
-      {
-        name: "Sports Activities",
-        lists: [
-          "Capoeira",
-          "Cheerleading",
-          "CrossFit",
-          "Dancing",
-          "Darts",
-          "Foosball",
-          "Jogging",
-          "Laser Tag",
-          "Paintball",
-          "Parkour",
-          "Triathlon"
-        ]
-      }
-    ]
+    activities,
+    activityUnit
   };
 
   componentDidMount() {
@@ -188,9 +36,7 @@ export default class TrainingLog extends Component {
         weight_kg: this.state.weight
       })
       .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
+        apiCall
       })
       .end((err, res) => {
         console.log("response here:", res.body.exercises);
@@ -279,9 +125,9 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-              {this.state.activities.map(activeList => {
-                return <option key={activeList.name}>{activeList.name}</option>;
-              })}
+              {this.state.activities.map(activeList => (
+                <option key={activeList.name}>{activeList.name}</option>
+              ))}
             </select>
             <label>Sports Activity:</label>
             <select
@@ -290,9 +136,9 @@ export default class TrainingLog extends Component {
               className="selectOption"
               required
             >
-              {chosenActivities[0].lists.map(activity => {
-                return <option key={activity}>{activity}</option>;
-              })}
+              {chosenActivities[0].lists.map(activity => (
+                <option key={activity}>{activity}</option>
+              ))}
             </select>
             <label>Enter the duration(min)/distance(km):</label>
             <input
@@ -313,13 +159,13 @@ export default class TrainingLog extends Component {
         </div>
         <div className="trainingTextWrapper">
           <h1 className="trainingLogHeader">Train, Burn, Log</h1>
-          <div className="trainText">
+          <p className="trainText">
             Hi there! Are you ready? Let's begin. Everytime you do some
             exercise, ever wonder how much calories you burned? Well, this is
             the place for you. Here you can make your own log with your training
             routines and exercises. Just select the activites you did and voila,
             see your progress on that fat burning regime!
-          </div>
+          </p>
           {this.state.trainingLogData.map(training => {
             return (
               <div key={training.tag_id} className="outputList">
