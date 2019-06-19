@@ -7,6 +7,9 @@ import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator"
 import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
 import TrainingLog from "./components/TrainingLog/TrainingLog";
+import BackToTop from "./components/BackTo/BackToTop";
+// import BackToPrevious from "./components/BackTo/BackToPrevious";
+// import background from "./background.png";
 
 export default function App() {
   
@@ -28,12 +31,17 @@ export default function App() {
         <Route path="/trainingLog" component={TrainingLog} />
         <Route path="/displayCase/:id" component={DisplayCase} />
       </Switch>
+    
+      {/* <img src={background} alt="bgpicture" /> */}
+    
       {/* TODO:extract to a component */}
       <div className="footerBar">
         <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
         <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
         <NavLink to="/home">Home</NavLink>
       </div>
+      {/* <BackToPrevious /> */}
+      <BackToTop />
     </BrowserRouter>
   );
 }
