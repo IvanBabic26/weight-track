@@ -1,0 +1,27 @@
+.footerBar {
+  overflow: hidden;
+  background: linear-gradient(to left, #6759b4, #3a1cbd);
+  border-top-left-radius: 50% 20%;
+  border-top-right-radius: 50% 20%;
+}
+
+.footerBar a {
+  float: left;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  height: 40px;
+  margin: 20px;
+  padding-left: 20px;
+  align-items: center;
+  font-size: 20px;
+  display: flex;
+}
+
+.footerBar a:hover {
+  color: rgb(255, 0, 0);
+}
+
+.footerBar a.active {
+  color: rgb(236, 46, 46);
+}

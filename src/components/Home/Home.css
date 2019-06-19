@@ -1,4 +1,4 @@
-.headerBar {
+/* .headerBar {
   overflow: hidden;
   box-sizing: border-box;
   background: linear-gradient(to left, #6759b4, #3a1cbd);
@@ -27,7 +27,7 @@
 
 .headerBar a.active {
   color: rgb(236, 46, 46);
-}
+} */
 
 .homePage {
   background-color: #fff;
@@ -97,11 +97,6 @@ a.divLink {
   height: 190px;
 }
 
-/* .homePhoneWrapper {
-  display: inline-block;
-  margin: 120px;
-} */
-
 .headerTab {
   display: inline-block;
   color: #111;
@@ -120,43 +115,4 @@ a.divLink {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-}
-
-/* .bottomText {
-
-} */
-
-/* .preview {
-} */
-
-.footerBar {
-  overflow: hidden;
-  background: linear-gradient(to left, #6759b4, #3a1cbd);
-  border-top-left-radius: 50% 20%;
-  border-top-right-radius: 50% 20%;
-}
-
-.footerBar a {
-  float: right;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  height: 40px;
-  margin: 20px;
-  padding-left: 20px;
-  align-items: center;
-  font-size: 20px;
-  display: flex;
-}
-
-.footerBar a:hover {
-  color: rgb(255, 0, 0);
-}
-
-.footerBar a.active {
-  color: rgb(236, 46, 46);
-}
-
-.footerBar img {
-  height: 80px;
 }
