@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./NutritionValue.css";
 import request from "superagent";
 import { Link } from "react-router-dom";
-// import { apiCall } from "../EnvFiles/Env";
+import { apiIdentification } from "../EnvFiles/API";
 
 export default class NutritionValue extends Component {
   state = {
@@ -19,21 +19,23 @@ export default class NutritionValue extends Component {
     });
   };
 
-  submitFormFood = b => {
-    b.preventDefault();
+  submitFormFood = e => {
+    e.preventDefault();
+
     this.setState({
       formFoodComplete: true
     });
   };
 
-  submitFormRecipe = b => {
-    b.preventDefault();
+  submitFormRecipe = e => {
+    e.preventDefault();
+
     this.setState({
       formRecipeComplete: true
     });
   };
 
-  displayRecipe = () => {
+  getRecipes = () => {
     request
       .get("https://api.edamam.com/search")
       .query({
@@ -42,18 +44,15 @@ export default class NutritionValue extends Component {
         app_key: "a1bce3ac5fb496203057355abc225646"
       })
       .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
         Accept: "application/json"
       })
       .end((err, res) => {
         console.log("response here:", res.hits);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ recipeData: res.body.hits });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ recipeData: res.body.hits });
+        console.log(res);
       });
   };
 
@@ -61,19 +60,16 @@ export default class NutritionValue extends Component {
     request
       .get("https://trackapi.nutritionix.com/v2/search/instant")
       .query({ query: this.state.searchInput })
-      .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
-      })
+      .set(apiIdentification)
       .end((err, res) => {
         console.log(err, res.body);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ commonFoodData: res.body.common });
-          this.setState({ brandedFoodData: res.body.branded });
+          return this.setState({ err });
         }
+        this.setState({
+          commonFoodData: res.body.common,
+          brandedFoodData: res.body.branded
+        });
       });
   };
 
@@ -112,18 +108,18 @@ export default class NutritionValue extends Component {
                   type="submit"
                   className="btnSubmitNutri"
                   value="Submit"
-                  onClick={this.displayRecipe}
+                  onClick={this.getRecipes}
                 />
               </form>
             </div>
             <div className="nutriValueWrapper">
               <h1 className="nutriHeader">Welcome to our food database!</h1>
-              <span className="nutriText">
+              <p className="nutriText">
                 Here you can find all the nutrition values of the food you
                 consume. Combining your search with our BMI and Calorie
                 Calculators, easily take care of your meal plans and start
                 caring about yourself right away!
-              </span>
+              </p>
             </div>
           </div>
           <div className="outputWrapper">
@@ -136,12 +132,19 @@ export default class NutritionValue extends Component {
                   </div>
                   <br />
                   <div className="recipesSearchOutput">
-                    {this.state.recipeData.map(recipe => {
-                      const recipeNameURI = encodeURI(recipe.recipe.label);
+                    {this.state.recipeData.map(item => {
+                      const recipeNameURI = encodeURI(item.recipe.label);
                       return (
-                        <div key={recipe.recipe.label} className="outputList">
-                          <Link to={`/displaycase/${recipeNameURI}`}>
-                            {recipe.recipe.label}
+                        <div key={item.recipe.label} className="outputList">
+                          <Link
+                            to={{
+                              pathname: `/displaycase/${recipeNameURI}`,
+                              state: {
+                                type: "recipe"
+                              }
+                            }}
+                          >
+                            {item.recipe.label}
                           </Link>
                         </div>
                       );
@@ -161,7 +164,14 @@ export default class NutritionValue extends Component {
                       const foodNameURI = encodeURI(item.food_name);
                       return (
                         <div key={item.food_name} className="outputList">
-                          <Link to={`/displaycase/${foodNameURI}`}>
+                          <Link
+                            to={{
+                              pathname: `/displaycase/${foodNameURI}`,
+                              state: {
+                                type: "food"
+                              }
+                            }}
+                          >
                             {item.food_name}
                           </Link>
                         </div>
@@ -174,7 +184,14 @@ export default class NutritionValue extends Component {
                       const foodNameURI = encodeURI(item.food_name);
                       return (
                         <div key={item.food_name} className="outputList">
-                          <Link to={`/displaycase/${foodNameURI}`}>
+                          <Link
+                            to={{
+                              pathname: `/displaycase/${foodNameURI}`,
+                              state: {
+                                type: "food"
+                              }
+                            }}
+                          >
                             {item.food_name}
                           </Link>
                         </div>

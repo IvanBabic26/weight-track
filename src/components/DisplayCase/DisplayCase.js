@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./DisplayCase.css";
 import request from "superagent";
-// import { apiCall } from "../EnvFiles/Env";
+import { apiIdentification } from "../EnvFiles/API";
 
 export default class DisplayCase extends Component {
   state = {
@@ -10,27 +10,24 @@ export default class DisplayCase extends Component {
   };
 
   componentWillMount() {
+    if (this.props.location.state.type === "food") {
+      return this.displayFood(this.props.match.params.id);
+    }
     this.displayRecipe(this.props.match.params.id);
-    this.displayFood(this.props.match.params.id);
   }
 
   displayFood = foodName => {
     request
       .post("https://trackapi.nutritionix.com/v2/natural/nutrients")
       .send({ query: foodName })
-      .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
-      })
+      .set(apiIdentification)
       .end((err, res) => {
         console.log("response here:", res.body.foods);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ foodData: res.body.foods });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ foodData: res.body.foods });
+        console.log(res);
       });
   };
 
@@ -49,11 +46,10 @@ export default class DisplayCase extends Component {
       .end((err, res) => {
         console.log("response here:", res.hits);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ recipesData: res.body.hits });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ recipesData: res.body.hits });
+        console.log(res);
       });
   };
 

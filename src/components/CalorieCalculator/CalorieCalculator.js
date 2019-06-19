@@ -15,36 +15,15 @@ export default class CalorieCalculator extends Component {
 
   change = (e, name) => {
     e.preventDefault();
+    
     this.setState({ [name]: e.target.value });
   };
 
   calculateCalories = () => {
     const sexIndex = this.state.sex === "male" ? 5 : -161;
-    let activity = activityLevel[this.state.activity];
+    const activity = activityLevel[this.state.activity];
 
-    // console.log(activityLevel[activity]);
-
-    // switch (activity) {
-    //   case "slightlyactive":
-    //     activity = 1.4;
-    //     break;
-    //   case "moderatelyactive":
-    //     activity = 1.6;
-    //     break;
-    //   case "veryactive":
-    //     activity = 1.75;
-    //     break;
-    //   case "extraactive":
-    //     activity = 2;
-    //     break;
-    //   case "professional":
-    //     activity = 2.3;
-    //     break;
-    //   default:
-    //     activity = 1.2;
-    //     break;
-    // }
-
+    // TODO:izvuci u const i return const
     return (
       (10 * this.state.weight +
         6.25 * this.state.height -
@@ -56,6 +35,7 @@ export default class CalorieCalculator extends Component {
 
   submitForm = e => {
     e.preventDefault();
+
     this.calculateCalories();
     this.setState({
       formComplete: true
@@ -70,6 +50,7 @@ export default class CalorieCalculator extends Component {
       age.length > 0 &&
       height.length > 0 &&
       weight.length > 0;
+
     return (
       <div className="mealPlan">
         <div className="mealPlanWrapper">
@@ -135,6 +116,7 @@ export default class CalorieCalculator extends Component {
                 onChange={e => this.change(e, "activity")}
                 className="selectOptionActivity"
               >
+                {/* TODO:extract to array/obejct */}
                 <option value="sedentary">
                   Sedentary lifestyle (little or no exercise)
                 </option>
@@ -190,7 +172,7 @@ export default class CalorieCalculator extends Component {
             <div className="outputCalories">
               {`Hello ${
                 this.state.name
-              }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
+                }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
             </div>
           )}
           {this.state.formComplete && (
@@ -230,7 +212,6 @@ export default class CalorieCalculator extends Component {
                   {`Weight gain (~1 kg/week): ${this.calculateCalories() +
                     500} kcal/day`}
                 </div>
-                {/* <div  id="lineTop" className="calorieResult"></div> */}
               </div>
               <div>
                 <div id="lineTop" className="calorieResult">

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./TrainingLog.css";
 import request from "superagent";
 import { activities, activityUnit } from "../EnvFiles/Const";
-// import { apiCall } from "../EnvFiles/Env";
+import { apiIdentification } from "../EnvFiles/API";
 
 export default class TrainingLog extends Component {
   state = {
@@ -35,29 +35,26 @@ export default class TrainingLog extends Component {
         height_cm: this.state.height,
         weight_kg: this.state.weight
       })
-      .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
-      })
+      .set(apiIdentification)
       .end((err, res) => {
         console.log("response here:", res.body.exercises);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ trainingLogData: res.body.exercises });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ trainingLogData: res.body.exercises });
+        console.log(res);
       });
   };
 
   change = (e, name) => {
     e.preventDefault();
+    
     this.setState({ [name]: e.target.value });
   };
 
-  submitForm = e => {
+  submitTrainingForm = e => {
     e.preventDefault();
+
     this.getExercise();
     this.setState({
       formComplete: true
@@ -68,6 +65,7 @@ export default class TrainingLog extends Component {
     const chosenActivities = this.state.activities.filter(
       activeList => activeList.name === this.state.sports
     );
+
     return (
       <div className="trainLog">
         <div className="trainLogWrapper">
@@ -75,96 +73,96 @@ export default class TrainingLog extends Component {
             <div className="inputLogHeader">
               <h2>Training Data</h2>
             </div>
-            <form id="formTraining" onSubmit={this.submitForm}>
-            <label>Please enter your name:</label>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={e => this.change(e, "name")}
-              required
-            />
-            <label>Enter your age:</label>
-            <input
-              className="inputNumber"
-              type="number"
-              min="0"
-              max="99"
-              name="age"
-              value={this.state.age}
-              onChange={e => this.change(e, "age")}
-              required
-            />
-            <label>Sex:</label>
-            <select
-              value={this.state.sex}
-              onChange={e => this.change(e, "sex")}
-              className="selectOption"
-              required
-            >
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
+            <form id="formTraining" onSubmit={this.submitTrainingForm}>
+              <label>Please enter your name:</label>
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={e => this.change(e, "name")}
+                required
+              />
+              <label>Enter your age:</label>
+              <input
+                className="inputNumber"
+                type="number"
+                min="0"
+                max="99"
+                name="age"
+                value={this.state.age}
+                onChange={e => this.change(e, "age")}
+                required
+              />
+              <label>Sex:</label>
+              <select
+                value={this.state.sex}
+                onChange={e => this.change(e, "sex")}
+                className="selectOption"
+                required
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
 
-            <label>Enter your height in cm:</label>
-            <input
-              className="inputNumber"
-              type="number"
-              min="20"
-              max="250"
-              name="height"
-              value={this.state.height}
-              onChange={e => this.change(e, "height")}
-              required
-            />
-            <label>Enter your weight in kg:</label>
-            <input
-              className="inputNumber"
-              type="number"
-              min="0"
-              max="300"
-              name="weight"
-              value={this.state.weight}
-              onChange={e => this.change(e, "weight")}
-              required
-            />
+              <label>Enter your height in cm:</label>
+              <input
+                className="inputNumber"
+                type="number"
+                min="20"
+                max="250"
+                name="height"
+                value={this.state.height}
+                onChange={e => this.change(e, "height")}
+                required
+              />
+              <label>Enter your weight in kg:</label>
+              <input
+                className="inputNumber"
+                type="number"
+                min="0"
+                max="300"
+                name="weight"
+                value={this.state.weight}
+                onChange={e => this.change(e, "weight")}
+                required
+              />
 
-            <label>Type of Sports:</label>
-            <select
-              value={this.state.sports}
-              onChange={e => this.change(e, "sports")}
-              className="selectOption"
-              required
-            >
-              {this.state.activities.map(activeList => (
-                <option key={activeList.name}>{activeList.name}</option>
-              ))}
-            </select>
-            <label>Sports Activity:</label>
-            <select
-              value={this.state.sportsActivity}
-              onChange={e => this.change(e, "sportsActivity")}
-              className="selectOption"
-              required
-            >
-              {chosenActivities[0].lists.map(activity => (
-                <option key={activity}>{activity}</option>
-              ))}
-            </select>
-            <label>Enter the duration(min)/distance(km):</label>
-            <input
-              type="number"
-              name="distance"
-              value={this.state.distance}
-              onChange={e => this.change(e, "distance")}
-              required
-            />
-            <label>Get the data!</label>
-            <input
-              type="submit"
-              className="btnSubmitExercise"
-              value="Submit"
-            />
+              <label>Type of Sports:</label>
+              <select
+                value={this.state.sports}
+                onChange={e => this.change(e, "sports")}
+                className="selectOption"
+                required
+              >
+                {this.state.activities.map(activeList => (
+                  <option key={activeList.name}>{activeList.name}</option>
+                ))}
+              </select>
+              <label>Sports Activity:</label>
+              <select
+                value={this.state.sportsActivity}
+                onChange={e => this.change(e, "sportsActivity")}
+                className="selectOption"
+                required
+              >
+                {chosenActivities[0].lists.map(activity => (
+                  <option key={activity}>{activity}</option>
+                ))}
+              </select>
+              <label>Enter the duration(min)/distance(km):</label>
+              <input
+                type="number"
+                name="distance"
+                value={this.state.distance}
+                onChange={e => this.change(e, "distance")}
+                required
+              />
+              <label>Get the data!</label>
+              <input
+                type="submit"
+                className="btnSubmitExercise"
+                value="Submit"
+              />
             </form>
           </div>
         </div>

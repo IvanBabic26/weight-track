@@ -3,11 +3,13 @@
   background-color:#fff;
   color: #111;
 }
+
 .bmiPage {
   display: inline-block;
   margin: 50px;
   margin-left: 140px;
 }
+
 .bmiFormCalc {
   display: inline-block;
   background-color: #fff;
@@ -15,6 +17,7 @@
   border: 2px solid #5915cc;
   border-radius: 55px;
 }
+
 .bmiHeader {
   background-color: #5915cc;
   color: #fff;
@@ -74,6 +77,7 @@ input {
   text-align: center;
   font-size: 58px;
 }
+
 .secondHeaderText {
   text-align: center;
   display: inline-block;
@@ -89,17 +93,27 @@ input {
   font-size: 24px;
   font-weight: bold;
 }
+
+.outputHeader {
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .outputBmi {
   text-align: center;
   display: block;
   margin-left: 150px;
   margin-right: 150px;
-  padding: 30px;
+  padding: 50px;
   font-size: 22px;
   border: 1px #5915cc solid;
   font-weight: bold;
   border-radius: 52px;
 }
+
 div.outputBmi:hover {
   background: linear-gradient(to right, #30256b, #3116aa);
   color: #fff;

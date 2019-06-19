@@ -13,8 +13,9 @@ export default class BMICalculator extends Component {
     formComplete: false
   };
 
-  change = (e, name) => {
+  changeValue = (e, name) => {
     e.preventDefault();
+    
     this.setState({ [name]: e.target.value });
   };
 
@@ -28,6 +29,24 @@ export default class BMICalculator extends Component {
     const low = Math.round(18.5 * heightSquared);
     const high = Math.round(24.99 * heightSquared);
     let message = "";
+
+    // /TODO: switch BMI
+    // switch (bmi) {
+    //   case (bmi >= 18.5 && bmi <= 24.99):
+    //     return " You are in a healthy weight range!";
+
+    //   case (bmi >= 25 && bmi <= 29.9):
+    //     return " You are overweight!";
+
+    //   case (bmi >= 30):
+    //     return" You are obese!";
+
+    //   default: 
+    //     return" You are under weight!";
+
+    // }
+
+
 
     if (bmi >= 18.5 && bmi <= 24.99) {
       message = " You are in a healthy weight range!";
@@ -48,16 +67,11 @@ export default class BMICalculator extends Component {
 
   submitForm = e => {
     e.preventDefault();
+
     this.calculateBMI();
     this.setState({
       formComplete: true
     });
-  };
-
-  change = (e, name) => {
-    e.preventDefault();
-    console.log(e.target);
-    this.setState({ [name]: e.target.value });
   };
 
   render() {
@@ -67,10 +81,11 @@ export default class BMICalculator extends Component {
       age.length > 0 &&
       height.length > 0 &&
       weight.length > 0;
+
     return (
       <div className="bmiCalc">
         <div className="bmiPage">
-        <div className="bmiFormCalc">
+          <div className="bmiFormCalc">
             <div className="bmiHeader">
               <h2>BMI Calculator</h2>
             </div>
@@ -137,7 +152,7 @@ export default class BMICalculator extends Component {
           <h1 className="bmiTextHeader">Body Mass Index</h1>
 
           <div className="bmiIntro">
-            <h2 className="secondHeaderText">
+            <p className="secondHeaderText">
               The BMI calculator is a useful tool that measures whether you are
               overweight, underweight, or just right. Your weight alone is not
               enough to tell, as a tall, skinny man may easily weigh more than a
@@ -146,8 +161,8 @@ export default class BMICalculator extends Component {
               returning a single number. This number will fit into a category on
               the scale of BMI ranges, which are defined as underweight, normal,
               overweight, and obese.
-            </h2>
-            <h3 className="thirdHeaderText">
+            </p>
+            <p className="thirdHeaderText">
               At the left you can see our BMI calculator, there are fields for
               you to plug in your height and weight plus some other stuff. Plug
               in these values, and you'll instantly have your BMI and a little
@@ -157,12 +172,12 @@ export default class BMICalculator extends Component {
               somewhat misleading for individuals who are well muscled (such as
               body builders), or for those who have lost a significant amount of
               muscle (such as the elderly).
-            </h3>
+            </p>
           </div>
-          <h2 className="outputHeader">
+          <p className="outputHeader">
             Use the BMI calculator to see your Body Mass Index Ratio. The
             results are shown here:
-          </h2>
+          </p>
           {this.state.formComplete && (
             <div className="outputBmi">
               {`Hello ${this.state.name}! Your BMI is currently `}

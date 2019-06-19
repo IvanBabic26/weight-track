@@ -12,7 +12,8 @@ export default function App() {
   
   return (
     <BrowserRouter>
-      <div className="headerbar">
+    {/* TODO:extract to a component */}
+    <div className="headerBar">
         <NavLink to="/home">Home</NavLink>
         <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
         <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/trainingLog" component={TrainingLog} />
         <Route path="/displayCase/:id" component={DisplayCase} />
       </Switch>
+      {/* TODO:extract to a component */}
       <div className="footerBar">
         <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
         <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
