@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import "./CalorieCalculator.css";
-
-const activityLevel = {
-  sedentary: 1.2,
-  slightlyActive: 1.4,
-  moderatelyActive: 1.6,
-  veryActive: 1.75,
-  extraActive: 2,
-  professional: 2.3
-};
+import { activityLevel } from "../EnvFiles/Calorie";
 
 export default class CalorieCalculator extends Component {
   state = {
@@ -17,9 +9,7 @@ export default class CalorieCalculator extends Component {
     weight: "",
     height: "",
     sex: "male",
-    activity: "sedentary",
-    calories: "",
-    message: "",
+    activity: activityLevel,
     formComplete: false
   };
 
@@ -237,7 +227,7 @@ export default class CalorieCalculator extends Component {
               </div>
               <div>
                 <div id="lineTop" className="calorieResult">
-                  {`Weight loss (~1 kg/week): ${this.calculateCalories() +
+                  {`Weight gain (~1 kg/week): ${this.calculateCalories() +
                     500} kcal/day`}
                 </div>
                 {/* <div  id="lineTop" className="calorieResult"></div> */}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./TrainingLog.css";
 import request from "superagent";
 import { activities, activityUnit } from "../EnvFiles/Const";
-import { apiCall } from "../EnvFiles/Env";
+// import { apiCall } from "../EnvFiles/Env";
 
 export default class TrainingLog extends Component {
   state = {
@@ -36,7 +36,9 @@ export default class TrainingLog extends Component {
         weight_kg: this.state.weight
       })
       .set({
-        apiCall
+        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
+        "x-app-id": "3b0fdaa1",
+        Accept: "application/json"
       })
       .end((err, res) => {
         console.log("response here:", res.body.exercises);
@@ -54,6 +56,14 @@ export default class TrainingLog extends Component {
     this.setState({ [name]: e.target.value });
   };
 
+  submitForm = e => {
+    e.preventDefault();
+    this.getExercise();
+    this.setState({
+      formComplete: true
+    });
+  };
+
   render() {
     const chosenActivities = this.state.activities.filter(
       activeList => activeList.name === this.state.sports
@@ -65,6 +75,7 @@ export default class TrainingLog extends Component {
             <div className="inputLogHeader">
               <h2>Training Data</h2>
             </div>
+            <form id="formTraining" onSubmit={this.submitForm}>
             <label>Please enter your name:</label>
             <input
               type="text"
@@ -148,13 +159,13 @@ export default class TrainingLog extends Component {
               onChange={e => this.change(e, "distance")}
               required
             />
-            <label>I like trains!</label>
+            <label>Get the data!</label>
             <input
               type="submit"
               className="btnSubmitExercise"
               value="Submit"
-              onClick={this.getExercise}
             />
+            </form>
           </div>
         </div>
         <div className="trainingTextWrapper">

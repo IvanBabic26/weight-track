@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./NutritionValue.css";
 import request from "superagent";
 import { Link } from "react-router-dom";
-import { apiCall } from "../EnvFiles/Env";
+// import { apiCall } from "../EnvFiles/Env";
 
 export default class NutritionValue extends Component {
   state = {
@@ -10,8 +10,7 @@ export default class NutritionValue extends Component {
     brandedFoodData: [],
     recipeData: [],
     searchInput: [],
-    formComplete: false,
-    apiCall
+    formComplete: false
   };
 
   searchChange = e => {
@@ -43,6 +42,8 @@ export default class NutritionValue extends Component {
         app_key: "a1bce3ac5fb496203057355abc225646"
       })
       .set({
+        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
+        "x-app-id": "3b0fdaa1",
         Accept: "application/json"
       })
       .end((err, res) => {
@@ -61,7 +62,9 @@ export default class NutritionValue extends Component {
       .get("https://trackapi.nutritionix.com/v2/search/instant")
       .query({ query: this.state.searchInput })
       .set({
-        apiCall
+        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
+        "x-app-id": "3b0fdaa1",
+        Accept: "application/json"
       })
       .end((err, res) => {
         console.log(err, res.body);
@@ -126,7 +129,7 @@ export default class NutritionValue extends Component {
           <div className="outputWrapper">
             {this.state.formRecipeComplete && (
               <div>
-                <h2 className="headerOutput">Recipe are shown below:</h2>
+                <h2 className="headerOutput">Recipes are shown below:</h2>
                 <div className="recipeOutput">
                   <div id="commonOutput" className="foodList">
                     <h2>Recipes:</h2>

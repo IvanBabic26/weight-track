@@ -1,5 +1,6 @@
 .nutritionValue {
   display: flex;
+  min-height: 280vh;
   background-color: #fff;
   color: #111;
 }
@@ -71,7 +72,7 @@
 .foodOutput {
   display: flex;
   text-align: center;
-  margin: 50px;
+  margin: 40px;
 }
 
 h2 {
@@ -130,7 +131,7 @@ h2 {
 .recipeOutput {
   display: inline;
   text-align: center;
-  margin: 50px;
+  margin: 40px;
 }
 
 .outputWrapper {

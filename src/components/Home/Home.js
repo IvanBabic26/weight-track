@@ -26,7 +26,7 @@ export default class Home extends Component {
               finding the nutrition values for the food you eat. Also check out our training log, enter you activity and see how many calories you've expended. The app is a small
               helper to achieving your weight goals and get in shape!`}
             </h2>
-            <div className="browseTabs">{`BROWSE WHAT YOUR HEART DESIRES`}</div>
+            <h2 className="browseTabs">{`BROWSE WHAT YOUR HEART DESIRES`}</h2>
             <div className="tabPage">
               <div className="tabs">
                   <Link to="/bmiCalculator">
