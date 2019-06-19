@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import "./NutritionValue.css";
 import request from "superagent";
 import { Link } from "react-router-dom";
+import { apiIdentification } from "../EnvFiles/API";
 
 export default class NutritionValue extends Component {
-  
   state = {
-    someFood: [],
-    someOtherFood: [],
-    someRecipes: [],
+    commonFoodData: [],
+    brandedFoodData: [],
+    recipeData: [],
     searchInput: [],
-    formComplete: false,
+    formComplete: false
   };
-
-
-
 
   searchChange = e => {
     this.setState({
@@ -22,21 +19,23 @@ export default class NutritionValue extends Component {
     });
   };
 
-  submitFormFood = b => {
-    b.preventDefault();
+  submitFormFood = e => {
+    e.preventDefault();
+
     this.setState({
       formFoodComplete: true
     });
   };
 
-  submitFormRecipe = b => {
-    b.preventDefault();
+  submitFormRecipe = e => {
+    e.preventDefault();
+
     this.setState({
       formRecipeComplete: true
     });
   };
 
-  displayRecipe = () => {
+  getRecipes = () => {
     request
       .get("https://api.edamam.com/search")
       .query({
@@ -50,11 +49,10 @@ export default class NutritionValue extends Component {
       .end((err, res) => {
         console.log("response here:", res.hits);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ someRecipes: res.body.hits });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ recipeData: res.body.hits });
+        console.log(res);
       });
   };
 
@@ -62,19 +60,16 @@ export default class NutritionValue extends Component {
     request
       .get("https://trackapi.nutritionix.com/v2/search/instant")
       .query({ query: this.state.searchInput })
-      .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
-      })
+      .set(apiIdentification)
       .end((err, res) => {
         console.log(err, res.body);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ someFood: res.body.common });
-          this.setState({ someOtherFood: res.body.branded });
+          return this.setState({ err });
         }
+        this.setState({
+          commonFoodData: res.body.common,
+          brandedFoodData: res.body.branded
+        });
       });
   };
 
@@ -113,78 +108,99 @@ export default class NutritionValue extends Component {
                   type="submit"
                   className="btnSubmitNutri"
                   value="Submit"
-                  onClick={this.displayRecipe}
+                  onClick={this.getRecipes}
                 />
               </form>
             </div>
             <div className="nutriValueWrapper">
               <h1 className="nutriHeader">Welcome to our food database!</h1>
-              <div className="nutriText">
+              <p className="nutriText">
                 Here you can find all the nutrition values of the food you
                 consume. Combining your search with our BMI and Calorie
                 Calculators, easily take care of your meal plans and start
                 caring about yourself right away!
-              </div>
+              </p>
             </div>
           </div>
-            <div className="outputWrapper">
-          {this.state.formRecipeComplete && (
-            <div>
-              <h2 className="headerOutput">Recipe are shown below:</h2>
-              <div className="recipeOutput">
-                <div id="commonOutput" className="foodList">
-                  <h2>Recipes:</h2>
-                </div>
-                <br />
-                <div className="recipesSearchOutput">
-                  {this.state.someRecipes.map(recipe => {
-                    const recipeNameURI = encodeURI(recipe.recipe.label);
-                    return (
-                      <div key={recipe.recipe.label} className="outputList">
-                        <Link to={`/displaycase/${recipeNameURI}`}>
-                          {recipe.recipe.label}
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-                <br />
-              </div>
-            </div>
-          )}
-          {this.state.formFoodComplete && (
-            <div>
-          <h2 className="headerOutput">Food results are shown below:</h2>
-            <div className="foodOutput">
-            <div id="commonOutput" className="foodList">
-              <h2>Common Foods:</h2>
-              {this.state.someFood.map(item => {
-                const foodNameURI = encodeURI(item.food_name);
-                return (
-                  <div key={item.food_name} className="outputList">
-                    <Link to={`/displaycase/${foodNameURI}`}>
-                      {item.food_name}
-                    </Link>
+          <div className="outputWrapper">
+            {this.state.formRecipeComplete && (
+              <div>
+                <h2 className="headerOutput">Recipes are shown below:</h2>
+                <div className="recipeOutput">
+                  <div id="commonOutput" className="foodList">
+                    <h2>Recipes:</h2>
                   </div>
-                );
-              })}
-            </div>
-              <div id="brandedOutput" className="foodList">
-                <h2>Branded Foods:</h2>
-                {this.state.someOtherFood.map(item => {
-                  const foodNameURI = encodeURI(item.food_name);
-                  return (
-                    <div key={item.food_name} className="outputList">
-                      <Link to={`/displaycase/${foodNameURI}`}>
-                        {item.food_name}
-                      </Link>
-                    </div>
-                  );
-                })}
+                  <br />
+                  <div className="recipesSearchOutput">
+                    {this.state.recipeData.map(item => {
+                      const recipeNameURI = encodeURI(item.recipe.label);
+                      return (
+                        <div key={item.recipe.label} className="outputList">
+                          <Link
+                            to={{
+                              pathname: `/displaycase/${recipeNameURI}`,
+                              state: {
+                                type: "recipe"
+                              }
+                            }}
+                          >
+                            {item.recipe.label}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <br />
+                </div>
               </div>
-          </div>
-          </div>
-          )}
+            )}
+            {this.state.formFoodComplete && (
+              <div>
+                <h2 className="headerOutput">Food results are shown below:</h2>
+                <div className="foodOutput">
+                  <div id="commonOutput" className="foodList">
+                    <h2>Common Foods:</h2>
+                    {this.state.commonFoodData.map(item => {
+                      const foodNameURI = encodeURI(item.food_name);
+                      return (
+                        <div key={item.food_name} className="outputList">
+                          <Link
+                            to={{
+                              pathname: `/displaycase/${foodNameURI}`,
+                              state: {
+                                type: "food"
+                              }
+                            }}
+                          >
+                            {item.food_name}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div id="brandedOutput" className="foodList">
+                    <h2>Branded Foods:</h2>
+                    {this.state.brandedFoodData.map(item => {
+                      const foodNameURI = encodeURI(item.food_name);
+                      return (
+                        <div key={item.food_name} className="outputList">
+                          <Link
+                            to={{
+                              pathname: `/displaycase/${foodNameURI}`,
+                              state: {
+                                type: "food"
+                              }
+                            }}
+                          >
+                            {item.food_name}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import "./CalorieCalculator.css";
-
-const activityLevel = {
-  sedentary: 1.2,
-  slightlyactive: 1.4,
-  moderatelyactive: 1.6,
-  veryactive: 1.75,
-  extraactive: 2,
-  professional: 2.3
-};
+import { activityLevel } from "../EnvFiles/Calorie";
 
 export default class CalorieCalculator extends Component {
   state = {
@@ -17,44 +9,21 @@ export default class CalorieCalculator extends Component {
     weight: "",
     height: "",
     sex: "male",
-    activity: "sedentary",
-    calories: "",
-    message: "",
+    activity: activityLevel,
     formComplete: false
   };
 
   change = (e, name) => {
     e.preventDefault();
+    
     this.setState({ [name]: e.target.value });
   };
 
   calculateCalories = () => {
     const sexIndex = this.state.sex === "male" ? 5 : -161;
-    let activity = activityLevel[this.state.activity];
+    const activity = activityLevel[this.state.activity];
 
-    // console.log(activityLevel[activity]);
-
-    // switch (activity) {
-    //   case "slightlyactive":
-    //     activity = 1.4;
-    //     break;
-    //   case "moderatelyactive":
-    //     activity = 1.6;
-    //     break;
-    //   case "veryactive":
-    //     activity = 1.75;
-    //     break;
-    //   case "extraactive":
-    //     activity = 2;
-    //     break;
-    //   case "professional":
-    //     activity = 2.3;
-    //     break;
-    //   default:
-    //     activity = 1.2;
-    //     break;
-    // }
-
+    // TODO:izvuci u const i return const
     return (
       (10 * this.state.weight +
         6.25 * this.state.height -
@@ -66,6 +35,7 @@ export default class CalorieCalculator extends Component {
 
   submitForm = e => {
     e.preventDefault();
+
     this.calculateCalories();
     this.setState({
       formComplete: true
@@ -80,6 +50,7 @@ export default class CalorieCalculator extends Component {
       age.length > 0 &&
       height.length > 0 &&
       weight.length > 0;
+
     return (
       <div className="mealPlan">
         <div className="mealPlanWrapper">
@@ -97,7 +68,8 @@ export default class CalorieCalculator extends Component {
                 required
               />
               <label>Enter your age:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="0"
                 max="99"
@@ -117,7 +89,8 @@ export default class CalorieCalculator extends Component {
                 <option value="female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="20"
                 max="250"
@@ -127,7 +100,8 @@ export default class CalorieCalculator extends Component {
                 required
               />
               <label>Enter your weight in kg:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="0"
                 max="300"
@@ -142,21 +116,22 @@ export default class CalorieCalculator extends Component {
                 onChange={e => this.change(e, "activity")}
                 className="selectOptionActivity"
               >
+                {/* TODO:extract to array/obejct */}
                 <option value="sedentary">
                   Sedentary lifestyle (little or no exercise)
                 </option>
-                <option value="slightlyactive">
+                <option value="slightlyActive">
                   Slightly active lifestyle (light exercise or sports 1-2
                   days/week)
                 </option>
-                <option value="moderatelyactive">
+                <option value="moderatelyActive">
                   Moderately active lifestyle (moderate exercise or sports 2-3
                   days/week)
                 </option>
-                <option value="veryactive">
+                <option value="veryActive">
                   Very active lifestyle (hard exercise or sports 4-5 days/week)
                 </option>
-                <option value="extraactive">
+                <option value="extraActive">
                   Extra active lifestyle (very hard exercise, physical job or
                   sports 6-7 days/week)
                 </option>
@@ -175,7 +150,7 @@ export default class CalorieCalculator extends Component {
         <div className="mealTextWrapper">
           <h1 className="mealPlanHeader">Calories in Foods</h1>
 
-          <div className="mealIntro">
+          <p className="mealIntro">
             The food you purchase may come with a nutrition label, but labels
             aren’t always easy to understand. This nutritional information,
             however, is essential in maintaining a balanced diet and healthy
@@ -189,7 +164,7 @@ export default class CalorieCalculator extends Component {
             fitness, showing approximately how long it takes to walk, run, or
             bike off the number of calories you’ve eaten. A nutrition label
             certainly can’t do that!
-          </div>
+          </p>
           <h2 className="outputHeader">
             Try our calorie calculator and see the results below:
           </h2>
@@ -197,13 +172,16 @@ export default class CalorieCalculator extends Component {
             <div className="outputCalories">
               {`Hello ${
                 this.state.name
-              }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
+                }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
             </div>
           )}
           {this.state.formComplete && (
             <div className="weightChange">
-            <h4>CALORIE TABLE</h4>
-              <div id="lineTop" className="calorieResult">{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
+              <h4>CALORIE TABLE</h4>
+              <div
+                id="lineTop"
+                className="calorieResult"
+              >{`Maintain weight: ${this.calculateCalories()} kcal/day`}</div>
               <div>
                 <div id="lineTop" className="calorieResult">
                   {`Mild weight loss (~0.25 kg/week): ${this.calculateCalories() -
@@ -211,7 +189,10 @@ export default class CalorieCalculator extends Component {
                 </div>
               </div>
               <div>
-                <div id="lineTop" className="calorieResult">{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
+                <div
+                  id="lineTop"
+                  className="calorieResult"
+                >{`Weight loss (~0.5 kg/week): ${this.calculateCalories() -
                   500} kcal/day`}</div>
               </div>
               <div>
@@ -219,7 +200,25 @@ export default class CalorieCalculator extends Component {
                   {`Extreme weight loss (~1 kg/week): ${this.calculateCalories() -
                     1000} kcal/day`}
                 </div>
-                <div  id="lineTop" className="calorieResult"></div>
+              </div>
+              <div>
+                <div id="lineTop" className="calorieResult">
+                  {`Mild weight gain (~0.25 kg/week): ${this.calculateCalories() +
+                    250} kcal/day`}
+                </div>
+              </div>
+              <div>
+                <div id="lineTop" className="calorieResult">
+                  {`Weight gain (~1 kg/week): ${this.calculateCalories() +
+                    500} kcal/day`}
+                </div>
+              </div>
+              <div>
+                <div id="lineTop" className="calorieResult">
+                  {`Extreme weight gain (~1 kg/week): ${this.calculateCalories() +
+                    1000} kcal/day`}
+                </div>
+                <div id="lineTop" className="calorieResult" />
               </div>
             </div>
           )}

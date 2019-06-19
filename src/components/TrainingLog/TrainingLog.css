@@ -1,11 +1,18 @@
 .trainLog {
   display: flex;
+  background-color: #fff;
+  color: #111;
 }
 
 .trainLogWrapper {
   display: inline-block;
   margin: 50px;
   margin-left: 140px;
+}
+
+#formTraining {
+  display: inline-block;
+  margin: 40px;
 }
 
 .inputLog {
@@ -80,7 +87,6 @@ div.exerciseData:hover {
   color: #fff;
   position: relative;
 }
-
 
 .exerciseResult {
   margin: 10px 2px 10px 2px;

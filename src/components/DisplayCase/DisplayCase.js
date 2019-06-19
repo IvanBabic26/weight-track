@@ -1,36 +1,33 @@
 import React, { Component } from "react";
 import "./DisplayCase.css";
 import request from "superagent";
+import { apiIdentification } from "../EnvFiles/API";
 
 export default class DisplayCase extends Component {
   state = {
-    someRecipes: [],
-    someFoods: []
+    recipesData: [],
+    foodData: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
+    if (this.props.location.state.type === "food") {
+      return this.displayFood(this.props.match.params.id);
+    }
     this.displayRecipe(this.props.match.params.id);
-    this.displayFood(this.props.match.params.id);
-    console.log("test");
   }
 
   displayFood = foodName => {
     request
       .post("https://trackapi.nutritionix.com/v2/natural/nutrients")
       .send({ query: foodName })
-      .set({
-        "x-app-key": "c10265e8605472441e5a77ef78969dc9",
-        "x-app-id": "3b0fdaa1",
-        Accept: "application/json"
-      })
+      .set(apiIdentification)
       .end((err, res) => {
         console.log("response here:", res.body.foods);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ someFoods: res.body.foods });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ foodData: res.body.foods });
+        console.log(res);
       });
   };
 
@@ -49,26 +46,21 @@ export default class DisplayCase extends Component {
       .end((err, res) => {
         console.log("response here:", res.hits);
         if (err) {
-          this.setState({ err });
-        } else {
-          this.setState({ someRecipes: res.body.hits });
-          console.log(res);
+          return this.setState({ err });
         }
+        this.setState({ recipesData: res.body.hits });
+        console.log(res);
       });
   };
 
   render() {
     return (
       <div className="displayCase">
-        {this.state.someFoods.map(foodItem => (
+        {this.state.foodData.map(foodItem => (
           <div key={foodItem.food_name} className="outputDisplay">
             <div className="selectedFood">
               <div className="foodPicture">
-                <img
-                  src={foodItem.photo.thumb}
-                  alt="food"
-                  className="foodImg"
-                />
+                <img src={foodItem.photo.thumb} alt="food" />
               </div>
               <div className="foodName">{` ${foodItem.food_name} `}</div>
             </div>
@@ -123,15 +115,11 @@ export default class DisplayCase extends Component {
             </div>
           </div>
         ))}
-        {this.state.someRecipes.map(foodRecipes => (
+        {this.state.recipesData.map(foodRecipes => (
           <div key={foodRecipes.recipe.label} className="outputDisplay">
-            <div className="selectedFood">
-              <div className="foodImg">
-                <img
-                  src={foodRecipes.recipe.image}
-                  alt="recipePic"
-                  className="foodImg"
-                />
+            <div className="selectedRecipe">
+              <div className="foodImage">
+                <img src={foodRecipes.recipe.image} alt="recipePic" />
               </div>
               <div className="foodName">{` ${foodRecipes.recipe.label} `}</div>
             </div>

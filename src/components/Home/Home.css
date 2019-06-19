@@ -1,29 +1,31 @@
-.headerbar {
+.headerBar {
   overflow: hidden;
   box-sizing: border-box;
   background: linear-gradient(to left, #6759b4, #3a1cbd);
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;
+  text-align: center;
 }
 
-.headerbar a {
-  float: left;
+.headerBar a {
   color: #fff;
   text-align: center;
   text-decoration: none;
-  height: 80px;
+  height: 30px;
   margin: 20px;
-  padding-left: 20px;
+  padding: 40px;
   align-items: center;
   font-size: 20px;
-  display: flex;
+  display: inline-block;
 }
 
-.headerbar a:hover {
-  color: rgb(255, 0, 0);
+.headerBar a:hover {
+  position: relative;
+  top: 5px;
+  color: #fff;
 }
 
-.headerbar a.active {
+.headerBar a.active {
   color: rgb(236, 46, 46);
 }
 
@@ -58,7 +60,6 @@ h2 a {
   font-size: 28px;
   text-align: center;
   display: flex;
-  color: #111;
 }
 
 .tabs {
@@ -128,10 +129,8 @@ a.divLink {
 /* .preview {
 } */
 
-
 .footerBar {
   overflow: hidden;
-  box-sizing: border-box;
   background: linear-gradient(to left, #6759b4, #3a1cbd);
   border-top-left-radius: 50% 20%;
   border-top-right-radius: 50% 20%;
@@ -142,7 +141,7 @@ a.divLink {
   color: #fff;
   text-align: center;
   text-decoration: none;
-  height: 80px;
+  height: 40px;
   margin: 20px;
   padding-left: 20px;
   align-items: center;
