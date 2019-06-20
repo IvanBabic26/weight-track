@@ -1,18 +1,12 @@
 .userLog {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  color: #111;
-  width: 100%;
-  display: table;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin: 150px;
   padding: 30px;
   font-size: 22px;
   border: 1px #5915cc solid;
   font-weight: bold;
   border-radius: 52px;
-}
-
-.userLogInfo {
-    color: #111;
-    display: flex;
+  background: #fff;
 }
