@@ -1,6 +1,5 @@
 .trainLog {
   display: flex;
-  background-color: #fff;
   color: #111;
 }
 
@@ -17,7 +16,6 @@
 
 .inputLog {
   display: inline-block;
-  background-color: #fff;
   margin: 50px;
   border: 2px solid #5915cc;
   border-radius: 55px;
@@ -80,6 +78,11 @@
   border: 1px #5915cc solid;
   font-weight: bold;
   border-radius: 52px;
+}
+
+.exerciseData img {
+  height: 150px;
+  width: 150px;
 }
 
 div.exerciseData:hover {

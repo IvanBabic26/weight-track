@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./CalorieCalculator.css";
 import { activityLevel } from "../EnvFiles/Calorie";
+import calories from "../img/calories.png";
 
 export default class CalorieCalculator extends Component {
   state = {
@@ -13,7 +14,7 @@ export default class CalorieCalculator extends Component {
     formComplete: false
   };
 
-  change = (e, name) => {
+  changeValue = (e, name) => {
     e.preventDefault();
     
     this.setState({ [name]: e.target.value });
@@ -64,7 +65,7 @@ export default class CalorieCalculator extends Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                onChange={e => this.change(e, "name")}
+                onChange={e => this.changeValue(e, "name")}
                 required
               />
               <label>Enter your age:</label>
@@ -75,13 +76,13 @@ export default class CalorieCalculator extends Component {
                 max="99"
                 name="age"
                 value={this.state.age}
-                onChange={e => this.change(e, "age")}
+                onChange={e => this.changeValue(e, "age")}
                 required
               />
               <label>Sex:</label>
               <select
                 value={this.state.sex}
-                onChange={e => this.change(e, "sex")}
+                onChange={e => this.changeValue(e, "sex")}
                 className="selectOption"
                 required
               >
@@ -96,7 +97,7 @@ export default class CalorieCalculator extends Component {
                 max="250"
                 name="height"
                 value={this.state.height}
-                onChange={e => this.change(e, "height")}
+                onChange={e => this.changeValue(e, "height")}
                 required
               />
               <label>Enter your weight in kg:</label>
@@ -107,13 +108,13 @@ export default class CalorieCalculator extends Component {
                 max="300"
                 name="weight"
                 value={this.state.weight}
-                onChange={e => this.change(e, "weight")}
+                onChange={e => this.changeValue(e, "weight")}
                 required
               />
               <label>Activity level:</label>
               <select
                 value={this.state.activity}
-                onChange={e => this.change(e, "activity")}
+                onChange={e => this.changeValue(e, "activity")}
                 className="selectOptionActivity"
               >
                 {/* TODO:extract to array/obejct */}
@@ -177,6 +178,7 @@ export default class CalorieCalculator extends Component {
           )}
           {this.state.formComplete && (
             <div className="weightChange">
+            <img src={calories} alt="calCal" />
               <h4>CALORIE TABLE</h4>
               <div
                 id="lineTop"

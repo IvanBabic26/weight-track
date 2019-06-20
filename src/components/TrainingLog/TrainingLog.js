@@ -3,6 +3,7 @@ import "./TrainingLog.css";
 import request from "superagent";
 import { activities, activityUnit } from "../EnvFiles/Const";
 import { apiIdentification } from "../EnvFiles/API";
+import trainingdata from "../img/trainingdata.png";
 
 export default class TrainingLog extends Component {
   state = {
@@ -46,7 +47,7 @@ export default class TrainingLog extends Component {
       });
   };
 
-  change = (e, name) => {
+  changeValue = (e, name) => {
     e.preventDefault();
     
     this.setState({ [name]: e.target.value });
@@ -79,7 +80,7 @@ export default class TrainingLog extends Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                onChange={e => this.change(e, "name")}
+                onChange={e => this.changeValue(e, "name")}
                 required
               />
               <label>Enter your age:</label>
@@ -90,13 +91,13 @@ export default class TrainingLog extends Component {
                 max="99"
                 name="age"
                 value={this.state.age}
-                onChange={e => this.change(e, "age")}
+                onChange={e => this.changeValue(e, "age")}
                 required
               />
               <label>Sex:</label>
               <select
                 value={this.state.sex}
-                onChange={e => this.change(e, "sex")}
+                onChange={e => this.changeValue(e, "sex")}
                 className="selectOption"
                 required
               >
@@ -112,7 +113,7 @@ export default class TrainingLog extends Component {
                 max="250"
                 name="height"
                 value={this.state.height}
-                onChange={e => this.change(e, "height")}
+                onChange={e => this.changeValue(e, "height")}
                 required
               />
               <label>Enter your weight in kg:</label>
@@ -123,14 +124,14 @@ export default class TrainingLog extends Component {
                 max="300"
                 name="weight"
                 value={this.state.weight}
-                onChange={e => this.change(e, "weight")}
+                onChange={e => this.changeValue(e, "weight")}
                 required
               />
 
               <label>Type of Sports:</label>
               <select
                 value={this.state.sports}
-                onChange={e => this.change(e, "sports")}
+                onChange={e => this.changeValue(e, "sports")}
                 className="selectOption"
                 required
               >
@@ -141,7 +142,7 @@ export default class TrainingLog extends Component {
               <label>Sports Activity:</label>
               <select
                 value={this.state.sportsActivity}
-                onChange={e => this.change(e, "sportsActivity")}
+                onChange={e => this.changeValue(e, "sportsActivity")}
                 className="selectOption"
                 required
               >
@@ -154,7 +155,7 @@ export default class TrainingLog extends Component {
                 type="number"
                 name="distance"
                 value={this.state.distance}
-                onChange={e => this.change(e, "distance")}
+                onChange={e => this.changeValue(e, "distance")}
                 required
               />
               <label>Get the data!</label>
@@ -180,6 +181,7 @@ export default class TrainingLog extends Component {
               <div key={training.tag_id} className="outputList">
                 <div className="exerciseOutput">
                   <div className="exerciseData">
+                  <img src={trainingdata} alt="training" />
                     <h4>EXERCISE DATA</h4>
                     <div id="lineTop" className="exerciseResult">{`Name: ${
                       this.state.name

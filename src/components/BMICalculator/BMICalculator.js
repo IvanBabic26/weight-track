@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./BMICalculator.css";
+import ghost from "../img/ghost.png";
 
 export default class BMICalculator extends Component {
   state = {
@@ -95,7 +96,7 @@ export default class BMICalculator extends Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                onChange={e => this.change(e, "name")}
+                onChange={e => this.changeValue(e, "name")}
                 required
               />
               <label>Enter your age:</label>
@@ -105,13 +106,13 @@ export default class BMICalculator extends Component {
                 max="99"
                 name="age"
                 value={this.state.age}
-                onChange={e => this.change(e, "age")}
+                onChange={e => this.changeValue(e, "age")}
                 required
               />
               <label>Sex:</label>
               <select
                 value={this.state.sex}
-                onChange={e => this.change(e, "sex")}
+                onChange={e => this.changeValue(e, "sex")}
                 className="selectOption"
                 required
               >
@@ -125,7 +126,7 @@ export default class BMICalculator extends Component {
                 max="250"
                 name="height"
                 value={this.state.height}
-                onChange={e => this.change(e, "height")}
+                onChange={e => this.changeValue(e, "height")}
                 required
               />
               <label>Enter your weight in kg:</label>
@@ -135,7 +136,7 @@ export default class BMICalculator extends Component {
                 max="300"
                 name="weight"
                 value={this.state.weight}
-                onChange={e => this.change(e, "weight")}
+                onChange={e => this.changeValue(e, "weight")}
                 required
               />
               <label>Don't be scared!</label>
@@ -180,9 +181,11 @@ export default class BMICalculator extends Component {
           </p>
           {this.state.formComplete && (
             <div className="outputBmi">
-              {`Hello ${this.state.name}! Your BMI is currently `}
-              {this.state.bmi}!{this.state.message}
-              {this.state.optimalweight}.
+            <img src={ghost} alt="ghost" />
+              {`Hello ${this.state.name}! Your BMI is currently 
+              ${this.state.bmi}!${this.state.message}
+              ${this.state.optimalweight}.
+              See, it wasn't that scary, was it now?`}
             </div>
           )}
         </div>

@@ -5,7 +5,7 @@ export const activities = [
       "Kayaking",
       "Canoeing",
       "Cross-Country Skiing",
-      "Whiteater Rafting",
+      "Whitewater Rafting",
       "Surfing"
     ]
   },

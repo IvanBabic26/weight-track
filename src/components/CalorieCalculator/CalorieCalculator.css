@@ -2,7 +2,6 @@
   display: flex;
   min-height: 100vh;
   flex-direction: row;
-  background-color: #fff;
   color: #111;
 }
 
@@ -51,7 +50,6 @@
 
 .calorieCalc {
   display: inline-block;
-  background-color: #fff;
   margin: 50px;
   border: 2px solid #5915cc;
   border-radius: 55px;
@@ -98,6 +96,11 @@ div.outputCalories:hover {
   font-weight: bold;
   border-bottom-right-radius: 52px;
   border-bottom-left-radius: 52px;
+}
+
+.weightChange img {
+  height: 90px;
+  width: 100px;
 }
 
 .selectOptionActivity {

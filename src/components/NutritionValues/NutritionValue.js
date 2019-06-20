@@ -3,6 +3,9 @@ import "./NutritionValue.css";
 import request from "superagent";
 import { Link } from "react-router-dom";
 import { apiIdentification } from "../EnvFiles/API";
+import common from "../img/common.png";
+import branded from "../img/branded.png";
+import recipe from "../img/recipe.png";
 
 export default class NutritionValue extends Component {
   state = {
@@ -128,6 +131,7 @@ export default class NutritionValue extends Component {
                 <h2 className="headerOutput">Recipes are shown below:</h2>
                 <div className="recipeOutput">
                   <div id="commonOutput" className="foodList">
+                  <img src={recipe} alt="recipe" />
                     <h2>Recipes:</h2>
                   </div>
                   <br />
@@ -159,6 +163,7 @@ export default class NutritionValue extends Component {
                 <h2 className="headerOutput">Food results are shown below:</h2>
                 <div className="foodOutput">
                   <div id="commonOutput" className="foodList">
+                  <img src={common} alt="commonFood" />
                     <h2>Common Foods:</h2>
                     {this.state.commonFoodData.map(item => {
                       const foodNameURI = encodeURI(item.food_name);
@@ -179,6 +184,7 @@ export default class NutritionValue extends Component {
                     })}
                   </div>
                   <div id="brandedOutput" className="foodList">
+                  <img src={branded} alt="brandedFood" />
                     <h2>Branded Foods:</h2>
                     {this.state.brandedFoodData.map(item => {
                       const foodNameURI = encodeURI(item.food_name);
