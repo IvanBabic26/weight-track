@@ -24,6 +24,27 @@ export default class TrainingLog extends React.Component {
     this.getExercise(this.props.match.params.exercises);
   }
 
+  componentWillMount() {
+    this.checkIfInfoIsAlreadyEntered();
+  }
+
+  checkIfInfoIsAlreadyEntered = () => {
+    const name = localStorage.getItem("name");
+    const age = localStorage.getItem("age");
+    const sex = localStorage.getItem("sex");
+    const height = localStorage.getItem("height");
+    const weight = localStorage.getItem("weight");
+    if (name !== null) {
+      this.setState({
+        name: name,
+        age: age,
+        sex: sex,
+        height: height,
+        weight: weight
+      });
+    }
+  };
+
   getExercise = () => {
     const activityUnit = this.state.activityUnit[this.state.sportsActivity];
 
@@ -45,13 +66,13 @@ export default class TrainingLog extends React.Component {
         this.setState({ trainingLogData: res.body.exercises });
         console.log(res);
       });
-    localStorage.setItem("NameTrain", this.state.name);
-    localStorage.setItem("AgeTrain", this.state.age);
-    localStorage.setItem("SexTrain", this.state.sex);
-    localStorage.setItem("HeightTrain", this.state.height);
-    localStorage.setItem("WeightTrain", this.state.weight);
-    localStorage.setItem("Sports", this.state.sports);
-    localStorage.setItem("Activity", this.state.sportsActivity);
+    localStorage.setItem("name", this.state.name);
+    localStorage.setItem("age", this.state.age);
+    localStorage.setItem("sex", this.state.sex);
+    localStorage.setItem("height", this.state.height);
+    localStorage.setItem("weight", this.state.weight);
+    localStorage.setItem("sports", this.state.sports);
+    localStorage.setItem("activity", this.state.sportsActivity);
   };
 
   changeValue = (e, name) => {

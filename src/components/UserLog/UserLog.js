@@ -15,38 +15,30 @@ export default class UserLog extends React.Component {
   };
 
   componentDidMount() {
-    const NameBMI = localStorage.getItem("NameBMI");
-    const AgeBMI = localStorage.getItem("AgeBMI");
-    const SexBMI = localStorage.getItem("SexBMI");
-    const HeightBMI = localStorage.getItem("HeightBMI");
-    const WeightBMI = localStorage.getItem("WeightBMI");
+    const name = localStorage.getItem("name");
+    const age = localStorage.getItem("age");
+    const sex = localStorage.getItem("sex");
+    const height = localStorage.getItem("height");
+    const weight = localStorage.getItem("weight");
     const BMI = localStorage.getItem("BMI");
     const Message = localStorage.getItem("Message");
     const optimalWeight = localStorage.getItem("OptimalWeight");
-    const NameTrain = localStorage.getItem("NameTrain");
-    const AgeTrain = localStorage.getItem("AgeTrain");
-    const SexTrain = localStorage.getItem("SexTrain");
-    const HeightTrain = localStorage.getItem("HeightTrain");
-    const WeightTrain = localStorage.getItem("WeightTrain");
+    const MET = localStorage.getItem("MET");
     const CaloriesTrain = localStorage.getItem("CaloriesTrain");
     const Duration = localStorage.getItem("Duration");
     const Sports = localStorage.getItem("Sports");
     const Activity = localStorage.getItem("Activity");
 
     this.setState({
-      NameBMI,
-      AgeBMI,
-      SexBMI,
-      HeightBMI,
-      WeightBMI,
+      name,
+      age,
+      sex,
+      height,
+      weight,
       BMI,
       Message,
       optimalWeight,
-      NameTrain,
-      AgeTrain,
-      SexTrain,
-      HeightTrain,
-      WeightTrain,
+      MET,
       CaloriesTrain,
       Duration,
       Sports,
@@ -57,15 +49,32 @@ export default class UserLog extends React.Component {
   render() {
     return (
       <div className="userLog">
-        <div className="bmiUserLog">
-          {`Hello ${this.state.Name}! Your BMI is currently 
-              ${this.state.BMI}!${this.state.Message}
-              ${this.state.optimalWeight}.`}
+        <h1>Basic Info</h1>
+        <div className="userLogInfo">
+          Name:{this.state.name}
+          Age: {this.state.age}
+          Sex: {this.state.sex}
+          Height: {this.state.height} cm
+          Weight: {this.state.weight} kg
         </div>
-        <div className="calorieUserLog" />
-        <div className="trainingUserLog" />
-        {this.state.CaloriesTrain}
-        {this.state.Duration}
+        <div className="bmiInfo">
+        <h1>BMI</h1>
+        {`Your BMI is ${this.state.BMI}
+        ${this.state.Message}
+        ${this.state.optimalWeight} kg`}
+        </div>
+        <div className="calorieInfo">
+        <h1>Calories</h1>
+        {/* {this.state.Calorie} */}
+        </div>
+           <div className="trainingInfo">
+           <h1>Training</h1>
+            Type of Sports:{this.state.Sports}
+            Sports Activity:{this.state.Activity}
+            MET:{this.state.MET}
+            Duration:{this.state.Duration} min
+            Calories Burned:{this.state.CaloriesTrain} kcal
+        </div>
       </div>
     );
   }

@@ -15,6 +15,10 @@ export default class BMICalculator extends React.Component {
     formComplete: false
   };
 
+  componentWillMount() {
+    this.checkIfInfoIsAlreadyEntered();
+  }
+
   changeValue = (e, name) => {
     e.preventDefault();
 
@@ -23,6 +27,23 @@ export default class BMICalculator extends React.Component {
 
   blur = () => {
     this.calculateBMI();
+  };
+
+  checkIfInfoIsAlreadyEntered = () => {
+    const name = localStorage.getItem("name");
+    const age = localStorage.getItem("age");
+    const sex = localStorage.getItem("sex");
+    const height = localStorage.getItem("height");
+    const weight = localStorage.getItem("weight");
+    if (name !== null) {
+      this.setState({
+        name: name,
+        age: age,
+        sex: sex,
+        height: height,
+        weight: weight
+      });
+    }
   };
 
   calculateBMI = () => {
@@ -63,11 +84,11 @@ export default class BMICalculator extends React.Component {
       optimalWeight: ` Your suggested weight range is between ${low} - ${high}`,
       bmi: Math.round(bmi * 100) / 100
     });
-    localStorage.setItem("NameBMI", this.state.name);
-    localStorage.setItem("AgeBMI", this.state.age);
-    localStorage.setItem("SexBMI", this.state.sex);
-    localStorage.setItem("HeightBMI", this.state.height);
-    localStorage.setItem("WeightBMI", this.state.weight);
+    localStorage.setItem("name", this.state.name);
+    localStorage.setItem("age", this.state.age);
+    localStorage.setItem("sex", this.state.sex);
+    localStorage.setItem("height", this.state.height);
+    localStorage.setItem("weight", this.state.weight);
     localStorage.setItem("BMI", this.state.bmi);
     localStorage.setItem("Message", this.state.message);
     localStorage.setItem("OptimalWeight", this.state.optimalWeight);
@@ -194,7 +215,7 @@ export default class BMICalculator extends React.Component {
               <img src={ghost} alt="ghost" />
               {`Hello ${this.state.name}! Your BMI is currently 
               ${this.state.bmi}!${this.state.message}
-              ${this.state.optimalWeight}.
+              ${this.state.optimalWeight} kg.
               See, it wasn't that scary, was it now?`}
             </div>
           )}

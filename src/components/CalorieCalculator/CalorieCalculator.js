@@ -1,32 +1,54 @@
-import React from "react";
+import React, { Component } from "react";
 import "./CalorieCalculator.css";
 import { activityLevel } from "../EnvFiles/Calorie";
-import calories from "../img/calories.png";
 
-export default class CalorieCalculator extends React.Component {
+export default class CalorieCalculator extends Component {
   state = {
     name: "",
     age: "",
     weight: "",
     height: "",
-    sex: "male",
+    sex: "Male",
     activity: activityLevel,
     formComplete: false
   };
 
   changeValue = (e, name) => {
     e.preventDefault();
-    
     this.setState({ [name]: e.target.value });
   };
 
+  componentWillMount() {
+    this.checkIfInfoIsAlreadyEntered();
+  }
+
+  checkIfInfoIsAlreadyEntered = () => {
+    const name = localStorage.getItem("name");
+    const age = localStorage.getItem("age");
+    const sex = localStorage.getItem("sex");
+    const height = localStorage.getItem("height");
+    const weight = localStorage.getItem("weight");
+    if (name !== null) {
+      this.setState({
+        name: name,
+        age: age,
+        sex: sex,
+        height: height,
+        weight: weight
+      });
+    }
+  };
 
   calculateCalories = () => {
     const sexIndex = this.state.sex === "male" ? 5 : -161;
-    const activity = activityLevel[this.state.activity];
+    let activity = activityLevel[this.state.activity];
 
-    // TODO:izvuci u const i return const
-    // localStorage.setItem("CalorieCounter", calculateCalories());
+    localStorage.setItem("name", this.state.name);
+    localStorage.setItem("age", this.state.age);
+    localStorage.setItem("sex", this.state.sex);
+    localStorage.setItem("height", this.state.height);
+    localStorage.setItem("weight", this.state.weight);
+    
     return (
       (10 * this.state.weight +
         6.25 * this.state.height -
@@ -36,26 +58,26 @@ export default class CalorieCalculator extends React.Component {
         );
       };
       
-  submitForm = e => {
-    e.preventDefault();
-
-    this.calculateCalories();
-    this.setState({
-      formComplete: true
-    });
-  };
-
-  render() {
-    console.log(this.state);
-    const { name, age, weight, height } = this.state;
-    const isEnabled =
-      name.length > 0 &&
-      age.length > 0 &&
-      height.length > 0 &&
-      weight.length > 0;
-
-    return (
-      <div className="mealPlan">
+      submitForm = e => {
+        e.preventDefault();
+        
+        this.calculateCalories();
+        this.setState({
+          formComplete: true
+        });
+      };
+      
+      render() {
+        const { name, age, weight, height } = this.state;
+        const isEnabled =
+        name.length > 0 &&
+        age.length > 0 &&
+        height.length > 0 &&
+        weight.length > 0;
+        
+        localStorage.setItem("calorieCounter", this.calculateCalories());
+        return (
+          <div className="mealPlan">
         <div className="mealPlanWrapper">
           <div className="calorieCalc">
             <div className="calorieHeader">
@@ -88,8 +110,8 @@ export default class CalorieCalculator extends React.Component {
                 className="selectOption"
                 required
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
               <input
@@ -119,7 +141,6 @@ export default class CalorieCalculator extends React.Component {
                 onChange={e => this.changeValue(e, "activity")}
                 className="selectOptionActivity"
               >
-                {/* TODO:extract to array/obejct */}
                 <option value="sedentary">
                   Sedentary lifestyle (little or no exercise)
                 </option>
@@ -175,12 +196,11 @@ export default class CalorieCalculator extends React.Component {
             <div className="outputCalories">
               {`Hello ${
                 this.state.name
-                }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
+              }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
             </div>
           )}
           {this.state.formComplete && (
             <div className="weightChange">
-            <img src={calories} alt="calCal" />
               <h4>CALORIE TABLE</h4>
               <div
                 id="lineTop"
