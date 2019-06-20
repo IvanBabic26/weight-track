@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./CalorieCalculator.css";
 import { activityLevel } from "../EnvFiles/Calorie";
 import calories from "../img/calories.png";
 
-export default class CalorieCalculator extends Component {
+export default class CalorieCalculator extends React.Component {
   state = {
     name: "",
     age: "",
@@ -20,20 +20,22 @@ export default class CalorieCalculator extends Component {
     this.setState({ [name]: e.target.value });
   };
 
+
   calculateCalories = () => {
     const sexIndex = this.state.sex === "male" ? 5 : -161;
     const activity = activityLevel[this.state.activity];
 
     // TODO:izvuci u const i return const
+    // localStorage.setItem("CalorieCounter", calculateCalories());
     return (
       (10 * this.state.weight +
         6.25 * this.state.height -
         5 * this.state.age +
         sexIndex) *
-      activity
-    );
-  };
-
+        activity
+        );
+      };
+      
   submitForm = e => {
     e.preventDefault();
 

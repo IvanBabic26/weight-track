@@ -1,6 +1,5 @@
 .headerBar {
   overflow: hidden;
-  box-sizing: border-box;
   background: linear-gradient(to left, #6759b4, #3a1cbd);
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;

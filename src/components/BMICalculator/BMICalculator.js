@@ -1,22 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import "./BMICalculator.css";
 import ghost from "../img/ghost.png";
 
-export default class BMICalculator extends Component {
+export default class BMICalculator extends React.Component {
   state = {
     name: "",
     age: "",
+    sex: "Male",
     weight: "",
     height: "",
     bmi: "",
     message: "",
-    optimalweight: "",
+    optimalWeight: "",
     formComplete: false
   };
 
   changeValue = (e, name) => {
     e.preventDefault();
-    
+
     this.setState({ [name]: e.target.value });
   };
 
@@ -42,12 +43,10 @@ export default class BMICalculator extends Component {
     //   case (bmi >= 30):
     //     return" You are obese!";
 
-    //   default: 
-    //     return" You are under weight!";
+    //   default:
+    //     return " You are under weight!";
 
     // }
-
-
 
     if (bmi >= 18.5 && bmi <= 24.99) {
       message = " You are in a healthy weight range!";
@@ -61,9 +60,17 @@ export default class BMICalculator extends Component {
 
     this.setState({
       message,
-      optimalweight: ` Your suggested weight range is between ${low} - ${high}`,
+      optimalWeight: ` Your suggested weight range is between ${low} - ${high}`,
       bmi: Math.round(bmi * 100) / 100
     });
+    localStorage.setItem("NameBMI", this.state.name);
+    localStorage.setItem("AgeBMI", this.state.age);
+    localStorage.setItem("SexBMI", this.state.sex);
+    localStorage.setItem("HeightBMI", this.state.height);
+    localStorage.setItem("WeightBMI", this.state.weight);
+    localStorage.setItem("BMI", this.state.bmi);
+    localStorage.setItem("Message", this.state.message);
+    localStorage.setItem("OptimalWeight", this.state.optimalWeight);
   };
 
   submitForm = e => {
@@ -100,7 +107,8 @@ export default class BMICalculator extends Component {
                 required
               />
               <label>Enter your age:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="0"
                 max="99"
@@ -116,11 +124,12 @@ export default class BMICalculator extends Component {
                 className="selectOption"
                 required
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="20"
                 max="250"
@@ -130,7 +139,8 @@ export default class BMICalculator extends Component {
                 required
               />
               <label>Enter your weight in kg:</label>
-              <input className="inputNumber"
+              <input
+                className="inputNumber"
                 type="number"
                 min="0"
                 max="300"
@@ -181,10 +191,10 @@ export default class BMICalculator extends Component {
           </p>
           {this.state.formComplete && (
             <div className="outputBmi">
-            <img src={ghost} alt="ghost" />
+              <img src={ghost} alt="ghost" />
               {`Hello ${this.state.name}! Your BMI is currently 
               ${this.state.bmi}!${this.state.message}
-              ${this.state.optimalweight}.
+              ${this.state.optimalWeight}.
               See, it wasn't that scary, was it now?`}
             </div>
           )}

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./DisplayCase.css";
 import request from "superagent";
 import { apiIdentification } from "../EnvFiles/API";
 
-export default class DisplayCase extends Component {
+export default class DisplayCase extends React.Component {
   state = {
     recipesData: [],
     foodData: []
