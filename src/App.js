@@ -7,11 +7,10 @@ import CalorieCalculator from "./components/CalorieCalculator/CalorieCalculator"
 import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
 import TrainingLog from "./components/TrainingLog/TrainingLog";
+import UserLog from "./components/UserLog/UserLog";
 import BackToTop from "./components/BackTo/BackToTop";
 import HeaderBar from "./components/HeaderBar/HeaderBar";
 import FooterBar from "./components/FooterBar/FooterBar";
-// import BackToPrevious from "./components/BackTo/BackToPrevious";
-// import background from "./background.png";
 
 export default function App() {
   return (
@@ -24,6 +23,7 @@ export default function App() {
         <Route path="/nutritionValue" component={NutritionValue} />
         <Route path="/trainingLog" component={TrainingLog} />
         <Route path="/displayCase/:id" component={DisplayCase} />
+        <Route path="/userLog" component={UserLog}/>
       </Switch>
       <FooterBar />
       <BackToTop />

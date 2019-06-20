@@ -8,51 +8,76 @@ export default class CalorieCalculator extends Component {
     age: "",
     weight: "",
     height: "",
-    sex: "male",
+    sex: "Male",
     activity: activityLevel,
     formComplete: false
   };
 
-  change = (e, name) => {
+  changeValue = (e, name) => {
     e.preventDefault();
-    
     this.setState({ [name]: e.target.value });
+  };
+
+  componentWillMount() {
+    this.checkIfInfoIsAlreadyEntered();
+  }
+
+  checkIfInfoIsAlreadyEntered = () => {
+    const name = localStorage.getItem("name");
+    const age = localStorage.getItem("age");
+    const sex = localStorage.getItem("sex");
+    const height = localStorage.getItem("height");
+    const weight = localStorage.getItem("weight");
+    if (name !== null) {
+      this.setState({
+        name: name,
+        age: age,
+        sex: sex,
+        height: height,
+        weight: weight
+      });
+    }
   };
 
   calculateCalories = () => {
     const sexIndex = this.state.sex === "male" ? 5 : -161;
-    const activity = activityLevel[this.state.activity];
+    let activity = activityLevel[this.state.activity];
 
-    // TODO:izvuci u const i return const
+    localStorage.setItem("name", this.state.name);
+    localStorage.setItem("age", this.state.age);
+    localStorage.setItem("sex", this.state.sex);
+    localStorage.setItem("height", this.state.height);
+    localStorage.setItem("weight", this.state.weight);
+    
     return (
       (10 * this.state.weight +
         6.25 * this.state.height -
         5 * this.state.age +
         sexIndex) *
-      activity
-    );
-  };
-
-  submitForm = e => {
-    e.preventDefault();
-
-    this.calculateCalories();
-    this.setState({
-      formComplete: true
-    });
-  };
-
-  render() {
-    console.log(this.state);
-    const { name, age, weight, height } = this.state;
-    const isEnabled =
-      name.length > 0 &&
-      age.length > 0 &&
-      height.length > 0 &&
-      weight.length > 0;
-
-    return (
-      <div className="mealPlan">
+        activity
+        );
+      };
+      
+      submitForm = e => {
+        e.preventDefault();
+        
+        this.calculateCalories();
+        this.setState({
+          formComplete: true
+        });
+      };
+      
+      render() {
+        const { name, age, weight, height } = this.state;
+        const isEnabled =
+        name.length > 0 &&
+        age.length > 0 &&
+        height.length > 0 &&
+        weight.length > 0;
+        
+        localStorage.setItem("calorieCounter", this.calculateCalories());
+        return (
+          <div className="mealPlan">
         <div className="mealPlanWrapper">
           <div className="calorieCalc">
             <div className="calorieHeader">
@@ -64,7 +89,7 @@ export default class CalorieCalculator extends Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                onChange={e => this.change(e, "name")}
+                onChange={e => this.changeValue(e, "name")}
                 required
               />
               <label>Enter your age:</label>
@@ -75,18 +100,18 @@ export default class CalorieCalculator extends Component {
                 max="99"
                 name="age"
                 value={this.state.age}
-                onChange={e => this.change(e, "age")}
+                onChange={e => this.changeValue(e, "age")}
                 required
               />
               <label>Sex:</label>
               <select
                 value={this.state.sex}
-                onChange={e => this.change(e, "sex")}
+                onChange={e => this.changeValue(e, "sex")}
                 className="selectOption"
                 required
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
               <label>Enter your height in cm:</label>
               <input
@@ -96,7 +121,7 @@ export default class CalorieCalculator extends Component {
                 max="250"
                 name="height"
                 value={this.state.height}
-                onChange={e => this.change(e, "height")}
+                onChange={e => this.changeValue(e, "height")}
                 required
               />
               <label>Enter your weight in kg:</label>
@@ -107,16 +132,15 @@ export default class CalorieCalculator extends Component {
                 max="300"
                 name="weight"
                 value={this.state.weight}
-                onChange={e => this.change(e, "weight")}
+                onChange={e => this.changeValue(e, "weight")}
                 required
               />
               <label>Activity level:</label>
               <select
                 value={this.state.activity}
-                onChange={e => this.change(e, "activity")}
+                onChange={e => this.changeValue(e, "activity")}
                 className="selectOptionActivity"
               >
-                {/* TODO:extract to array/obejct */}
                 <option value="sedentary">
                   Sedentary lifestyle (little or no exercise)
                 </option>
@@ -172,7 +196,7 @@ export default class CalorieCalculator extends Component {
             <div className="outputCalories">
               {`Hello ${
                 this.state.name
-                }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
+              }! Your daily input of calories is currently at ${this.calculateCalories()} kcal/day!`}
             </div>
           )}
           {this.state.formComplete && (

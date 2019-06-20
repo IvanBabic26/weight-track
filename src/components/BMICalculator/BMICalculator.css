@@ -1,6 +1,5 @@
 .bmiCalc {
   display: flex;
-  background-color:#fff;
   color: #111;
 }
 
@@ -12,7 +11,6 @@
 
 .bmiFormCalc {
   display: inline-block;
-  background-color: #fff;
   margin: 50px;
   border: 2px solid #5915cc;
   border-radius: 55px;
@@ -104,7 +102,6 @@ input {
 
 .outputBmi {
   text-align: center;
-  display: block;
   margin-left: 150px;
   margin-right: 150px;
   padding: 50px;
@@ -112,6 +109,12 @@ input {
   border: 1px #5915cc solid;
   font-weight: bold;
   border-radius: 52px;
+  display: flex;
+}
+
+.outputBmi img {
+  height: 90px;
+  width: 100px;
 }
 
 div.outputBmi:hover {
