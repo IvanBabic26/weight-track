@@ -19,9 +19,9 @@
 }
 
 .headerBar a:hover {
-  position: relative;
-  top: 5px;
-  color: #fff;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #190b57;
 }
 
 .headerBar a.active {

@@ -54,6 +54,7 @@ export default class UserLog extends React.Component {
   }
 
   render() {
+    const calorieCounter = parseInt(this.state.calorieCounter);
     return (
       <div className="userLog">
         <div className="userLogInfo">
@@ -95,44 +96,44 @@ export default class UserLog extends React.Component {
           <h1>Calories</h1>
           <div>
             <div className="userLogResults">
-              Your Daily Calorie Input: {this.state.calorieCounter} kcal
+              Your Daily Calorie Input: {calorieCounter} kcal
             </div>
           </div>
          
           <div className="tableResults">
             <div>
             <div>
-              Maintain Your Weight: {this.state.calorieCounter} kcal
+              Maintain Your Weight: {calorieCounter} kcal
             </div>
           </div>
           <div>
             <div className="topLineCal">
-              Mild Weight Loss: {this.state.calorieCounter - 250} kcal
+              Mild Weight Loss (~0.25 kg/week): {calorieCounter - 250} kcal
             </div>
           </div>
           <div>
             <div className="topLineCal">
-            Weight Loss: {this.state.calorieCounter - 500} kcal
+            Weight Loss (~0.5 kg/week): {calorieCounter - 500} kcal
             </div>
           </div>
           <div>
             <div className="topLineCal">
-            Extreme weight Loss: {this.state.calorieCounter - 1000} kcal
+            Extreme Weight Loss (~1 kg/week): {calorieCounter - 1000} kcal
             </div>
           </div>
           <div>
             <div className="topLineCal">
-            Mild Weight Gain: {this.state.calorieCounter + 250} kcal
+            Mild Weight Gain (~0.25 kg/week): {calorieCounter + 250} kcal
             </div>
           </div>
           <div>
             <div className="topLineCal">
-            Weight Gain: {this.state.calorieCounter + 500} kcal
+            Weight Gain (~0.5 kg/week): {calorieCounter + 500} kcal
             </div>
           </div>
           <div>
             <div className="topLineCal">
-            Extreme Weight Gain: {this.state.calorieCounter + 1000} kcal
+            Extreme Weight Gain (~1 kg/week): {calorieCounter + 1000} kcal
             </div>
           </div>
           </div>
