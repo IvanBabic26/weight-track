@@ -23,7 +23,7 @@ export default class BackToTop extends React.Component {
   render() {
     return (
       <button title="Back to top" className="scroll" onClick={this.scrollToTop}>
-        <span className="arrow-up" />
+        <span className="arrowUp" />
       </button>
     );
   }

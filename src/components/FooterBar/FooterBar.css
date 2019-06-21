@@ -19,19 +19,12 @@
 }
 
 .footerBar a:hover {
-  color: #fff;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #190b57;
 }
 
 .footerBar a.active {
   border: 3px solid #fff;
   border-radius: 30px;
-}
-
-.footerBar img {
-  height: 60px;
-  padding: 20px;
-}
-
-.homeLink {
-  display: inline-block;
 }

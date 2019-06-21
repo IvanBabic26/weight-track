@@ -8,7 +8,7 @@ import NutritionValue from "./components/NutritionValues/NutritionValue";
 import DisplayCase from "./components/DisplayCase/DisplayCase";
 import TrainingLog from "./components/TrainingLog/TrainingLog";
 import UserLog from "./components/UserLog/UserLog";
-import BackToTop from "./components/BackTo/BackToTop";
+import BackToTop from "./components/BackToTop/BackToTop";
 import HeaderBar from "./components/HeaderBar/HeaderBar";
 import FooterBar from "./components/FooterBar/FooterBar";
 

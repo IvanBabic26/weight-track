@@ -1,8 +1,8 @@
 .homePage {
   display: flex;
   padding: 14px;
-}
 
+}
 .homeHeader {
   margin-top: 30px;
   height: 50px;
@@ -83,4 +83,10 @@ a.divLink {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+}
+
+@media screen and (max-width:800px) {
+  .homeTextWrapper, .tabPage, .homeMsg {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
 }
