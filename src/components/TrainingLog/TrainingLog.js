@@ -1,8 +1,8 @@
 import React from "react";
 import "./TrainingLog.css";
 import request from "superagent";
-import { activities, activityUnit } from "../EnvFiles/Const";
-import { apiIdentification } from "../EnvFiles/API";
+import { activities, activityUnit } from "../ImportFiles/Const";
+import { apiIdentification } from "../ImportFiles/API";
 import trainingdata from "../img/trainingdata.png";
 
 export default class TrainingLog extends React.Component {

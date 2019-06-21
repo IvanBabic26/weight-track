@@ -1,6 +1,6 @@
 import React from "react";
 import "./CalorieCalculator.css";
-import { activityLevel } from "../EnvFiles/Calorie";
+import { activityLevel } from "../ImportFiles/Calorie";
 import calories from "../img/calories.png";
 
 export default class CalorieCalculator extends React.Component {
