@@ -1,5 +1,9 @@
 import React from "react";
 import "./UserLog.css";
+import info from "../img/info.png";
+import bmi from "../img/bmi.png";
+import burn from "../img/burn.png";
+import gym from "../img/gym.png";
 
 export default class UserLog extends React.Component {
   state = {
@@ -53,37 +57,33 @@ export default class UserLog extends React.Component {
     return (
       <div className="userLog">
         <div className="userLogInfo">
+          <img src={info} alt="info" />
           <h1>Basic Info</h1>
           <div>
-            <div className="exerciseResult">
-              Name: {this.state.name}
+            <div className="userLogResults">Name: {this.state.name}</div>
+            <div>
+              <div className="userLogResults">Age: {this.state.age}</div>
             </div>
             <div>
-              <div className="exerciseResult">
-                Age: {this.state.age}
-              </div>
+              <div className="userLogResults">Sex: {this.state.sex}</div>
             </div>
             <div>
-              <div className="exerciseResult">
-                Sex: {this.state.sex}
-              </div>
-            </div>
-            <div>
-              <div className="exerciseResult">
+              <div className="userLogResults">
                 Height: {this.state.height} cm
               </div>
             </div>
             <div>
-              <div className="exerciseResult">
+              <div className="userLogResults">
                 Weight: {this.state.weight} kg
               </div>
             </div>
           </div>
         </div>
         <div className="bmiInfo">
+          <img src={bmi} alt="bmi" />
           <h1>BMI</h1>
           <div>
-            <div className="exerciseResult">
+            <div className="userLogResults">
               {`Your BMI is currently at ${this.state.BMI}.
         ${this.state.Message}
         ${this.state.optimalWeight} kg`}
@@ -91,34 +91,70 @@ export default class UserLog extends React.Component {
           </div>
         </div>
         <div className="calorieInfo">
+        <img src={burn} alt="burn" />
           <h1>Calories</h1>
           <div>
-            <div className="exerciseResult">
-              Daily Calorie Input: {this.state.calorieCounter} kcal
+            <div className="userLogResults">
+              Your Daily Calorie Input: {this.state.calorieCounter} kcal
             </div>
+          </div>
+         
+          <div className="tableResults">
+            <div>
+            <div>
+              Maintain Your Weight: {this.state.calorieCounter} kcal
+            </div>
+          </div>
+          <div>
+            <div className="topLineCal">
+              Mild Weight Loss: {this.state.calorieCounter - 250} kcal
+            </div>
+          </div>
+          <div>
+            <div className="topLineCal">
+            Weight Loss: {this.state.calorieCounter - 500} kcal
+            </div>
+          </div>
+          <div>
+            <div className="topLineCal">
+            Extreme weight Loss: {this.state.calorieCounter - 1000} kcal
+            </div>
+          </div>
+          <div>
+            <div className="topLineCal">
+            Mild Weight Gain: {this.state.calorieCounter + 250} kcal
+            </div>
+          </div>
+          <div>
+            <div className="topLineCal">
+            Weight Gain: {this.state.calorieCounter + 500} kcal
+            </div>
+          </div>
+          <div>
+            <div className="topLineCal">
+            Extreme Weight Gain: {this.state.calorieCounter + 1000} kcal
+            </div>
+          </div>
           </div>
         </div>
         <div className="trainingInfo">
+          <img src={gym} alt="gym" />
           <h1>Training</h1>
-          <div className="exerciseResult">
-            Sports: {this.state.sports}
-          </div>
+          <div className="userLogResults">Sports: {this.state.sports}</div>
           <div>
-            <div className="exerciseResult">
+            <div className="userLogResults">
               Activity: {this.state.activity}
             </div>
           </div>
           <div>
-            <div className="exerciseResult">
-              MET: {this.state.MET}
-            </div>
+            <div className="userLogResults">MET: {this.state.MET}</div>
             <div>
-              <div className="exerciseResult">
+              <div className="userLogResults">
                 Duration: {this.state.Duration} min
               </div>
             </div>
             <div>
-              <div className="exerciseResult">
+              <div className="userLogResults">
                 Calories Burned: {this.state.CaloriesTrain} kcal
               </div>
             </div>

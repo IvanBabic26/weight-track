@@ -1,6 +1,7 @@
 import React from "react";
 import "./CalorieCalculator.css";
 import { activityLevel } from "../EnvFiles/Calorie";
+import calories from "../img/calories.png";
 
 export default class CalorieCalculator extends React.Component {
   state = {
@@ -202,6 +203,7 @@ export default class CalorieCalculator extends React.Component {
           )}
           {this.state.formComplete && (
             <div className="weightChange">
+            <img src={calories} alt="caloricalc" />
               <h4>CALORIE TABLE</h4>
               <div
                 id="lineTop"
