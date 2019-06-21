@@ -31,7 +31,7 @@ export default class UserLog extends React.Component {
     const calorieCounter = localStorage.getItem("calorieCounter");
     const met = localStorage.getItem("met");
     const caloriesTrain = localStorage.getItem("caloriesTrain");
-    const duration = localStorage.getItem("Duration");
+    const duration = localStorage.getItem("duration");
     const sports = localStorage.getItem("sports");
     const activity = localStorage.getItem("activity");
 
@@ -55,6 +55,7 @@ export default class UserLog extends React.Component {
 
   render() {
     const calorieCounter = parseInt(this.state.calorieCounter);
+
     return (
       <div className="userLog">
         <div className="userLogInfo">
@@ -92,50 +93,48 @@ export default class UserLog extends React.Component {
           </div>
         </div>
         <div className="calorieInfo">
-        <img src={burn} alt="burn" />
+          <img src={burn} alt="burn" />
           <h1>Calories</h1>
           <div>
             <div className="userLogResults">
               Your Daily Calorie Input: {calorieCounter} kcal
             </div>
           </div>
-         
+
           <div className="tableResults">
             <div>
+              <div>Maintain Your Weight: {calorieCounter} kcal</div>
+            </div>
             <div>
-              Maintain Your Weight: {calorieCounter} kcal
+              <div className="topLineCal">
+                Mild Weight Loss (~0.25 kg/week): {calorieCounter - 250} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-              Mild Weight Loss (~0.25 kg/week): {calorieCounter - 250} kcal
+            <div>
+              <div className="topLineCal">
+                Weight Loss (~0.5 kg/week): {calorieCounter - 500} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Weight Loss (~0.5 kg/week): {calorieCounter - 500} kcal
+            <div>
+              <div className="topLineCal">
+                Extreme Weight Loss (~1 kg/week): {calorieCounter - 1000} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Extreme Weight Loss (~1 kg/week): {calorieCounter - 1000} kcal
+            <div>
+              <div className="topLineCal">
+                Mild Weight Gain (~0.25 kg/week): {calorieCounter + 250} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Mild Weight Gain (~0.25 kg/week): {calorieCounter + 250} kcal
+            <div>
+              <div className="topLineCal">
+                Weight Gain (~0.5 kg/week): {calorieCounter + 500} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Weight Gain (~0.5 kg/week): {calorieCounter + 500} kcal
+            <div>
+              <div className="topLineCal">
+                Extreme Weight Gain (~1 kg/week): {calorieCounter + 1000} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Extreme Weight Gain (~1 kg/week): {calorieCounter + 1000} kcal
-            </div>
-          </div>
           </div>
         </div>
         <div className="trainingInfo">
