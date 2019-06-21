@@ -11,6 +11,7 @@ export default class HeaderBar extends React.Component {
         <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
         <NavLink to="/nutritionValue">Nutrition Value</NavLink>
         <NavLink to="/trainingLog">Training Log</NavLink>
+        <NavLink to="/userLog">User Log</NavLink>
       </div>
     );
   }

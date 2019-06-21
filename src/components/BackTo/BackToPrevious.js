@@ -2,14 +2,17 @@
 // import "./BackToPrevious.css";
 
 // export default class BackToPrevious extends React.Component {
-
-//   render() {
-
-
-//     return (
-//       <button className="scroll" title="Go back" onClick={BrowserHistory.goBack}>
-//         <span className="arrow-up" />
-//       </button>
-//     );
+//     render() {
+//       const goBack = this.props.navigation;
+      
+  
+//       return (
+//           <button className="scroll" 
+//             onClick={() =>  goBack }
+//             title="Go back" >
+//             <span className="arrow-up"></span>
+//         </button>
+        
+//        )
+//      }
 //   }
-// };

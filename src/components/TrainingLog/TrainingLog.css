@@ -18,12 +18,12 @@
   background: #fff;
   display: inline-block;
   margin: 50px;
-  border: 2px solid #5915cc;
+  border: 2px solid #190b57;
   border-radius: 55px;
 }
 
 .btnSubmitExercise {
-  background-color: #4227bb;
+  background-color: #190b57;
   color: #fff;
   width: 100%;
   font-size: 25px;
@@ -33,7 +33,7 @@
 }
 
 .inputLogHeader {
-  background-color: #5915cc;
+  background-color: #190b57;
   color: #fff;
   border-top-right-radius: 52px;
   border-top-left-radius: 52px;
@@ -44,7 +44,7 @@
 
 .trainingTextWrapper {
   display: inline-block;
-  margin-right: 25px;
+  margin-right: 55px;
   position: relative;
 }
 
@@ -76,7 +76,7 @@
   margin-right: 150px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #5915cc solid;
+  border: 1px #190b57 solid;
   font-weight: bold;
   border-radius: 52px;
 }
@@ -87,7 +87,7 @@
 }
 
 div.exerciseData:hover {
-  background: linear-gradient(to right, #30256b, #3116aa);
+  background: #190b57;
   color: #fff;
   position: relative;
 }
