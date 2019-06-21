@@ -212,9 +212,9 @@ export default class TrainingLog extends React.Component {
             see your progress on that fat burning regime!
           </p>
           {this.state.trainingLogData.map(training => {
-            localStorage.setItem("MET", training.met);
-            localStorage.setItem("CaloriesTrain", training.nf_calories);
-            localStorage.setItem("Duration", training.duration_min);
+            localStorage.setItem("met", training.met);
+            localStorage.setItem("caloriesTrain", training.nf_calories);
+            localStorage.setItem("duration", training.duration_min);
             return (
               <div key={training.tag_id} className="outputList">
                 <div className="exerciseOutput">

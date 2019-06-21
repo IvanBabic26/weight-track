@@ -70,13 +70,14 @@
 }
 
 .exerciseData {
+  background: #190b57;
+  color: #fff;
   text-align: center;
   display: block;
   margin-left: 150px;
   margin-right: 150px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #190b57 solid;
   font-weight: bold;
   border-radius: 52px;
 }
@@ -84,12 +85,6 @@
 .exerciseData img {
   height: 150px;
   width: 150px;
-}
-
-div.exerciseData:hover {
-  background: #190b57;
-  color: #fff;
-  position: relative;
 }
 
 .exerciseResult {

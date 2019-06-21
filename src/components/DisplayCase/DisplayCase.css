@@ -27,18 +27,11 @@
   margin: 40px;
   padding: 60px;
   background: #fff;
-  border: 20px #5915cc solid;
-  border-radius: 55px;
+  border: 20px #190b57 solid;
+  border-radius: 50px;
   overflow-y: scroll;
   font-weight: bold;
 }
-
-div.outputDisplay:hover {
-  background: linear-gradient(to right, #30256b, #3116aa);
-  color: #fff;
-  position: relative;
-}
-
 
 li {
   text-align: center;
@@ -78,7 +71,7 @@ h1 {
   height: 10px;
   line-height: 0;
   font-size: 1px;
-  background: #5915cc;
+  background: #111;
   margin-top: 3px;
 }
 
@@ -86,7 +79,7 @@ h1 {
   height: 5px;
   line-height: 0;
   font-size: 1px;
-  background: #5915cc;
+  background: #111;
 }
 
 .indent {
@@ -94,7 +87,7 @@ h1 {
 }
 
 .line {
-  border-top: 1px #5915cc solid;
+  border-top: 1px #111 solid;
   padding: 1px 0;
 }
 

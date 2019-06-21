@@ -66,17 +66,13 @@
   margin-right: 150px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #190b57 solid;
+  background: #fff;
+  color: #111;
   border-bottom: 0px;
   font-weight: bold;
+  border: solid #190b57;
   border-top-right-radius: 52px;
   border-top-left-radius: 52px;
-}
-
-div.outputCalories:hover {
-  background: #190b57;
-  color: #fff;
-  position: relative;
 }
 
 .outputHeader {
@@ -93,7 +89,8 @@ div.outputCalories:hover {
   margin-right: 150px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #190b57 solid;
+  background: #190b57;
+  color: #fff;
   font-weight: bold;
   border-bottom-right-radius: 52px;
   border-bottom-left-radius: 52px;
@@ -154,12 +151,6 @@ input {
 }
 .weightChange h4 {
   margin-top: 2px;
-}
-
-div.weightChange:hover {
-  background: #190b57;
-  color: #fff;
-  position: relative;
 }
 
 #lineTop {
