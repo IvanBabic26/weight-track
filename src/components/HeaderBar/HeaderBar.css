@@ -1,6 +1,6 @@
 .headerBar {
   overflow: hidden;
-  background: linear-gradient(to left, #6759b4, #3a1cbd);
+  background: linear-gradient(to left, #4838a7, #190b57);
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;
   text-align: center;
@@ -12,7 +12,7 @@
   text-decoration: none;
   height: 30px;
   margin: 20px;
-  padding: 40px;
+  padding: 20px;
   align-items: center;
   font-size: 20px;
   display: inline-block;
@@ -25,5 +25,6 @@
 }
 
 .headerBar a.active {
-  color: rgb(236, 46, 46);
+  border: 3px solid #fff;
+  border-radius: 30px;
 }

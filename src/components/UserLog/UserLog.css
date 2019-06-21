@@ -5,7 +5,7 @@
   margin: 180px;
   padding: 30px;
   font-size: 22px;
-  border: 1px #5915cc solid;
+  border: 1px #190b57 solid;
   font-weight: bold;
   border-radius: 52px;
   background: #fff;
@@ -20,23 +20,36 @@
 .userLogResults {
   margin: 10px 2px 10px 2px;
   padding: 3px;
-  border: 1px solid #111;
+  border: 1px solid #190b57;
   border-radius: 10px;
   width: 700px;
   display: inline-block;
+}
+
+
+div.userLogInfo:hover {
+  background: #190b57;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 50px;
 }
 
 .tableResults {
   margin: 10px 2px 10px 2px;
   padding: 3px;
-  border: 1px solid #111;
+  border: 1px solid #190b57;
   border-radius: 10px;
   width: 700px;
   display: inline-block;
 }
 
+.tableResults:hover {
+  background: #190b57;
+  color: #fff;
+}
+
 .topLineCal {
-  border-top: 1px solid #111;
+  border-top: 1px solid #190b57;
   width: 650px;
   display: inline-block;
   padding: 3px;

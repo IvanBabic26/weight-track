@@ -6,8 +6,8 @@ export default class FooterBar extends React.Component {
   render() {
     return (
       <div className="footerBar">
-        <NavLink to="/bmiCalculator">BMI Calculator</NavLink>
-        <NavLink to="/calorieCalculator">Calorie Calculator</NavLink>
+        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/nutritionValue">Food Search</NavLink>
         <NavLink to="/userLog">User Log</NavLink>
       </div>
     );

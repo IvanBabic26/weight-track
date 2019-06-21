@@ -45,7 +45,7 @@ h2 a {
 div.tabs:hover {
   cursor: pointer;
   opacity: 0.9;
-  background: linear-gradient(to right, #30256b, #3116aa);
+  background: #190b57;
   color: #fff;
   position: relative;
   top: -20px;
