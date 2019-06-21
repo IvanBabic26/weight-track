@@ -15,6 +15,7 @@ import FooterBar from "./components/FooterBar/FooterBar";
 export default function App() {
   return (
     <BrowserRouter>
+    <Route component={ScrollToTop} />
       <HeaderBar />
       <Switch>
         <Route path="/home" component={Home} />
@@ -29,4 +30,10 @@ export default function App() {
       <BackToTop />
     </BrowserRouter>
   );
+
+}
+  const ScrollToTop = () => {
+    window.scrollTo(0,0);
+    return null
+
 }
