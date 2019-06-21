@@ -25,13 +25,13 @@ export default class UserLog extends React.Component {
     const sex = localStorage.getItem("sex");
     const height = localStorage.getItem("height");
     const weight = localStorage.getItem("weight");
-    const BMI = localStorage.getItem("BMI");
-    const Message = localStorage.getItem("Message");
-    const optimalWeight = localStorage.getItem("OptimalWeight");
+    const bmi = localStorage.getItem("bmi");
+    const message = localStorage.getItem("message");
+    const optimalWeight = localStorage.getItem("optimalWeight");
     const calorieCounter = localStorage.getItem("calorieCounter");
-    const MET = localStorage.getItem("MET");
-    const CaloriesTrain = localStorage.getItem("CaloriesTrain");
-    const Duration = localStorage.getItem("Duration");
+    const met = localStorage.getItem("met");
+    const caloriesTrain = localStorage.getItem("caloriesTrain");
+    const duration = localStorage.getItem("duration");
     const sports = localStorage.getItem("sports");
     const activity = localStorage.getItem("activity");
 
@@ -41,13 +41,13 @@ export default class UserLog extends React.Component {
       sex,
       height,
       weight,
-      BMI,
-      Message,
+      bmi,
+      message,
       optimalWeight,
       calorieCounter,
-      MET,
-      CaloriesTrain,
-      Duration,
+      met,
+      caloriesTrain,
+      duration,
       sports,
       activity
     });
@@ -55,6 +55,7 @@ export default class UserLog extends React.Component {
 
   render() {
     const calorieCounter = parseInt(this.state.calorieCounter);
+
     return (
       <div className="userLog">
         <div className="userLogInfo">
@@ -85,57 +86,55 @@ export default class UserLog extends React.Component {
           <h1>BMI</h1>
           <div>
             <div className="userLogResults">
-              {`Your BMI is currently at ${this.state.BMI}.
-        ${this.state.Message}
+              {`Your BMI is currently at ${this.state.bmi}.
+        ${this.state.message}
         ${this.state.optimalWeight} kg`}
             </div>
           </div>
         </div>
         <div className="calorieInfo">
-        <img src={burn} alt="burn" />
+          <img src={burn} alt="burn" />
           <h1>Calories</h1>
           <div>
             <div className="userLogResults">
               Your Daily Calorie Input: {calorieCounter} kcal
             </div>
           </div>
-         
+
           <div className="tableResults">
             <div>
+              <div>Maintain Your Weight: {calorieCounter} kcal</div>
+            </div>
             <div>
-              Maintain Your Weight: {calorieCounter} kcal
+              <div className="topLineCal">
+                Mild Weight Loss (~0.25 kg/week): {calorieCounter - 250} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-              Mild Weight Loss (~0.25 kg/week): {calorieCounter - 250} kcal
+            <div>
+              <div className="topLineCal">
+                Weight Loss (~0.5 kg/week): {calorieCounter - 500} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Weight Loss (~0.5 kg/week): {calorieCounter - 500} kcal
+            <div>
+              <div className="topLineCal">
+                Extreme Weight Loss (~1 kg/week): {calorieCounter - 1000} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Extreme Weight Loss (~1 kg/week): {calorieCounter - 1000} kcal
+            <div>
+              <div className="topLineCal">
+                Mild Weight Gain (~0.25 kg/week): {calorieCounter + 250} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Mild Weight Gain (~0.25 kg/week): {calorieCounter + 250} kcal
+            <div>
+              <div className="topLineCal">
+                Weight Gain (~0.5 kg/week): {calorieCounter + 500} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Weight Gain (~0.5 kg/week): {calorieCounter + 500} kcal
+            <div>
+              <div className="topLineCal">
+                Extreme Weight Gain (~1 kg/week): {calorieCounter + 1000} kcal
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="topLineCal">
-            Extreme Weight Gain (~1 kg/week): {calorieCounter + 1000} kcal
-            </div>
-          </div>
           </div>
         </div>
         <div className="trainingInfo">
@@ -148,15 +147,15 @@ export default class UserLog extends React.Component {
             </div>
           </div>
           <div>
-            <div className="userLogResults">MET: {this.state.MET}</div>
+            <div className="userLogResults">MET: {this.state.met}</div>
             <div>
               <div className="userLogResults">
-                Duration: {this.state.Duration} min
+                Duration: {this.state.duration} min
               </div>
             </div>
             <div>
               <div className="userLogResults">
-                Calories Burned: {this.state.CaloriesTrain} kcal
+                Calories Burned: {this.state.caloriesTrain} kcal
               </div>
             </div>
           </div>

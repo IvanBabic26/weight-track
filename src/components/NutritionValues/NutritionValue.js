@@ -2,7 +2,7 @@ import React from "react";
 import "./NutritionValue.css";
 import request from "superagent";
 import { Link } from "react-router-dom";
-import { apiIdentification } from "../EnvFiles/API";
+import { apiIdentification } from "../ImportFiles/API";
 import common from "../img/common.png";
 import branded from "../img/branded.png";
 import recipe from "../img/recipe.png";

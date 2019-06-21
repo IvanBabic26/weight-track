@@ -102,26 +102,28 @@ input {
 }
 
 .outputBmi {
-  text-align: center;
-  margin-left: 150px;
-  margin-right: 150px;
+  text-align: justify;
+  width: 80%;
+  margin: auto;
   padding: 50px;
   font-size: 22px;
-  border: 1px #190b57 solid;
+  background: #190b57;
+  color: #fff;
   font-weight: bold;
   border-radius: 52px;
   display: flex;
 }
-
 .outputBmi img {
   height: 90px;
   width: 100px;
+  margin-right: 20px;
 }
 
-div.outputBmi:hover {
-  background: #190b57;
-  color: #fff;
-  position: relative;
+.bmiMessage {
+  float: right;
+}
+.bmiImage {
+  float: left;
 }
 
 .bmiTextWrapper {

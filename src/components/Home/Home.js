@@ -22,7 +22,6 @@ export default class Home extends Component {
             </h2>
             <h2 className="browseTabs">BROWSE WHAT YOUR HEART DESIRES</h2>
             <div className="tabPage">
-              {/* TODO:extract to a component, make it reusable */}
               <div className="tabs">
                 <Link to="/bmiCalculator">
                   <div className="imageTab">
@@ -73,9 +72,7 @@ export default class Home extends Component {
               </div>
             </div>
             <h4 className="bottomText">
-              Not sure about what to choose and where to start? Take a little
-              sneak peak and see our preview for each thing you can use in our
-              app!
+              Take on a small journey and starting losing or even better gaining weight in the right order!
             </h4>
           </div>
         </div>

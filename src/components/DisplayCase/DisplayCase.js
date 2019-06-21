@@ -1,7 +1,7 @@
 import React from "react";
 import "./DisplayCase.css";
 import request from "superagent";
-import { apiIdentification } from "../EnvFiles/API";
+import { apiIdentification } from "../ImportFiles/API";
 
 export default class DisplayCase extends React.Component {
   state = {

@@ -89,9 +89,6 @@ export default class BMICalculator extends React.Component {
     localStorage.setItem("sex", this.state.sex);
     localStorage.setItem("height", this.state.height);
     localStorage.setItem("weight", this.state.weight);
-    localStorage.setItem("BMI", this.state.bmi);
-    localStorage.setItem("Message", this.state.message);
-    localStorage.setItem("OptimalWeight", this.state.optimalWeight);
   };
 
   submitForm = e => {
@@ -104,6 +101,9 @@ export default class BMICalculator extends React.Component {
   };
 
   render() {
+    localStorage.setItem("bmi", this.state.bmi);
+    localStorage.setItem("message", this.state.message);
+    localStorage.setItem("optimalWeight", this.state.optimalWeight);
     const { name, age, weight, height } = this.state;
     const isEnabled =
       name.length > 0 &&
@@ -212,11 +212,15 @@ export default class BMICalculator extends React.Component {
           </p>
           {this.state.formComplete && (
             <div className="outputBmi">
-              <img src={ghost} alt="ghost" />
-              {`Hello ${this.state.name}! Your BMI is currently 
+              <div className="bmiImage">
+                <img src={ghost} alt="ghost" />
+              </div>
+              <div className="bmiMessage">
+                {`Hello ${this.state.name}! Your BMI is currently 
               ${this.state.bmi}!${this.state.message}
               ${this.state.optimalWeight} kg.
               See, it wasn't that scary, was it now?`}
+              </div>
             </div>
           )}
         </div>
