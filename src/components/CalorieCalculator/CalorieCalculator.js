@@ -1,20 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import "./CalorieCalculator.css";
 import { activityLevel } from "../EnvFiles/Calorie";
+import calories from "../img/calories.png";
 
-export default class CalorieCalculator extends Component {
+export default class CalorieCalculator extends React.Component {
   state = {
     name: "",
     age: "",
     weight: "",
     height: "",
     sex: "Male",
-    activity: activityLevel,
+    activity: "sedentary",
     formComplete: false
   };
 
   changeValue = (e, name) => {
     e.preventDefault();
+
     this.setState({ [name]: e.target.value });
   };
 
@@ -48,36 +50,36 @@ export default class CalorieCalculator extends Component {
     localStorage.setItem("sex", this.state.sex);
     localStorage.setItem("height", this.state.height);
     localStorage.setItem("weight", this.state.weight);
-    
+
     return (
-      (10 * this.state.weight +
-        6.25 * this.state.height -
-        5 * this.state.age +
+      (10 * parseInt(this.state.weight) +
+        6.25 * parseInt(this.state.height) -
+        5 * parseInt(this.state.age) +
         sexIndex) *
-        activity
-        );
-      };
-      
-      submitForm = e => {
-        e.preventDefault();
-        
-        this.calculateCalories();
-        this.setState({
-          formComplete: true
-        });
-      };
-      
-      render() {
-        const { name, age, weight, height } = this.state;
-        const isEnabled =
-        name.length > 0 &&
-        age.length > 0 &&
-        height.length > 0 &&
-        weight.length > 0;
-        
-        localStorage.setItem("calorieCounter", this.calculateCalories());
-        return (
-          <div className="mealPlan">
+      activity
+    );
+  };
+
+  submitForm = e => {
+    e.preventDefault();
+
+    this.calculateCalories();
+    this.setState({
+      formComplete: true
+    });
+  };
+
+  render() {
+    const { name, age, weight, height } = this.state;
+    const isEnabled =
+      name.length > 0 &&
+      age.length > 0 &&
+      height.length > 0 &&
+      weight.length > 0;
+
+    localStorage.setItem("calorieCounter", this.calculateCalories());
+    return (
+      <div className="mealPlan">
         <div className="mealPlanWrapper">
           <div className="calorieCalc">
             <div className="calorieHeader">
@@ -201,6 +203,7 @@ export default class CalorieCalculator extends Component {
           )}
           {this.state.formComplete && (
             <div className="weightChange">
+            <img src={calories} alt="caloricalc" />
               <h4>CALORIE TABLE</h4>
               <div
                 id="lineTop"

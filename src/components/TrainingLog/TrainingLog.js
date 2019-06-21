@@ -94,6 +94,12 @@ export default class TrainingLog extends React.Component {
     const chosenActivities = this.state.activities.filter(
       activeList => activeList.name === this.state.sports
     );
+    const { name, age, weight, height } = this.state;
+    const isEnabled =
+      name.length > 0 &&
+      age.length > 0 &&
+      height.length > 0 &&
+      weight.length > 0;
 
     return (
       <div className="trainLog">
@@ -191,6 +197,7 @@ export default class TrainingLog extends React.Component {
                 type="submit"
                 className="btnSubmitExercise"
                 value="Submit"
+                disabled={!isEnabled}
               />
             </form>
           </div>
@@ -211,6 +218,7 @@ export default class TrainingLog extends React.Component {
             return (
               <div key={training.tag_id} className="outputList">
                 <div className="exerciseOutput">
+                {this.state.formComplete && (
                   <div className="exerciseData">
                     <img src={trainingdata} alt="training" />
                     <h4>EXERCISE DATA</h4>
@@ -264,6 +272,7 @@ export default class TrainingLog extends React.Component {
                       <div id="lineTop" className="exerciseResult" />
                     </div>
                   </div>
+                )}
                 </div>
               </div>
             );
