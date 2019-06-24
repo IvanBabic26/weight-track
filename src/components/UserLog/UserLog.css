@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  max-width: 60%;
+  width: 60%;
+  align-self: flex-start;
   justify-content: center;
   align-items: center;
   padding: 30px 60px;
