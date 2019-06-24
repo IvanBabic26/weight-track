@@ -51,6 +51,14 @@ div.tabs:hover {
   color: #fff;
 }
 
+.tabs:hover h4 {
+  color: white;
+}
+
+.tabs:hover h3 {
+  color: white;
+}
+
 .imageTab img {
   display: inline-block;
   margin: 20px;

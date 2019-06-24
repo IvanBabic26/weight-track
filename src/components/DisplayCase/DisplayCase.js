@@ -291,10 +291,10 @@ export default class DisplayCase extends React.Component {
               {foodRecipes.recipe.totalNutrients.VITD.unit}
              */}
                 {foodRecipes.recipe.totalNutrients.TOCPHA.label}
-                <br />
+                <br /><div className="line" />
                 {foodRecipes.recipe.totalNutrients.TOCPHA.quantity}{" "}
                 {foodRecipes.recipe.totalNutrients.TOCPHA.unit}
-                <br />
+                <br /><div className="line" />
                 {/* 
               {foodRecipes.recipe.totalNutrients.VITK1.label}
               <br />
